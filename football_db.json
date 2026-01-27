@@ -1,41 +1,59 @@
-// Variables used by Scriptable.
-// These must be at the very top of the file. Do not edit.
-// icon-color: light-brown; icon-glyph: magic;
 {
   "leagues": [
     {
-      "region": "EUROPE TOP",
+      "region": "EUROPE MAIN",
       "data": [
+        { "id": 9, "s": 39301, "name": "Premier League", "keywords": ["pl", "premier", "england"] },
+        { "id": 1, "s": 39285, "name": "Bundesliga", "keywords": ["bl", "germany", "bundesliga"] },
+        { "id": 13, "s": 39325, "name": "Serie A", "keywords": ["italy", "serie a"] },
+        { "id": 10, "s": 39319, "name": "LaLiga", "keywords": ["spain", "laliga"] },
+        { "id": 23, "s": 39245, "name": "Ligue 1", "keywords": ["france", "ligue 1"] },
         { "id": 5, "s": 39356, "name": "Champions League", "keywords": ["cl", "ucl", "champions"] },
-        { "id": 9, "s": 39301, "name": "Premier League", "keywords": ["pl", "england", "liverpool", "city", "arsenal"] },
-        { "id": 10, "s": 39319, "name": "La Liga", "keywords": ["pd", "spain", "real madrid", "barca", "atletico"] },
-        { "id": 13, "s": 39325, "name": "Serie A", "keywords": ["sa", "italy", "milan", "juve", "inter"] },
-        { "id": 1, "s": 39285, "name": "Bundesliga", "keywords": ["bl", "germany", "bayern", "dortmund"] },
-        { "id": 23, "s": 39245, "name": "Ligue 1", "keywords": ["fl1", "france", "psg", "monaco"] }
+        { "id": 7, "s": 39357, "name": "Europa League", "keywords": ["uel", "europa"] },
+        { "id": 120, "s": 39272, "name": "1. HNL", "keywords": ["hnl", "croatia", "hajduk", "dinamo"] }
       ]
     },
     {
-      "region": "BALKANS",
+      "region": "EUROPE SECOND & CUPS",
       "data": [
-        { "id": 120, "s": 39272, "name": "1. HNL", "keywords": ["hnl", "croatia", "dinamo", "hajduk", "rijeka"] },
-        { "id": 1725, "s": 39276, "name": "Super Liga", "keywords": ["serbia", "zvezda", "partizan"] },
-        { "id": 2728, "s": 39261, "name": "1. SNL", "keywords": ["slovenia", "maribor", "olimpija"] }
+        { "id": 27, "s": 39305, "name": "The Championship", "keywords": ["championship"] },
+        { "id": 2, "s": 39286, "name": "2. Bundesliga", "keywords": ["bundesliga 2"] },
+        { "id": 30, "s": 39336, "name": "Serie B", "keywords": ["serie b"] },
+        { "id": 28, "s": 39320, "name": "Segunda Division", "keywords": ["segunda"] },
+        { "id": 8, "s": 39311, "name": "Süper Lig", "keywords": ["turkey", "besiktas", "galatasaray", "fenerbahce"] },
+        { "id": 35, "s": 39316, "name": "Liga NOS", "keywords": ["portugal", "benfica", "porto"] },
+        { "id": 36, "s": 39255, "name": "Eredivisie", "keywords": ["netherlands", "ajax", "psv"] },
+        { "id": 59, "s": 39267, "name": "Ekstraklasa", "keywords": ["poland"] },
+        { "id": 17, "s": 39404, "name": "FA Cup", "keywords": ["fa cup"] },
+        { "id": 19, "s": 39335, "name": "Coppa Italia", "keywords": ["coppa italia"] },
+        { "id": 18, "s": 39106, "name": "Copa del Rey", "keywords": ["copa del rey"] }
       ]
     },
     {
-      "region": "AMERICAS",
+      "region": "AMERICAS & REST",
       "data": [
-        { "id": 15, "s": 39121, "name": "MLS", "keywords": ["usa", "miami", "messi", "galaxy"] },
-        { "id": 16, "s": 39222, "name": "Brasileirão", "keywords": ["brazil", "flamengo", "palmeiras"] },
-        { "id": 183, "s": 39363, "name": "Liga Profesional", "keywords": ["argentina", "boca", "river"] }
+        { "id": 183, "s": 39363, "name": "Liga Profesional", "keywords": ["argentina"] },
+        { "id": 16, "s": 39222, "name": "Brasileirão", "keywords": ["brazil", "serie a"] },
+        { "id": 15, "s": 39121, "name": "MLS", "keywords": ["mls", "usa", "miami"] },
+        { "id": 111, "s": 39355, "name": "Saudi Pro League", "keywords": ["saudi", "ronaldo", "al nassr"] },
+        { "id": 112, "s": 39198, "name": "Chinese Super League", "keywords": ["china"] },
+        { "id": 38, "s": 39195, "name": "J.League", "keywords": ["japan"] },
+        { "id": 84, "s": 39061, "name": "A-League", "keywords": ["australia"] },
+        { "id": 118, "s": 39360, "name": "Premier Soccer League", "keywords": ["south africa"] }
       ]
     },
     {
-      "region": "OTHERS",
+      "region": "LOWER LEAGUES & REGIONAL",
       "data": [
-        { "id": 35, "s": 39316, "name": "Liga Portugal", "keywords": ["benfica", "porto", "sporting"] },
-        { "id": 36, "s": 39255, "name": "Eredivisie", "keywords": ["ajax", "psv", "feyenoord"] },
-        { "id": 111, "s": 39355, "name": "Saudi Pro League", "keywords": ["al nassr", "ronaldo", "al hilal"] }
+        { "id": 42, "s": 39304, "name": "League One", "keywords": ["league one"] },
+        { "id": 43, "s": 39303, "name": "League Two", "keywords": ["league two"] },
+        { "id": 29, "s": 39246, "name": "Ligue 2", "keywords": ["france 2"] },
+        { "id": 142, "s": 39317, "name": "LigaPro Portugal", "keywords": ["portugal 2"] },
+        { "id": 121, "s": 39313, "name": "1. Lig Turkey", "keywords": ["turkey 2"] },
+        { "id": 3, "s": 39302, "name": "3. Liga Germany", "keywords": ["germany 3"] },
+        { "id": 1725, "s": 39276, "name": "Super Liga Serbia", "keywords": ["serbia", "zvezda", "partizan"] },
+        { "id": 2728, "s": 39261, "name": "1. SNL Slovenia", "keywords": ["slovenia", "maribor"] },
+        { "id": 204, "s": 39204, "name": "Premijer Liga BiH", "keywords": ["bih", "zeljeznicar", "sarajevo"] }
       ]
     }
   ]
