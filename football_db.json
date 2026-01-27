@@ -1,0 +1,42 @@
+// Variables used by Scriptable.
+// These must be at the very top of the file. Do not edit.
+// icon-color: light-brown; icon-glyph: magic;
+{
+  "leagues": [
+    {
+      "region": "EUROPE TOP",
+      "data": [
+        { "id": 5, "s": 39356, "name": "Champions League", "keywords": ["cl", "ucl", "champions"] },
+        { "id": 9, "s": 39301, "name": "Premier League", "keywords": ["pl", "england", "liverpool", "city", "arsenal"] },
+        { "id": 10, "s": 39319, "name": "La Liga", "keywords": ["pd", "spain", "real madrid", "barca", "atletico"] },
+        { "id": 13, "s": 39325, "name": "Serie A", "keywords": ["sa", "italy", "milan", "juve", "inter"] },
+        { "id": 1, "s": 39285, "name": "Bundesliga", "keywords": ["bl", "germany", "bayern", "dortmund"] },
+        { "id": 23, "s": 39245, "name": "Ligue 1", "keywords": ["fl1", "france", "psg", "monaco"] }
+      ]
+    },
+    {
+      "region": "BALKANS",
+      "data": [
+        { "id": 120, "s": 39272, "name": "1. HNL", "keywords": ["hnl", "croatia", "dinamo", "hajduk", "rijeka"] },
+        { "id": 1725, "s": 39276, "name": "Super Liga", "keywords": ["serbia", "zvezda", "partizan"] },
+        { "id": 2728, "s": 39261, "name": "1. SNL", "keywords": ["slovenia", "maribor", "olimpija"] }
+      ]
+    },
+    {
+      "region": "AMERICAS",
+      "data": [
+        { "id": 15, "s": 39121, "name": "MLS", "keywords": ["usa", "miami", "messi", "galaxy"] },
+        { "id": 16, "s": 39222, "name": "Brasileirão", "keywords": ["brazil", "flamengo", "palmeiras"] },
+        { "id": 183, "s": 39363, "name": "Liga Profesional", "keywords": ["argentina", "boca", "river"] }
+      ]
+    },
+    {
+      "region": "OTHERS",
+      "data": [
+        { "id": 35, "s": 39316, "name": "Liga Portugal", "keywords": ["benfica", "porto", "sporting"] },
+        { "id": 36, "s": 39255, "name": "Eredivisie", "keywords": ["ajax", "psv", "feyenoord"] },
+        { "id": 111, "s": 39355, "name": "Saudi Pro League", "keywords": ["al nassr", "ronaldo", "al hilal"] }
+      ]
+    }
+  ]
+}
