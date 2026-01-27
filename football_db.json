@@ -1,45 +1,56 @@
 {
   "leagues": [
     {
-      "region": "EUROPE TOP",
+      "region": "THE BIG FIVE",
       "data": [
-        { "id": 9, "s": 50138, "name": "Premier League", "keywords": ["pl", "england", "liverpool", "city", "united", "chelsea", "arsenal"] },
-        { "id": 1, "s": 50125, "name": "Bundesliga", "keywords": ["bl", "germany", "bayern", "dortmund", "leverkusen"] },
-        { "id": 13, "s": 50146, "name": "Serie A", "keywords": ["sa", "italy", "milan", "inter", "juve", "roma", "napoli"] },
-        { "id": 10, "s": 50141, "name": "LaLiga", "keywords": ["spain", "real", "barca", "atletico", "sevilla"] },
-        { "id": 23, "s": 50119, "name": "Ligue 1", "keywords": ["france", "psg", "monaco", "marseille", "lyon"] },
-        { "id": 5, "s": 50130, "name": "Champions League", "keywords": ["cl", "ucl", "champions"] },
-        { "id": 7, "s": 50131, "name": "Europa League", "keywords": ["uel", "europa"] },
-        { "id": 2727, "s": 50132, "name": "Conference League", "keywords": ["uecl", "conference"] }
+        { "id": 9, "s": 50138, "name": "Premier League", "keywords": ["pl", "england", "liverpool", "city", "united", "arsenal", "chelsea", "tottenham"] },
+        { "id": 10, "s": 50141, "name": "LaLiga", "keywords": ["spain", "real", "barca", "atletico", "sevilla", "villarreal", "bilbao"] },
+        { "id": 13, "s": 50146, "name": "Serie A", "keywords": ["italy", "milan", "inter", "juve", "roma", "napoli", "lazio", "atalanta", "fiorentina"] },
+        { "id": 1, "s": 50125, "name": "Bundesliga", "keywords": ["germany", "bayern", "dortmund", "leverkusen", "leipzig", "stuttgart"] },
+        { "id": 23, "s": 50119, "name": "Ligue 1", "keywords": ["france", "psg", "monaco", "marseille", "lyon", "lille", "nice"] }
+      ]
+    },
+    {
+      "region": "WEST & CENTRAL EUROPE",
+      "data": [
+        { "id": 35, "s": 50128, "name": "Liga Portugal", "keywords": ["portugal", "benfica", "porto", "sporting", "braga"] },
+        { "id": 36, "s": 50129, "name": "Eredivisie", "keywords": ["netherlands", "ajax", "psv", "feyenoord", "az"] },
+        { "id": 58, "s": 50127, "name": "Jupiler Pro", "keywords": ["belgium", "brugge", "anderlecht", "gent", "union"] },
+        { "id": 39, "s": 50139, "name": "Scottish Prem", "keywords": ["scotland", "celtic", "rangers", "aberdeen"] },
+        { "id": 31, "s": 50124, "name": "Austrian Bundesliga", "keywords": ["austria", "salzburg", "sturm", "rapid", "lask"] },
+        { "id": 25, "s": 50126, "name": "Swiss Super League", "keywords": ["switzerland", "basel", "young boys", "zurich", "lugano"] }
       ]
     },
     {
       "region": "BALKANS & TURKEY",
       "data": [
-        { "id": 120, "s": 50122, "name": "1. HNL", "keywords": ["hnl", "croatia", "hajduk", "dinamo", "rijeka", "osijek"] },
-        { "id": 8, "s": 50145, "name": "Süper Lig", "keywords": ["turkey", "galatasaray", "besiktas", "fenerbahce", "trabzon"] },
-        { "id": 204, "s": 50142, "name": "Premijer Liga", "keywords": ["bih", "zeljeznicar", "sarajevo", "zrinjski", "zeljo", "borac"] },
-        { "id": 1725, "s": 50143, "name": "Super Liga", "keywords": ["serbia", "zvezda", "partizan", "vojvodina"] },
-        { "id": 2728, "s": 50123, "name": "1. SNL", "keywords": ["slovenia", "maribor", "olimpija"] }
+        { "id": 120, "s": 50122, "name": "1. HNL", "keywords": ["hnl", "croatia", "hajduk", "dinamo", "rijeka", "osijek", "varazdin"] },
+        { "id": 204, "s": 50142, "name": "Premijer Liga", "keywords": ["bih", "zeljeznicar", "sarajevo", "zrinjski", "borac", "velez", "posusje"] },
+        { "id": 1725, "s": 50143, "name": "Super Liga", "keywords": ["serbia", "zvezda", "partizan", "vojvodina", "tsc"] },
+        { "id": 2728, "s": 50123, "name": "1. SNL", "keywords": ["slovenia", "maribor", "olimpija", "celje", "mura"] },
+        { "id": 8, "s": 50145, "name": "Süper Lig", "keywords": ["turkey", "galatasaray", "besiktas", "fenerbahce", "trabzon", "basaksehir"] },
+        { "id": 56, "s": 50147, "name": "Superleague Greece", "keywords": ["greece", "olympiakos", "paok", "aek", "panathinaikos"] }
       ]
     },
     {
-      "region": "OTHER EUROPE",
+      "region": "NORTH & EAST EUROPE",
       "data": [
-        { "id": 36, "s": 50129, "name": "Eredivisie", "keywords": ["netherlands", "ajax", "psv", "feyenoord"] },
-        { "id": 35, "s": 50128, "name": "Liga Portugal", "keywords": ["portugal", "benfica", "porto", "sporting"] },
-        { "id": 39, "s": 50139, "name": "Scottish Prem", "keywords": ["scotland", "celtic", "rangers"] },
-        { "id": 58, "s": 50127, "name": "Jupiler Pro", "keywords": ["belgium", "brugge", "anderlecht"] },
-        { "id": 59, "s": 50140, "name": "Ekstraklasa", "keywords": ["poland", "dinamo", "legia"] }
+        { "id": 59, "s": 50140, "name": "Ekstraklasa", "keywords": ["poland", "legia", "lech", "rakow", "pogon"] },
+        { "id": 60, "s": 50148, "name": "Chance Liga", "keywords": ["czech", "sparta", "slavia", "viktoria"] },
+        { "id": 57, "s": 50149, "name": "Superligaen", "keywords": ["denmark", "copenhagen", "midtjylland", "brondby"] },
+        { "id": 62, "s": 50150, "name": "Allsvenskan", "keywords": ["sweden", "malmo", "aik", "djurgarden"] },
+        { "id": 67, "s": 50151, "name": "Eliteserien", "keywords": ["norway", "bodo", "molde", "rosenborg"] },
+        { "id": 2749, "s": 50152, "name": "OTP Bank Liga", "keywords": ["hungary", "ferencvaros", "vidi", "debrecen"] }
       ]
     },
     {
-      "region": "WORLD",
+      "region": "INTERNATIONAL & WORLD",
       "data": [
-        { "id": 15, "s": 50135, "name": "MLS", "keywords": ["usa", "miami", "messi", "galaxy"] },
-        { "id": 111, "s": 50144, "name": "Saudi Pro League", "keywords": ["saudi", "nassr", "ronaldo", "hilal", "ittihad"] },
-        { "id": 16, "s": 50137, "name": "Brasileirão", "keywords": ["brazil", "flamengo", "palmeiras", "santos"] },
-        { "id": 183, "s": 50136, "name": "Argentina LPF", "keywords": ["argentina", "boca", "river"] }
+        { "id": 5, "s": 50130, "name": "Champions League", "keywords": ["cl", "ucl", "champions"] },
+        { "id": 7, "s": 50131, "name": "Europa League", "keywords": ["uel", "europa"] },
+        { "id": 2727, "s": 50132, "name": "Conference League", "keywords": ["uecl", "conference"] },
+        { "id": 111, "s": 50144, "name": "Saudi Pro League", "keywords": ["saudi", "nassr", "ronaldo", "hilal"] },
+        { "id": 15, "s": 50135, "name": "MLS", "keywords": ["usa", "miami", "messi"] }
       ]
     }
   ]
