@@ -1,44 +1,25 @@
 {
   "leagues": [
     {
-      "region": "UEFA",
-      "data": [
-        {
-          "name": "Champions League",
-          "id": 5,
-          "s": "39356",
-          "keywords": ["ucl", "cl", "champions"]
-        }
-      ]
+      "name": "Champions League",
+      "id": 5,
+      "s": "39356",
+      "keywords": ["ucl", "cl", "champions", "liga prvaka"],
+      "teams": ["real madrid", "milan", "liverpool"]
     },
     {
-      "region": "EUROPE",
-      "data": [
-        {
-          "name": "Premier League",
-          "id": 9,
-          "s": "39301",
-          "keywords": ["pl", "engleska"]
-        },
-        {
-          "name": "Bundesliga",
-          "id": 1,
-          "s": "39285",
-          "keywords": ["de", "bayern", "bundesliga"]
-        },
-        {
-          "name": "La Liga",
-          "id": 10,
-          "s": "39319",
-          "keywords": ["es", "real", "laliga"]
-        },
-        {
-          "name": "Liga NOS",
-          "id": 35,
-          "s": "39316",
-          "keywords": ["porto", "portugal"]
-        }
-      ]
+      "name": "Bundesliga",
+      "id": 1,
+      "s": "39285",
+      "keywords": ["de", "bundesliga", "njemacka"],
+      "teams": ["bayern", "dortmund", "leverkusen"]
+    },
+    {
+      "name": "Liga NOS",
+      "id": 35,
+      "s": "39316",
+      "keywords": ["pt", "portugal", "nos"],
+      "teams": ["porto", "benfica", "sporting"]
     }
   ]
 }
