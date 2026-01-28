@@ -1,19 +1,13 @@
 {
   "leagues": [
     {
-      "region": "World",
+      "region": "Balkan",
       "data": [
         {
-          "name": "Champions League",
-          "id": 5,
-          "s": "2025",
-          "keywords": ["ucl", "cl", "liga prvaka"]
-        },
-        {
-          "name": "Major League Soccer",
-          "id": 32,
-          "s": "2026",
-          "keywords": ["mls", "messi", "miami"]
+          "name": "Hrvatska Liga",
+          "id": 120,
+          "s": "39272",
+          "keywords": ["hnl", "hajduk", "dinamo", "rijeka", "osijek"]
         }
       ]
     },
@@ -21,51 +15,34 @@
       "region": "Europe",
       "data": [
         {
+          "name": "Champions League",
+          "id": 5,
+          "s": "39356",
+          "keywords": ["ucl", "cl", "liga prvaka"]
+        },
+        {
           "name": "Premier League",
-          "id": 1,
-          "s": "2025",
+          "id": 9,
+          "s": "39301",
           "keywords": ["pl", "engleska", "city", "arsenal", "liverpool"]
         },
         {
-          "name": "La Liga",
-          "id": 7,
-          "s": "2025",
-          "keywords": ["es", "real", "barca", "atletico"]
+          "name": "Bundesliga",
+          "id": 1,
+          "s": "39285",
+          "keywords": ["de", "bayern", "leverkusen", "dortmund"]
         },
         {
-          "name": "Bundesliga",
-          "id": 9,
-          "s": "2025",
-          "keywords": ["de", "bayern", "bayer", "dortmund"]
+          "name": "La Liga",
+          "id": 10,
+          "s": "39319",
+          "keywords": ["es", "real", "barca", "atletico"]
         },
         {
           "name": "Serie A",
           "id": 13,
-          "s": "2025",
+          "s": "39325",
           "keywords": ["it", "inter", "juve", "milan"]
-        }
-      ]
-    },
-    {
-      "region": "Balkan",
-      "data": [
-        {
-          "name": "Hrvatska Nogometna Liga",
-          "id": 37,
-          "s": "2025",
-          "keywords": ["hnl", "hajduk", "dinamo", "rijeka"]
-        },
-        {
-          "name": "Srbija Superliga",
-          "id": 64,
-          "s": "2025",
-          "keywords": ["sr", "zvezda", "partizan"]
-        },
-        {
-          "name": "BiH Premijer Liga",
-          "id": 104,
-          "s": "2025",
-          "keywords": ["bih", "sarajevo", "zeljo", "zrinjski"]
         }
       ]
     }
