@@ -5,84 +5,14 @@
       "id": 5,
       "s": "39356",
       "keywords": ["ucl", "cl", "champions", "liga prvaka"],
-      "teams": ["real madrid", "man city", "bayern", "liverpool", "inter", "milan", "barca", "arsenal", "dortmund", "juventus", "leverkusen", "atletico", "psg", "leipzig", "aston villa", "monaco", "benfica", "dinamo", "zvezda"]
-    },
-    {
-      "name": "Premier League",
-      "id": 9,
-      "s": "39301",
-      "keywords": ["pl", "engleska", "premier"],
-      "teams": ["chelsea", "tottenham", "united", "newcastle", "west ham", "brighton", "fulham", "wolves", "leicester", "everton", "brentford", "bournemouth", "nottingham", "crystal palace", "ipswich", "southampton"]
-    },
-    {
-      "name": "La Liga",
-      "id": 10,
-      "s": "39319",
-      "keywords": ["es", "spanjolska", "laliga"],
-      "teams": ["sociedad", "bilbao", "villarreal", "sevilla", "valencia", "betis", "girona", "mallorca", "osasuna", "getafe", "celta", "rayo", "espanyol", "alaves", "leganes", "las palmas", "valladolid"]
-    },
-    {
-      "name": "Serie A",
-      "id": 13,
-      "s": "39325",
-      "keywords": ["it", "italija", "seriea"],
-      "teams": ["napoli", "roma", "lazio", "atalanta", "fiorentina", "bologna", "torino", "udinese", "verona", "genoa", "parma", "empoli", "monza", "cagliari", "lecce", "como", "venezia"]
-    },
-    {
-      "name": "Bundesliga",
-      "id": 1,
-      "s": "39285",
-      "keywords": ["de", "njemacka", "bundesliga"],
-      "teams": ["stuttgart", "frankfurt", "hoffenheim", "wolfsburg", "freiburg", "augsburg", "werder", "monchengladbach", "mainz", "heidenheim", "st pauli", "kiel"]
+      "teams": ["real madrid", "man city", "bayern", "liverpool", "inter", "milan", "barca", "arsenal", "dortmund", "juventus"]
     },
     {
       "name": "HNL",
       "id": 120,
       "s": "39272",
       "keywords": ["hnl", "hrvatska"],
-      "teams": ["hajduk", "rijeka", "osijek", "lokomotiva", "varazdin", "istra", "slaven", "sibenik", "gorica"]
-    },
-    {
-      "name": "Super Liga",
-      "id": 64,
-      "s": "39314",
-      "keywords": ["sr", "srbija"],
-      "teams": ["partizan", "tsc", "vojvodina", "cukaricki", "radnicki", "mladost", "pazar", "napredak", "spartak"]
-    },
-    {
-      "name": "Premijer Liga",
-      "id": 104,
-      "s": "39247",
-      "keywords": ["bih", "bosna"],
-      "teams": ["borac", "zrinjski", "sarajevo", "zeljeznicar", "velez", "posusje", "siroki", "sloga", "igman", "sloboda", "radnik", "gosk"]
-    },
-    {
-      "name": "Liga NOS",
-      "id": 35,
-      "s": "39316",
-      "keywords": ["pt", "portugal", "porto"],
-      "teams": ["braga", "vitoria", "famalicao", "moreirense", "santa clara", "gil vicente", "rio ave", "boavista", "estoril", "farense"]
-    },
-    {
-      "name": "Eredivisie",
-      "id": 36,
-      "s": "39255",
-      "keywords": ["nl", "nizozemska"],
-      "teams": ["psv", "feyenoord", "ajax", "az alkmaar", "twente", "utrecht", "sparta", "heerenveen", "groningen"]
-    },
-    {
-      "name": "Süper Lig",
-      "id": 8,
-      "s": "39311",
-      "keywords": ["tr", "turska"],
-      "teams": ["galatasaray", "fenerbahce", "besiktas", "trabzonspor", "basaksehir", "antalyaspor", "alanyaspor"]
-    },
-    {
-      "name": "MLS",
-      "id": 15,
-      "s": "39121",
-      "keywords": ["us", "usa", "mls", "miami"],
-      "teams": ["inter miami", "la galaxy", "lafc", "columbus", "cincinnati", "red bulls", "orlando", "seattle"]
+      "teams": ["hajduk", "rijeka", "osijek", "dinamo", "lokomotiva"]
     }
   ]
 }
