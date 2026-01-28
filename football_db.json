@@ -24,7 +24,7 @@
       ]
     },
     {
-      "region": "UEFA",
+      "region": "Europe Top",
       "data": [
         {
           "name": "Champions League",
@@ -33,27 +33,22 @@
           "keywords": ["ucl", "cl", "liga prvaka"]
         },
         {
-          "name": "Europa League",
-          "id": 7,
-          "s": "2025",
-          "keywords": ["uel", "europa league"]
-        }
-      ]
-    },
-    {
-      "region": "Top 5",
-      "data": [
-        {
           "name": "Premier League",
           "id": 1,
           "s": "2025",
           "keywords": ["pl", "engleska", "city", "arsenal", "liverpool", "united", "chelsea", "tottenham"]
         },
         {
+          "name": "Bundesliga",
+          "id": 9,
+          "s": "2025",
+          "keywords": ["de", "bayern", "leverkusen", "dortmund", "leipzig", "stuttgart", "wolfsburg"]
+        },
+        {
           "name": "La Liga",
           "id": 7,
           "s": "2025",
-          "keywords": ["la liga", "es", "real madrid", "barcelona", "atletico", "sevilla"]
+          "keywords": ["la liga", "es", "real madrid", "barcelona", "atletico", "sevilla", "girona"]
         },
         {
           "name": "Serie A",
@@ -62,27 +57,39 @@
           "keywords": ["it", "inter", "milan", "juve", "napoli", "roma", "lazio"]
         },
         {
-          "name": "Bundesliga",
-          "id": 9,
+          "name": "Ligue 1",
+          "id": 11,
           "s": "2025",
-          "keywords": ["de", "leverkusen", "bayern", "dortmund", "leipzig", "stuttgart"]
+          "keywords": ["fr", "psg", "marseille", "monaco", "lyon", "lille"]
+        },
+        {
+          "name": "Europa League",
+          "id": 7,
+          "s": "2025",
+          "keywords": ["uel", "europska liga"]
         }
       ]
     },
     {
-      "region": "Svijet",
+      "region": "Rest of World",
       "data": [
+        {
+          "name": "Süper Lig",
+          "id": 52,
+          "s": "2025",
+          "keywords": ["tr", "turska", "galatasaray", "fenerbahce", "besiktas"]
+        },
         {
           "name": "Saudi Pro League",
           "id": 511,
           "s": "2025",
-          "keywords": ["sa", "nassr", "hilal", "ittihad", "ahli", "ronaldo"]
+          "keywords": ["sa", "nassr", "hilal", "ittihad", "ronaldo"]
         },
         {
           "name": "Major League Soccer",
           "id": 32,
           "s": "2025",
-          "keywords": ["mls", "miami", "messi", "galaxy"]
+          "keywords": ["mls", "miami", "messi", "inter miami"]
         }
       ]
     }
