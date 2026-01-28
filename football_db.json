@@ -30,13 +30,13 @@
           "name": "Srbija Superliga",
           "id": 64,
           "s": "2025",
-          "keywords": ["sr", "zvezda", "partizan", "vojvodina"]
+          "keywords": ["sr", "zvezda", "partizan"]
         },
         {
           "name": "BiH Premijer Liga",
           "id": 104,
           "s": "2025",
-          "keywords": ["bih", "sarajevo", "zeljo", "zrinjski", "borac"]
+          "keywords": ["bih", "sarajevo", "zeljo", "zrinjski"]
         }
       ]
     },
@@ -47,25 +47,25 @@
           "name": "Premier League",
           "id": 1,
           "s": "2025",
-          "keywords": ["pl", "engleska", "city", "arsenal", "liverpool", "chelsea"]
-        },
-        {
-          "name": "La Liga",
-          "id": 7,
-          "s": "2025",
-          "keywords": ["es", "real", "barca", "atletico", "sevilla"]
+          "keywords": ["pl", "engleska", "city", "arsenal", "liverpool", "chelsea", "united", "tottenham"]
         },
         {
           "name": "Bundesliga",
           "id": 9,
           "s": "2025",
-          "keywords": ["de", "bayern", "leverkusen", "dortmund", "leipzig"]
+          "keywords": ["de", "bayern", "leverkusen", "dortmund", "leipzig", "stuttgart"]
+        },
+        {
+          "name": "La Liga",
+          "id": 10,
+          "s": "2025",
+          "keywords": ["es", "real", "barca", "atletico", "sevilla"]
         },
         {
           "name": "Serie A",
           "id": 13,
           "s": "2025",
-          "keywords": ["it", "inter", "juve", "milan", "napoli"]
+          "keywords": ["it", "inter", "juve", "milan", "napoli", "roma"]
         }
       ]
     }
