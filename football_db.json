@@ -7,107 +7,54 @@
           "name": "Hrvatska Nogometna Liga",
           "id": 37,
           "s": "2025",
-          "keywords": ["hnl", "hrvatska", "dinamo", "hajduk", "rijeka", "osijek", "lokomotiva", "varazdin", "gorica", "istra", "sibenik", "slaven", "belupo", "vukovar", "rudes", "cibalia"]
-        },
-        {
-          "name": "Superliga Srbije",
-          "id": 64,
-          "s": "2025",
-          "keywords": ["sr", "srbija", "zvezda", "partizan", "tsc", "vojvodina", "cukaricki", "radnicki", "novi pazar", "mladost", "napredak", "spartak", "imt", "zeleznicar", "jedinstvo", "ofk", "tekstilac"]
+          "keywords": ["hnl", "hajduk", "dinamo", "rijeka", "osijek", "hrvatska"]
         },
         {
           "name": "Premijer Liga BiH",
           "id": 104,
           "s": "2025",
-          "keywords": ["bih", "bosna", "borac", "zrinjski", "sarajevo", "zeljo", "zeljeznicar", "velez", "posusje", "siroki", "sloga", "igman", "gosk", "sloboda", "radnik"]
+          "keywords": ["bih", "borac", "zrinjski", "sarajevo", "zeljo", "velez"]
+        },
+        {
+          "name": "Superliga Srbije",
+          "id": 64,
+          "s": "2025",
+          "keywords": ["sr", "srbija", "zvezda", "partizan", "tsc", "vojvodina"]
         }
       ]
     },
     {
-      "region": "Europe Elite",
+      "region": "Europe",
       "data": [
         {
           "name": "Premier League",
           "id": 1,
           "s": "2025",
-          "keywords": ["pl", "engleska", "city", "arsenal", "liverpool", "chelsea", "united", "spurs", "newcastle", "villa", "everton", "west ham", "brighton", "wolves", "fulham", "palace", "forest", "bournemouth", "brentford", "leicester", "southampton", "ipswich"]
+          "keywords": ["pl", "engleska", "city", "arsenal", "liverpool"]
         },
         {
           "name": "La Liga",
           "id": 7,
           "s": "2025",
-          "keywords": ["es", "spanjolska", "real madrid", "barcelona", "girona", "atletico", "bilbao", "sociedad", "betis", "villarreal", "valencia", "sevilla"]
+          "keywords": ["es", "spanjolska", "real", "barca"]
         },
         {
           "name": "Serie A",
           "id": 13,
           "s": "2025",
-          "keywords": ["it", "italija", "inter", "milan", "juve", "juventus", "napoli", "roma", "lazio", "atalanta", "fiorentina", "torino", "bologna"]
+          "keywords": ["it", "italija", "inter", "milan", "juve"]
         },
-        {
-          "name": "Süper Lig",
-          "id": 52,
-          "s": "2025",
-          "keywords": ["tr", "turska", "galatasaray", "fenerbahce", "fener", "besiktas", "trabzon", "basaksehir"]
-        },
-        {
-          "name": "Bundesliga",
-          "id": 9,
-          "s": "2025",
-          "keywords": ["de", "njemacka", "bayern", "leverkusen", "leipzig", "dortmund", "stuttgart", "frankfurt"]
-        },
-        {
-          "name": "Ligue 1",
-          "id": 10,
-          "s": "2025",
-          "keywords": ["fr", "francuska", "psg", "monaco", "marseille", "lyon", "lille"]
-        },
-        {
-          "name": "Eredivisie",
-          "id": 35,
-          "s": "2025",
-          "keywords": ["nl", "nizozemska", "ajax", "psv", "feyenoord", "twente", "alkmaar"]
-        },
-        {
-          "name": "Liga Portugal",
-          "id": 44,
-          "s": "2025",
-          "keywords": ["pt", "portugal", "sporting", "benfica", "porto", "braga"]
-        }
-      ]
-    },
-    {
-      "region": "World & Cups",
-      "data": [
         {
           "name": "Champions League",
           "id": 5,
           "s": "2025",
-          "keywords": ["cl", "liga prvaka", "ucl"]
+          "keywords": ["cl", "ucl", "liga prvaka"]
         },
         {
           "name": "Europa League",
           "id": 7,
           "s": "2025",
-          "keywords": ["uel", "europska liga"]
-        },
-        {
-          "name": "Saudi Pro League",
-          "id": 535,
-          "s": "2025",
-          "keywords": ["sa", "saudi", "arabija", "ronaldo", "al nassr", "al hilal", "al ittihad"]
-        },
-        {
-          "name": "MLS",
-          "id": 33,
-          "s": "2025",
-          "keywords": ["mls", "usa", "america", "messi", "miami", "galaxy", "lafc"]
-        },
-        {
-          "name": "Brasileirao",
-          "id": 16,
-          "s": "2025",
-          "keywords": ["br", "brazil", "palmeiras", "flamengo", "botafogo", "corinthians"]
+          "keywords": ["uel", "europa"]
         }
       ]
     }
