@@ -6,48 +6,37 @@
         {
           "name": "Champions League",
           "id": 5,
-          "s": "2025",
-          "keywords": ["ucl", "cl", "liga prvaka"]
-        },
-        {
-          "name": "Europa League",
-          "id": 7,
-          "s": "2025",
-          "keywords": ["uel", "europa league"]
+          "s": "39356",
+          "keywords": ["ucl", "cl", "champions"]
         }
       ]
     },
     {
-      "region": "Top Lige",
+      "region": "EUROPE",
       "data": [
         {
           "name": "Premier League",
-          "id": 1,
-          "s": "2025",
-          "keywords": ["pl", "engleska", "city", "arsenal", "liverpool"]
+          "id": 9,
+          "s": "39301",
+          "keywords": ["pl", "engleska"]
         },
         {
           "name": "Bundesliga",
-          "id": 9,
-          "s": "2025",
-          "keywords": ["de", "bayern", "leverkusen", "dortmund"]
+          "id": 1,
+          "s": "39285",
+          "keywords": ["de", "bayern", "bundesliga"]
         },
         {
-          "name": "Liga Portugal",
-          "id": 34,
-          "s": "2025",
-          "keywords": ["pt", "portugal", "porto", "benfica", "sporting"]
-        }
-      ]
-    },
-    {
-      "region": "Balkan",
-      "data": [
+          "name": "La Liga",
+          "id": 10,
+          "s": "39319",
+          "keywords": ["es", "real", "laliga"]
+        },
         {
-          "name": "Hrvatska Liga",
-          "id": 37,
-          "s": "2025",
-          "keywords": ["hnl", "hajduk", "dinamo", "rijeka"]
+          "name": "Liga NOS",
+          "id": 35,
+          "s": "39316",
+          "keywords": ["porto", "portugal"]
         }
       ]
     }
