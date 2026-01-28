@@ -4,146 +4,85 @@
       "name": "Champions League",
       "id": 5,
       "s": "39356",
-      "keywords": ["ucl", "cl", "liga prvaka", "champions"],
-      "teams": ["real madrid", "man city", "bayern", "liverpool", "inter", "milan", "barcelona", "arsenal", "dortmund", "juventus", "bayer leverkusen", "atletico madrid", "psg", "leipzig", "aston villa", "monaco"]
+      "keywords": ["ucl", "cl", "champions", "liga prvaka"],
+      "teams": ["real madrid", "man city", "bayern", "liverpool", "inter", "milan", "barca", "arsenal", "dortmund", "juventus", "leverkusen", "atletico", "psg", "leipzig", "aston villa", "monaco", "benfica", "dinamo", "zvezda"]
     },
     {
       "name": "Premier League",
       "id": 9,
       "s": "39301",
-      "keywords": ["pl", "engleska", "england", "premier"],
-      "teams": ["chelsea", "tottenham", "manchester united", "newcastle", "west ham", "brighton", "fulham", "wolves", "leicester", "everton", "brentford", "bournemouth", "nottingham", "crystal palace", "ipswich", "southampton"]
+      "keywords": ["pl", "engleska", "premier"],
+      "teams": ["chelsea", "tottenham", "united", "newcastle", "west ham", "brighton", "fulham", "wolves", "leicester", "everton", "brentford", "bournemouth", "nottingham", "crystal palace", "ipswich", "southampton"]
     },
     {
       "name": "La Liga",
       "id": 10,
       "s": "39319",
-      "keywords": ["es", "spanjolska", "spain", "laliga"],
-      "teams": ["real sociedad", "athletic bilbao", "villarreal", "sevilla", "valencia", "betis", "girona", "mallorca", "osasuna", "getafe", "celta", "rayo vallecano", "espanyol", "alaves", "leganes", "las palmas", "valladolid"]
+      "keywords": ["es", "spanjolska", "laliga"],
+      "teams": ["sociedad", "bilbao", "villarreal", "sevilla", "valencia", "betis", "girona", "mallorca", "osasuna", "getafe", "celta", "rayo", "espanyol", "alaves", "leganes", "las palmas", "valladolid"]
     },
     {
       "name": "Serie A",
       "id": 13,
       "s": "39325",
-      "keywords": ["it", "italija", "italy", "seriea"],
+      "keywords": ["it", "italija", "seriea"],
       "teams": ["napoli", "roma", "lazio", "atalanta", "fiorentina", "bologna", "torino", "udinese", "verona", "genoa", "parma", "empoli", "monza", "cagliari", "lecce", "como", "venezia"]
     },
     {
       "name": "Bundesliga",
       "id": 1,
       "s": "39285",
-      "keywords": ["de", "njemacka", "germany", "bundesliga"],
-      "teams": ["stuttgart", "eintracht frankfurt", "hoffenheim", "wolfsburg", "freiburg", "augsburg", "werder bremen", "borussia monchengladbach", "mainz", "heidenheim", "st pauli", "holstein kiel"]
+      "keywords": ["de", "njemacka", "bundesliga"],
+      "teams": ["stuttgart", "frankfurt", "hoffenheim", "wolfsburg", "freiburg", "augsburg", "werder", "monchengladbach", "mainz", "heidenheim", "st pauli", "kiel"]
     },
-    {
-      "name": "Ligue 1",
-      "id": 23,
-      "s": "39245",
-      "keywords": ["fr", "francuska", "france", "ligue1"],
-      "teams": ["marseille", "lyon", "lille", "nice", "lens", "rennes", "reims", "strasbourg", "montpellier", "toulouse", "nantes", "angers", "le havre", "saint etienne", "brest"]
-    }
-  ]
-},
-{
-  "leagues": [
     {
       "name": "HNL",
       "id": 120,
       "s": "39272",
-      "keywords": ["hnl", "hrvatska", "croatia"],
-      "teams": ["dinamo", "hajduk", "rijeka", "osijek", "lokomotiva", "varazdin", "istra 1961", "slaven belupo", "sibenik", "gorica"]
+      "keywords": ["hnl", "hrvatska"],
+      "teams": ["hajduk", "rijeka", "osijek", "lokomotiva", "varazdin", "istra", "slaven", "sibenik", "gorica"]
     },
     {
       "name": "Super Liga",
       "id": 64,
       "s": "39314",
-      "keywords": ["sr", "srbija", "serbia"],
-      "teams": ["crvena zvezda", "partizan", "tsc", "vojvodina", "cukaricki", "radnicki nis", "radnicki 1923", "mladost lucani", "novi pazar", "napredak", "spartak subotica"]
+      "keywords": ["sr", "srbija"],
+      "teams": ["partizan", "tsc", "vojvodina", "cukaricki", "radnicki", "mladost", "pazar", "napredak", "spartak"]
     },
     {
       "name": "Premijer Liga",
       "id": 104,
       "s": "39247",
-      "keywords": ["bih", "bosna", "hercegovina"],
-      "teams": ["borac banja luka", "zrinjski", "sarajevo", "zeljeznicar", "velez", "posusje", "siroki brijeg", "sloga doboj", "igman", "sloboda tuzla", "radnik bijeljina", "gosk gabela"]
+      "keywords": ["bih", "bosna"],
+      "teams": ["borac", "zrinjski", "sarajevo", "zeljeznicar", "velez", "posusje", "siroki", "sloga", "igman", "sloboda", "radnik", "gosk"]
     },
     {
       "name": "Liga NOS",
       "id": 35,
       "s": "39316",
-      "keywords": ["pt", "portugal", "porto", "benfica", "sporting"],
-      "teams": ["braga", "vitoria guimaraes", "famalicao", "moreirense", "santa clara", "gil vicente", "rio ave", "boavista", "estoril", "farense", "avs", "casa pia"]
+      "keywords": ["pt", "portugal", "porto"],
+      "teams": ["braga", "vitoria", "famalicao", "moreirense", "santa clara", "gil vicente", "rio ave", "boavista", "estoril", "farense"]
     },
     {
       "name": "Eredivisie",
       "id": 36,
       "s": "39255",
-      "keywords": ["nl", "nizozemska", "holland", "eredivisie"],
-      "teams": ["psv", "feyenoord", "ajax", "az alkmaar", "twente", "utrecht", "sparta rotterdam", "go ahead eagles", "heerenveen", "groningen", "pec zwolle"]
-    }
-  ]
-},
+      "keywords": ["nl", "nizozemska"],
+      "teams": ["psv", "feyenoord", "ajax", "az alkmaar", "twente", "utrecht", "sparta", "heerenveen", "groningen"]
+    },
     {
       "name": "Süper Lig",
       "id": 8,
       "s": "39311",
-      "keywords": ["tr", "turska", "turkey"],
-      "teams": ["galatasaray", "fenerbahce", "besiktas", "trabzonspor", "basaksehir", "kasimpasa", "antalyaspor", "alanyaspor", "rizespor", "samsunspor", "goztepe"]
-    },
-    {
-      "name": "Pro League",
-      "id": 58,
-      "s": "39244",
-      "keywords": ["be", "belgija", "belgium"],
-      "teams": ["club brugge", "anderlecht", "union sg", "gent", "genk", "antwerp", "mechelen", "cercle brugge", "standard liege", "westerlo", "charleroi"]
-    },
-    {
-      "name": "Premiership",
-      "id": 39,
-      "s": "39242",
-      "keywords": ["sc", "scotland", "skotska"],
-      "teams": ["celtic", "rangers", "hearts", "kilmarnock", "st mirren", "dundee", "aberdeen", "hibernian", "motherwell", "ross county"]
-    },
-    {
-      "name": "Super League",
-      "id": 56,
-      "s": "39329",
-      "keywords": ["gr", "grcka", "greece"],
-      "teams": ["olympiacos", "paok", "aek", "panathinaikos", "aris", "lamia", "asteras", "ofni", "volos", "atromitos"]
-    },
-    {
-      "name": "Bundesliga AT",
-      "id": 26,
-      "s": "39297",
-      "keywords": ["at", "austrija", "austria"],
-      "teams": ["salzburg", "sturm graz", "rapid wien", "lask", "austria wien", "hartberg", "wolfsberger", "austria klagenfurt", "altach"]
-    },
-    {
-      "name": "Super League CH",
-      "id": 25,
-      "s": "39324",
-      "keywords": ["ch", "switzerland", "svicarska"],
-      "teams": ["young boys", "servette", "lugano", "zurich", "st. gallen", "basel", "winterthur", "luzern", "grasshoppers", "lausanne"]
-    },
-    {
-      "name": "Brasileirão",
-      "id": 16,
-      "s": "39222",
-      "keywords": ["br", "brazil"],
-      "teams": ["palmeiras", "flamengo", "botafogo", "atletico mineiro", "sao paulo", "fluminense", "gremio", "internacional", "cruzeiro", "corinthians", "bahia", "fortaleza", "vasco da gama"]
-    },
-    {
-      "name": "Liga Profesional",
-      "id": 183,
-      "s": "39363",
-      "keywords": ["ar", "argentina"],
-      "teams": ["river plate", "boca juniors", "racing club", "independiente", "san lorenzo", "estudiantes", "talleres", "lanus", "rosario central", "velez sarsfield", "huracan", "godoy cruz"]
+      "keywords": ["tr", "turska"],
+      "teams": ["galatasaray", "fenerbahce", "besiktas", "trabzonspor", "basaksehir", "antalyaspor", "alanyaspor"]
     },
     {
       "name": "MLS",
       "id": 15,
       "s": "39121",
-      "keywords": ["us", "usa", "mls", "america"],
-      "teams": ["inter miami", "la galaxy", "lafc", "columbus crew", "cincinnati", "red bulls", "orlando city", "seattle sounders", "philadelphia union", "st louis city", "atlanta united"]
+      "keywords": ["us", "usa", "mls", "miami"],
+      "teams": ["inter miami", "la galaxy", "lafc", "columbus", "cincinnati", "red bulls", "orlando", "seattle"]
     }
-] }
+  ]
+}
