@@ -1,29 +1,6 @@
 {
   "leagues": [
     {
-      "region": "Balkan",
-      "data": [
-        {
-          "name": "Hrvatska Nogometna Liga",
-          "id": 37,
-          "s": "2025",
-          "keywords": ["hnl", "hajduk", "dinamo", "rijeka", "osijek", "gorica", "istra", "lokomotiva", "slaven", "sibenik", "varazdin"]
-        },
-        {
-          "name": "Srbija Superliga",
-          "id": 64,
-          "s": "2025",
-          "keywords": ["sr", "zvezda", "partizan", "tsc", "vojvodina", "cukaricki", "radnicki", "novi pazar", "mladost", "napredak"]
-        },
-        {
-          "name": "BiH Premijer Liga",
-          "id": 104,
-          "s": "2025",
-          "keywords": ["bih", "borac", "zrinjski", "sarajevo", "zeljeznicar", "velez", "siroki", "posusje", "sloga"]
-        }
-      ]
-    },
-    {
       "region": "UEFA",
       "data": [
         {
@@ -41,13 +18,36 @@
       ]
     },
     {
-      "region": "Europe Top 5",
+      "region": "Balkan",
+      "data": [
+        {
+          "name": "Hrvatska Liga",
+          "id": 37,
+          "s": "2025",
+          "keywords": ["hnl", "hajduk", "dinamo", "rijeka", "osijek"]
+        },
+        {
+          "name": "Srbija Superliga",
+          "id": 64,
+          "s": "2025",
+          "keywords": ["sr", "zvezda", "partizan", "vojvodina"]
+        },
+        {
+          "name": "BiH Premijer Liga",
+          "id": 104,
+          "s": "2025",
+          "keywords": ["bih", "sarajevo", "zeljo", "zrinjski", "borac"]
+        }
+      ]
+    },
+    {
+      "region": "Top Lige",
       "data": [
         {
           "name": "Premier League",
           "id": 1,
           "s": "2025",
-          "keywords": ["pl", "engleska", "city", "arsenal", "liverpool", "united", "chelsea", "tottenham"]
+          "keywords": ["pl", "engleska", "city", "arsenal", "liverpool", "chelsea"]
         },
         {
           "name": "La Liga",
@@ -56,39 +56,16 @@
           "keywords": ["es", "real", "barca", "atletico", "sevilla"]
         },
         {
-          "name": "Serie A",
-          "id": 13,
-          "s": "2025",
-          "keywords": ["it", "inter", "milan", "juve", "napoli", "roma", "lazio"]
-        },
-        {
           "name": "Bundesliga",
           "id": 9,
           "s": "2025",
-          "keywords": ["de", "bayern", "leverkusen", "dortmund", "leipzig", "stuttgart"]
+          "keywords": ["de", "bayern", "leverkusen", "dortmund", "leipzig"]
         },
         {
-          "name": "Ligue 1",
-          "id": 11,
+          "name": "Serie A",
+          "id": 13,
           "s": "2025",
-          "keywords": ["fr", "psg", "marseille", "monaco", "lyon"]
-        }
-      ]
-    },
-    {
-      "region": "Rest of World",
-      "data": [
-        {
-          "name": "Saudi Pro League",
-          "id": 511,
-          "s": "2025",
-          "keywords": ["sa", "nassr", "hilal", "ittihad", "ronaldo"]
-        },
-        {
-          "name": "Major League Soccer",
-          "id": 32,
-          "s": "2025",
-          "keywords": ["mls", "miami", "messi", "galaxy"]
+          "keywords": ["it", "inter", "juve", "milan", "napoli"]
         }
       ]
     }
