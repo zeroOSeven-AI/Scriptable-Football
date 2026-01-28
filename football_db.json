@@ -18,54 +18,36 @@
       ]
     },
     {
-      "region": "Balkan",
-      "data": [
-        {
-          "name": "Hrvatska Liga",
-          "id": 37,
-          "s": "2025",
-          "keywords": ["hnl", "hajduk", "dinamo", "rijeka", "osijek"]
-        },
-        {
-          "name": "Srbija Superliga",
-          "id": 64,
-          "s": "2025",
-          "keywords": ["sr", "zvezda", "partizan"]
-        },
-        {
-          "name": "BiH Premijer Liga",
-          "id": 104,
-          "s": "2025",
-          "keywords": ["bih", "sarajevo", "zeljo", "zrinjski"]
-        }
-      ]
-    },
-    {
       "region": "Top Lige",
       "data": [
         {
           "name": "Premier League",
           "id": 1,
           "s": "2025",
-          "keywords": ["pl", "engleska", "city", "arsenal", "liverpool", "chelsea", "united", "tottenham"]
+          "keywords": ["pl", "engleska", "city", "arsenal", "liverpool"]
         },
         {
           "name": "Bundesliga",
           "id": 9,
           "s": "2025",
-          "keywords": ["de", "bayern", "leverkusen", "dortmund", "leipzig", "stuttgart"]
+          "keywords": ["de", "bayern", "leverkusen", "dortmund"]
         },
         {
-          "name": "La Liga",
-          "id": 10,
+          "name": "Liga Portugal",
+          "id": 34,
           "s": "2025",
-          "keywords": ["es", "real", "barca", "atletico", "sevilla"]
-        },
+          "keywords": ["pt", "portugal", "porto", "benfica", "sporting"]
+        }
+      ]
+    },
+    {
+      "region": "Balkan",
+      "data": [
         {
-          "name": "Serie A",
-          "id": 13,
+          "name": "Hrvatska Liga",
+          "id": 37,
           "s": "2025",
-          "keywords": ["it", "inter", "juve", "milan", "napoli", "roma"]
+          "keywords": ["hnl", "hajduk", "dinamo", "rijeka"]
         }
       ]
     }
