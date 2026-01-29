@@ -28,7 +28,7 @@
     {
       "name": "Ligue 1", "id": 23, "s": "39331",
       "keywords": ["fr", "francuska", "france", "psg", "marseille", "lyon", "monaco", "lille", "lens", "nice", "rennes", "reims", "strasbourg", "nantes", "montpellier", "toulouse", "angers", "auxerre", "le havre", "brest", "saint etienne"],
-      "clubs": ["PSG", "Marseille", "Lyon", "Monaco", "Lille", "Brest"]
+      "clubs": ["PSG", "OM", "OL", "Monaco", "Lille", "Brest"]
     },
     {
       "name": "Portugal", "id": 35, "s": "39316",
@@ -43,20 +43,20 @@
     {
       "name": "HNL", "id": 120, "s": "39272",
       "keywords": ["hnl", "hrvatska", "hajduk", "dinamo", "rijeka", "osijek", "gorica", "istra", "lokomotiva", "slaven", "sibenik", "varazdin"],
-      "clubs": ["Dinamo Zagreb", "Hajduk Split", "Rijeka", "Osijek", "Varaždin"]
+      "clubs": ["Hajduk", "Dinamo", "Rijeka", "Osijek"]
     },
     {
-      "name": "Turska", "id": 8, "s": "39311",
+      "name": "Turska", "id": 52, "s": "39311",
       "keywords": ["tr", "turska", "turkey", "besiktas", "galatasaray", "fenerbahce", "trabzon", "basaksehir", "kasimpasa", "antalyaspor", "sivasspor", "alanyaspor", "rizespor", "gaziantep", "goztepe", "eyupspor", "bodrum"],
-      "clubs": ["Galatasaray", "Fenerbahce", "Besiktas", "Trabzonspor"]
+      "clubs": ["Besiktas", "Galatasaray", "Fenerbahce", "Trabzonspor"]
     },
     {
-      "name": "BiH", "id": 104, "s": "39247",
+      "name": "BiH", "id": 164, "s": "39247",
       "keywords": ["bih", "bosna", "sarajevo", "zeljo", "zeljeznicar", "zrinjski", "borac", "velez", "posusje", "siroki", "radnik", "igman", "sloboda", "doboj", "gošk"],
       "clubs": ["Sarajevo", "Zeljeznicar", "Zrinjski", "Borac"]
     },
     {
-      "name": "Srbija", "id": 114, "s": "39281",
+      "name": "Srbija", "id": 247, "s": "39281",
       "keywords": ["rs", "srbija", "serbia", "zvezda", "partizan", "vojvodina", "tsc", "cukaricki", "radnicki", "novi pazar", "napredak", "mladost", "imt", "ofk"],
       "clubs": ["Crvena Zvezda", "Partizan", "TSC", "Vojvodina"]
     }
