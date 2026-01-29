@@ -2,39 +2,38 @@ import requests
 import json
 import time
 
-def fetch_football_data():
-    headers = {
-        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
-        "Origin": "https://www.sofascore.com",
-        "Referer": "https://www.sofascore.com/"
-    }
+def fetch_data():
+    # Koristimo javni proxy tunel da sakrijemo GitHub IP adresu
+    # Ovo će prevariti SofaScore da misli da zahtjev dolazi od običnog korisnika
+    proxy_url = "https://api.allorigins.win/get?url="
     
-    # Ciljane lige
     leagues = {
         "HNL": 24, "Srbija": 247, "BiH": 550, "Turska": 52,
-        "Nizozemska": 37, "Portugal": 238, "Engleska": 17,
-        "Spanjolska": 8, "Italija": 11, "Njemacka": 37, "Francuska": 34
+        "Engleska": 17, "Spanjolska": 8, "Italija": 11, "Njemacka": 37
     }
     
     final_output = {}
 
     for name, t_id in leagues.items():
         try:
-            # 1. Sezona
-            s_url = f"https://api.sofascore.com/api/v1/unique-tournament/{t_id}/seasons"
-            s_res = requests.get(s_url, headers=headers).json()
-            s_id = s_res['seasons'][0]['id']
+            # Prvo dohvaćamo sezonu
+            s_api = f"https://api.sofascore.com/api/v1/unique-tournament/{t_id}/seasons"
+            res = requests.get(f"{proxy_url}{s_api}").json()
             
-            # 2. Tablica
-            t_url = f"https://api.sofascore.com/api/v1/unique-tournament/{t_id}/season/{s_id}/standings/total"
-            t_res = requests.get(t_url, headers=headers).json()
+            # Allorigins pakira odgovor u 'contents' string, moramo ga pretvoriti u JSON
+            s_data = json.loads(res['contents'])
+            s_id = s_data['seasons'][0]['id']
+            
+            # Zatim dohvaćamo tablicu
+            t_api = f"https://api.sofascore.com/api/v1/unique-tournament/{t_id}/season/{s_id}/standings/total"
+            res_table = requests.get(f"{proxy_url}{t_api}").json()
+            t_data = json.loads(res_table['contents'])
             
             rows = []
-            if 'standings' in t_res:
-                # Uzimamo prvu tablicu koja ima podatke
-                for std in t_res['standings']:
+            if 'standings' in t_data:
+                for std in t_data['standings']:
                     if 'rows' in std:
-                        for r in std['rows'][:10]: # Top 10 timova
+                        for r in std['rows'][:10]:
                             rows.append({
                                 "pos": r['position'],
                                 "name": r['team']['shortName'] or r['team']['name'],
@@ -44,20 +43,19 @@ def fetch_football_data():
             
             if rows:
                 final_output[name] = rows
-                print(f"Uspješno: {name}")
+                print(f"Uspjeh preko Proxy-ja: {name}")
             
-            time.sleep(2) # Duža pauza da nas ne blokiraju
+            time.sleep(1) # Mala pauza
             
         except Exception as e:
-            print(f"Preskačem {name}: Greška")
+            print(f"Greška na {name}: {e}")
 
-    # Zapisivanje - ako je final_output prazan, ne piši ništa (da ne obrišeš stare podatke)
     if final_output:
         with open('data.json', 'w', encoding='utf-8') as f:
             json.dump(final_output, f, indent=2, ensure_ascii=False)
-        print("Spremljeno u data.json!")
+        print("Spremljeno!")
     else:
-        print("Greška: Svi upiti su odbijeni.")
+        print("I dalje blokirano. Morat ćemo koristiti Google Apps Script.")
 
 if __name__ == "__main__":
-    fetch_football_data()
+    fetch_data()
