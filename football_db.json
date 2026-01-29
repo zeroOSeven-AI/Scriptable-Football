@@ -1,9 +1,29 @@
 {
   "leagues": [
     {
+      "name": "HNL", "id": 120, "s": "39272",
+      "keywords": ["hnl", "cro", "hrvatska", "dinamo", "hajduk", "rijeka", "osijek", "gorica", "istra", "lokomotiva", "slaven", "sibenik", "varazdin"],
+      "clubs": ["Hajduk", "Dinamo", "Rijeka", "Osijek"]
+    },
+    {
+      "name": "Bundesliga", "id": 1, "s": "39285",
+      "keywords": ["de", "njemacka", "germany", "bayern", "dortmund", "leipzig", "leverkusen", "stuttgart", "frankfurt", "hoffenheim", "freiburg", "bremen", "wolfsburg", "augsburg", "gladbach", "mainz", "bochum", "union berlin", "heidenheim", "st pauli", "holstein kiel"],
+      "clubs": ["Bayern", "Dortmund", "Augsburg", "Leipzig", "Frankfurt", "Bremen"]
+    },
+    {
       "name": "Champions League", "id": 5, "s": "39356",
-      "keywords": ["ucl", "cl", "champions", "prvaka", "madrid", "city", "bayern", "liverpool", "inter", "milan", "barca", "arsenal", "dortmund", "psg", "leverkusen", "juventus", "atalanta", "villa", "monaco", "brest", "lille", "benfica", "sporting", "brugge", "shakhtar", "stuttgart", "leipzig", "girona", "bologna", "slovan", "sparta", "young boys", "celtic", "salzburg", "feyenoord"],
+      "keywords": ["ucl", "cl", "champions", "prvaka", "madrid", "city", "liverpool", "inter", "milan", "barca", "arsenal", "dortmund", "psg", "leverkusen", "juventus", "atalanta", "villa", "monaco", "brest", "lille", "benfica", "sporting", "brugge", "shakhtar", "stuttgart", "leipzig", "girona", "bologna", "slovan", "sparta", "young boys", "celtic", "salzburg", "feyenoord"],
       "clubs": ["Real Madrid", "Man City", "Bayern", "Liverpool", "Barcelona", "Arsenal", "Inter", "Milan", "PSG", "Dortmund", "Atletico", "Bayer Leverkusen", "Juventus"]
+    },
+    {
+      "name": "Srbija", "id": 55, "s": "39281",
+      "keywords": ["rs", "srbija", "serbia", "zvezda", "partizan", "vojvodina", "tsc", "cukaricki", "radnicki", "novi pazar", "napredak", "mladost", "imt", "ofk"],
+      "clubs": ["Crvena Zvezda", "Partizan", "TSC", "Vojvodina"]
+    },
+    {
+      "name": "BiH", "id": 139, "s": "39247",
+      "keywords": ["bih", "bosna", "sarajevo", "zeljo", "zeljeznicar", "zrinjski", "borac", "velez", "posusje", "siroki", "radnik", "igman", "sloboda", "doboj", "gošk"],
+      "clubs": ["Sarajevo", "Zeljeznicar", "Zrinjski", "Borac"]
     },
     {
       "name": "Premier League", "id": 9, "s": "39301",
@@ -21,11 +41,6 @@
       "clubs": ["Inter", "Milan", "Juventus", "Napoli", "Roma", "Lazio", "Atalanta"]
     },
     {
-      "name": "Bundesliga", "id": 1, "s": "39285",
-      "keywords": ["de", "njemacka", "germany", "bayern", "dortmund", "leipzig", "leverkusen", "stuttgart", "frankfurt", "hoffenheim", "freiburg", "bremen", "wolfsburg", "augsburg", "gladbach", "mainz", "bochum", "union berlin", "heidenheim", "st pauli", "holstein kiel"],
-      "clubs": ["Bayern", "Dortmund", "Leipzig", "Bayer Leverkusen", "Eintracht", "Stuttgart"]
-    },
-    {
       "name": "Ligue 1", "id": 23, "s": "39331",
       "keywords": ["fr", "francuska", "france", "psg", "marseille", "lyon", "monaco", "lille", "lens", "nice", "rennes", "reims", "strasbourg", "nantes", "montpellier", "toulouse", "angers", "auxerre", "le havre", "brest", "saint etienne"],
       "clubs": ["PSG", "OM", "OL", "Monaco", "Lille", "Brest"]
@@ -41,24 +56,9 @@
       "clubs": ["Ajax", "PSV", "Feyenoord", "AZ Alkmaar"]
     },
     {
-      "name": "HNL", "id": 120, "s": "39272",
-      "keywords": ["hnl", "hrvatska", "hajduk", "dinamo", "rijeka", "osijek", "gorica", "istra", "lokomotiva", "slaven", "sibenik", "varazdin"],
-      "clubs": ["Hajduk", "Dinamo", "Rijeka", "Osijek"]
-    },
-    {
       "name": "Turska", "id": 52, "s": "39311",
       "keywords": ["tr", "turska", "turkey", "besiktas", "galatasaray", "fenerbahce", "trabzon", "basaksehir", "kasimpasa", "antalyaspor", "sivasspor", "alanyaspor", "rizespor", "gaziantep", "goztepe", "eyupspor", "bodrum"],
-      "clubs": ["Besiktas", "Galatasaray", "Fenerbahce", "Trabzonspor"]
-    },
-    {
-      "name": "BiH", "id": 164, "s": "39247",
-      "keywords": ["bih", "bosna", "sarajevo", "zeljo", "zeljeznicar", "zrinjski", "borac", "velez", "posusje", "siroki", "radnik", "igman", "sloboda", "doboj", "gošk"],
-      "clubs": ["Sarajevo", "Zeljeznicar", "Zrinjski", "Borac"]
-    },
-    {
-      "name": "Srbija", "id": 247, "s": "39281",
-      "keywords": ["rs", "srbija", "serbia", "zvezda", "partizan", "vojvodina", "tsc", "cukaricki", "radnicki", "novi pazar", "napredak", "mladost", "imt", "ofk"],
-      "clubs": ["Crvena Zvezda", "Partizan", "TSC", "Vojvodina"]
+      "clubs": ["Galatasaray", "Fenerbahce", "Besiktas", "Trabzonspor"]
     }
   ]
 }
