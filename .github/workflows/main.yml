@@ -1,0 +1,28 @@
+name: Football Auto Update
+on:
+  schedule:
+    - cron: '*/15 * * * *' # Automatski svakih 15 min
+  workflow_dispatch: # Omogućuje ti da pokreneš ručno kad god želiš
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install requests
+      - name: Run Update
+        run: python update.py
+      - name: Commit and Push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data.json
+          git commit -m "Auto-update football data" || exit 0
+          git push
