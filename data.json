@@ -1,87 +1,27 @@
 {
-  "name": "Live Football",
+  "name": "TESTNI TUNEL RADI",
   "matches": [
     {
-      "home": "Girona",
-      "away": "Getafe",
-      "league": "SPAIN: La Liga",
-      "url": "https://www.scorebat.com/embed/matchview/1730427/",
-      "status": "finished"
-    },
-    {
-      "home": "Everton",
-      "away": "Leeds",
-      "league": "ENGLAND: Premier League",
-      "url": "https://www.scorebat.com/embed/matchview/1708338/",
-      "status": "finished"
-    },
-    {
-      "home": "Norwich City",
-      "away": "Coventry",
-      "league": "ENGLAND: Championship",
-      "url": "https://www.scorebat.com/embed/matchview/1720694/",
-      "status": "finished"
-    },
-    {
-      "home": "Verona",
-      "away": "Udinese",
-      "league": "ITALY: Serie A",
-      "url": "https://www.scorebat.com/embed/matchview/1752122/",
-      "status": "finished"
-    },
-    {
-      "home": "Porto",
-      "away": "Gil Vicente",
-      "league": "PORTUGAL: Liga Portugal",
-      "url": "https://www.scorebat.com/embed/matchview/1753004/",
-      "status": "finished"
-    },
-    {
-      "home": "Eyupspor",
-      "away": "Besiktas",
-      "league": "TURKEY: Super Lig",
-      "url": "https://www.scorebat.com/embed/matchview/1747369/",
-      "status": "finished"
-    },
-    {
-      "home": "Enosis Paralimni",
-      "away": "Olympiakos Nicosia",
-      "league": "CYPRUS: 1. Division",
-      "url": "https://www.scorebat.com/embed/matchview/1766980/",
-      "status": "finished"
-    },
-    {
-      "home": "NK Gorica",
-      "away": "Varazdin",
-      "league": "CROATIA: HNL",
-      "url": "https://www.scorebat.com/embed/matchview/1821610/",
-      "status": "finished"
-    },
-    {
-      "home": "Roma",
-      "away": "AC Milan",
-      "league": "ITALY: Serie A",
-      "url": "https://www.scorebat.com/embed/matchview/1752116/",
-      "status": "finished"
-    },
-    {
-      "home": "Arsenal",
-      "away": "Manchester United",
-      "league": "ENGLAND: Premier League",
-      "url": "https://www.scorebat.com/embed/matchview/1708340/",
-      "status": "finished"
+      "home": "DINAMO",
+      "homeId": 2400,
+      "away": "HAJDUK",
+      "awayId": 2410,
+      "hScore": 3,
+      "aScore": 0,
+      "status": "finished",
+      "time": "FT"
     }
   ],
   "table": [
     {
-      "name": "Dinamov Test",
+      "name": "DINAMO",
       "id": 2400,
-      "pts": 99
+      "pts": 100
     },
     {
-      "name": "Hajdukov Test",
-      "id": 2410,
-      "pts": 98
+      "name": "RIJEKA",
+      "id": 2405,
+      "pts": 80
     }
   ]
 }
