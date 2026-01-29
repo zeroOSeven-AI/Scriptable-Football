@@ -3,7 +3,7 @@
     {
       "name": "Champions League", "id": 5, "s": "39356",
       "keywords": ["ucl", "cl", "champions", "prvaka", "madrid", "city", "bayern", "liverpool", "inter", "milan", "barca", "arsenal", "dortmund", "psg", "leverkusen", "juventus", "atalanta", "villa", "monaco", "brest", "lille", "benfica", "sporting", "brugge", "shakhtar", "sturm", "slovan", "sparta", "young boys", "celtic", "salzburg", "feyenoord", "psv", "girona", "bologna"],
-      x_komentar "clubs": ["Real Madrid", "Man City", "Bayern", "Liverpool", "Barcelona", "Arsenal", "Inter", "Milan", "PSG", "Dortmund", "Atletico", "Bayer Leverkusen", "Juventus"]
+      "x_komentar" "clubs": ["Real Madrid", "Man City", "Bayern", "Liverpool", "Barcelona", "Arsenal", "Inter", "Milan", "PSG", "Dortmund", "Atletico", "Bayer Leverkusen", "Juventus"]
     },
     {
       "name": "Premier League", "id": 9, "s": "39301",
