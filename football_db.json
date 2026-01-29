@@ -6,27 +6,23 @@
     },
     {
       "name": "HNL", "id": 120, "s": "39272", "keywords": ["hnl", "cro", "hrvatska", "dinamo", "hajduk"],
-      "clubs": ["Dinamo Zagreb", "Hajduk Split", "Rijeka", "Osijek", "Istra 1961"]
+      "clubs": ["GNK Dinamo Zagreb", "Hajduk Split", "Rijeka", "Osijek", "Varaždin"]
     },
     {
       "name": "Premier League", "id": 9, "s": "39301", "keywords": ["pl", "eng", "england"],
-      "clubs": ["Arsenal", "Man City", "Liverpool", "Chelsea", "Man Utd"]
+      "clubs": ["Arsenal", "Manchester City", "Liverpool", "Chelsea", "Man Utd"]
     },
     {
-      "name": "Ligue 1", "id": 23, "s": "39331", "keywords": ["fra", "psg", "monaco", "lyon"],
+      "name": "Ligue 1", "id": 23, "s": "39331", "keywords": ["fra", "france", "psg", "monaco"],
       "clubs": ["PSG", "Monaco", "Marseille", "Lyon", "Lille", "Brest"]
     },
     {
-      "name": "Portugal", "id": 35, "s": "39316", "keywords": ["por", "portugal", "porto", "benfica"],
-      "clubs": ["FC Porto", "Benfica", "Sporting CP", "SC Braga"]
+      "name": "Srbija", "id": 247, "s": "39281", "keywords": ["srb", "srbija", "zvezda", "partizan"],
+      "clubs": ["Crvena Zvezda", "Partizan", "TSC", "Vojvodina", "Novi Pazar"]
     },
     {
       "name": "BiH", "id": 164, "s": "39247", "keywords": ["bih", "bosna", "sarajevo", "borac"],
       "clubs": ["Sarajevo", "Zeljeznicar", "Zrinjski", "Borac", "Velež"]
-    },
-    {
-      "name": "Srbija", "id": 247, "s": "39281", "keywords": ["srb", "srbija", "zvezda", "partizan"],
-      "clubs": ["Crvena Zvezda", "Partizan", "TSC", "Vojvodina"]
     },
     {
       "name": "Turska", "id": 52, "s": "39311", "keywords": ["tur", "turska", "fener", "galata"],
