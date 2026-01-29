@@ -1,15 +1,48 @@
 {
   "leagues": [
-    { "name": "Champions League", "id": 5, "s": 57, "keywords": ["cl", "lp", "ucl"], "teams": ["Real Madrid", "Man City", "Bayern"] },
-    { "name": "HNL", "id": 210, "s": 57, "keywords": ["hnl", "cro", "dinamo", "hajduk"], "teams": ["Dinamo", "Hajduk", "Rijeka"] },
-    { "name": "Premier League", "id": 9, "s": 57, "keywords": ["pl", "eng", "city", "liverpool"], "teams": ["Arsenal", "City", "Liverpool", "United"] },
-    { "name": "La Liga", "id": 10, "s": 57, "keywords": ["esp", "real", "barca", "atletico"], "teams": ["Real Madrid", "Barcelona", "Girona"] },
-    { "name": "Serie A", "id": 13, "s": 57, "keywords": ["ita", "inter", "juve", "milan"], "teams": ["Inter", "Juventus", "Milan", "Roma"] },
-    { "name": "Bundesliga", "id": 1, "s": 57, "keywords": ["ger", "bayern", "leverkusen"], "teams": ["Bayern", "Dortmund", "Leverkusen"] },
-    { "name": "Ligue 1", "id": 23, "s": 57, "keywords": ["fra", "psg", "lyon", "marseille"], "teams": ["PSG", "Lyon", "Monaco", "Marseille"] },
-    { "name": "Eredivisie", "id": 14, "s": 57, "keywords": ["ned", "ajax", "psv", "feyenoord"], "teams": ["Ajax", "PSV", "Feyenoord"] },
-    { "name": "Portugal", "id": 44, "s": 57, "keywords": ["por", "benfica", "porto", "sporting"], "teams": ["Benfica", "Porto", "Sporting"] },
-    { "name": "Srbija", "id": 247, "s": 57, "keywords": ["srb", "zvezda", "partizan"], "teams": ["Zvezda", "Partizan"] },
-    { "name": "Turska", "id": 52, "s": 57, "keywords": ["tur", "fener", "galata", "besiktas"], "teams": ["Fenerbahce", "Galatasaray"] }
+    {
+      "name": "Champions League", "id": 5, "s": 6140, "keywords": ["cl", "ucl", "lp"],
+      "clubs": ["Real Madrid", "Man City", "Bayern", "Liverpool", "Inter", "Arsenal", "Barcelona", "Leverkusen", "Atletico", "Juventus", "PSG", "Benfica", "Milan", "Dortmund", "Sporting", "Monaco", "Aston Villa", "Lille"]
+    },
+    {
+      "name": "HNL", "id": 210, "s": 6174, "keywords": ["hnl", "cro", "hrvatska"],
+      "clubs": ["Dinamo", "Hajduk", "Rijeka", "Osijek", "Varaždin", "Istra", "Lokomotiva", "Gorica", "Šibenik", "Slaven Belupo"]
+    },
+    {
+      "name": "Premier League", "id": 9, "s": 6157, "keywords": ["pl", "eng", "engleska"],
+      "clubs": ["Arsenal", "Man City", "Liverpool", "Aston Villa", "Chelsea", "Tottenham", "Newcastle", "Man Utd", "West Ham", "Brighton", "Everton", "Fulham"]
+    },
+    {
+      "name": "La Liga", "id": 10, "s": 6158, "keywords": ["esp", "laliga", "spanjolska"],
+      "clubs": ["Real Madrid", "Barcelona", "Atletico Madrid", "Girona", "Athletic Bilbao", "Real Sociedad", "Villarreal", "Real Betis", "Valencia", "Sevilla"]
+    },
+    {
+      "name": "Serie A", "id": 13, "s": 6160, "keywords": ["ita", "italija", "seriea"],
+      "clubs": ["Inter", "Juventus", "Milan", "Napoli", "Atalanta", "Roma", "Lazio", "Fiorentina", "Bologna", "Torino", "Udinese"]
+    },
+    {
+      "name": "Bundesliga", "id": 1, "s": 6155, "keywords": ["ger", "njemacka", "bundes"],
+      "clubs": ["Bayern", "Leverkusen", "Dortmund", "Leipzig", "Stuttgart", "Frankfurt", "Freiburg", "Hoffenheim", "Wolfsburg", "Gladbach"]
+    },
+    {
+      "name": "Ligue 1", "id": 23, "s": 6159, "keywords": ["fra", "francuska", "ligue1"],
+      "clubs": ["PSG", "Monaco", "Marseille", "Lyon", "Lille", "Lens", "Nice", "Rennes", "Reims", "Strasbourg"]
+    },
+    {
+      "name": "Eredivisie", "id": 14, "s": 6161, "keywords": ["ned", "nizozemska", "holandija"],
+      "clubs": ["Ajax", "PSV", "Feyenoord", "AZ Alkmaar", "Twente", "Utrecht", "Sparta", "Go Ahead Eagles"]
+    },
+    {
+      "name": "Portugal", "id": 44, "s": 6165, "keywords": ["por", "portugal", "liga"],
+      "clubs": ["Porto", "Benfica", "Sporting", "Braga", "Vitoria Guimaraes", "Moreirense", "Arouca"]
+    },
+    {
+      "name": "Srbija", "id": 247, "s": 6180, "keywords": ["srb", "srbija"],
+      "clubs": ["Crvena zvezda", "Partizan", "TSC", "Vojvodina", "Čukarički", "Radnički"]
+    },
+    {
+      "name": "Turska", "id": 52, "s": 6170, "keywords": ["tur", "turska"],
+      "clubs": ["Galatasaray", "Fenerbahce", "Besiktas", "Trabzonspor", "Basaksehir", "Kasimpasa"]
+    }
   ]
 }
