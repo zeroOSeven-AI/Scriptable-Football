@@ -1,23 +1,27 @@
 import requests
 import json
-import random
 
 def fetch_data():
-    # Koristimo javni proxy servis da sakrijemo GitHub IP
-    # Ovaj URL služi kao tunel koji SofaScore ne blokira
-    proxy_url = "https://api.allorigins.win/raw?url="
-    target_tournament = 17 # Premier League
+    # Pokušavamo ponovno s Premier Ligom (ID 17) jer je najsigurnija za test
+    t_id = 17 
     
-    headers = {"User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1"}
+    # Ova zaglavlja su ključna - kopirana su iz stvarnog preglednika
+    headers = {
+        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+        "Accept": "*/*",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Origin": "https://www.sofascore.com",
+        "Referer": "https://www.sofascore.com/",
+        "Cache-Control": "max-age=0"
+    }
 
     try:
-        # 1. Dohvat Sezone preko tunela
-        s_url = f"{proxy_url}https://api.sofascore.com/api/v1/unique-tournament/{target_tournament}/seasons"
-        s_res = requests.get(s_url, headers=headers).json()
+        # Idemo direktno na API, ali s "prevarom" u zaglavlju
+        # Koristimo i specifičan poddomenu api.sofascore.com
+        s_res = requests.get(f"https://api.sofascore.com/api/v1/unique-tournament/{t_id}/seasons", headers=headers).json()
         s_id = s_res['seasons'][0]['id']
         
-        # 2. Dohvat Tablice preko tunela
-        t_url = f"{proxy_url}https://api.sofascore.com/api/v1/unique-tournament/{target_tournament}/season/{s_id}/standings/total"
+        t_url = f"https://api.sofascore.com/api/v1/unique-tournament/{t_id}/season/{s_id}/standings/total"
         t_res = requests.get(t_url, headers=headers).json()
         
         table_data = []
@@ -30,8 +34,7 @@ def fetch_data():
                     "pts": row['points']
                 })
 
-        # 3. Dohvat Utakmica preko tunela
-        m_url = f"{proxy_url}https://api.sofascore.com/api/v1/unique-tournament/{target_tournament}/season/{s_id}/events/last/0"
+        m_url = f"https://api.sofascore.com/api/v1/unique-tournament/{t_id}/season/{s_id}/events/last/0"
         m_res = requests.get(m_url, headers=headers).json()
         
         match_data = []
@@ -54,17 +57,16 @@ def fetch_data():
             "table": table_data
         }
 
-        # Ako je i ovo prazno, ispiši grešku u logove
+        # AKO JE I DALJE PRAZNO, pišemo testnu poruku da znamo da robot radi
         if not table_data:
-            print("Tunnel returned empty data. SofaScore is onto us.")
-            return
+            final["name"] = "SofaScore Block Active"
 
         with open('data.json', 'w', encoding='utf-8') as f:
             json.dump(final, f, indent=2, ensure_ascii=False)
-        print("TUNNEL SUCCESS! data.json is updated.")
+        print("Završen pokušaj ažuriranja.")
 
     except Exception as e:
-        print(f"Tunnel error: {e}")
+        print(f"Error: {e}")
 
 if __name__ == "__main__":
     fetch_data()
