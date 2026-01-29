@@ -5,39 +5,59 @@
       "clubs": ["Real Madrid", "Man City", "Bayern Munich", "Liverpool", "Inter", "Arsenal", "Barcelona"]
     },
     {
-      "name": "HNL", "id": 210, "s": 6174, "keywords": ["hnl", "cro", "hrvatska"],
-      "clubs": ["Dinamo Zagreb", "Hajduk Split", "Rijeka", "Osijek", "Varaždin", "Istra 1961"]
+      "name": "HNL", "id": 210, "s": 6174, "keywords": ["hnl", "cro", "hrvatska", "dinamo", "hajduk"],
+      "clubs": ["GNK Dinamo Zagreb", "Hajduk Split", "Rijeka", "Osijek", "Varaždin", "Istra 1961"]
     },
     {
-      "name": "Premier League", "id": 9, "s": 6157, "keywords": ["pl", "eng", "premier"],
+      "name": "Premier League", "id": 9, "s": 6157, "keywords": ["pl", "eng", "engleska"],
       "clubs": ["Arsenal", "Manchester City", "Liverpool", "Chelsea", "Manchester United", "Tottenham"]
     },
     {
-      "name": "La Liga", "id": 10, "s": 6158, "keywords": ["esp", "laliga", "real"],
+      "name": "La Liga", "id": 10, "s": 6158, "keywords": ["esp", "laliga", "real", "barca"],
       "clubs": ["Real Madrid", "FC Barcelona", "Atletico Madrid", "Girona", "Villarreal"]
     },
     {
-      "name": "Serie A", "id": 13, "s": 6160, "keywords": ["ita", "seriea", "italija"],
+      "name": "Serie A", "id": 13, "s": 6160, "keywords": ["ita", "italija", "seriea"],
       "clubs": ["Inter", "Juventus", "AC Milan", "Napoli", "Atalanta", "AS Roma"]
     },
     {
-      "name": "Bundesliga", "id": 1, "s": 6155, "keywords": ["ger", "bundes", "njemacka"],
+      "name": "Bundesliga", "id": 1, "s": 6155, "keywords": ["ger", "njemacka", "bundes"],
       "clubs": ["Bayern Munich", "Bayer Leverkusen", "Borussia Dortmund", "RB Leipzig"]
     },
     {
-      "name": "Eredivisie", "id": 14, "s": 6161, "keywords": ["ned", "ajax", "psv"],
+      "name": "Ligue 1", "id": 23, "s": 6159, "keywords": ["fra", "francuska", "psg"],
+      "clubs": ["PSG", "Monaco", "Marseille", "Lyon", "Lille"]
+    },
+    {
+      "name": "Eredivisie", "id": 14, "s": 6161, "keywords": ["ned", "nizozemska", "ajax"],
       "clubs": ["Ajax", "PSV Eindhoven", "Feyenoord", "AZ Alkmaar"]
     },
     {
-      "name": "Portugal", "id": 44, "s": 6165, "keywords": ["por", "porto", "benfica"],
-      "clubs": ["FC Porto", "Benfica", "Sporting CP", "Braga"]
+      "name": "Portugal", "id": 238, "s": 6181, "keywords": ["por", "portugal", "porto", "benfica"],
+      "clubs": ["FC Porto", "Benfica", "Sporting CP", "SC Braga"]
+    },
+    {
+      "name": "Scotland", "id": 22, "s": 6167, "keywords": ["scot", "skotska", "celtic"],
+      "clubs": ["Celtic", "Rangers", "Hearts", "Aberdeen"]
+    },
+    {
+      "name": "Belgium", "id": 2, "s": 6154, "keywords": ["bel", "belgija", "brugge"],
+      "clubs": ["Club Brugge", "Anderlecht", "Genk", "Union SG"]
+    },
+    {
+      "name": "Austria", "id": 3, "s": 6153, "keywords": ["aut", "austrija", "salzburg"],
+      "clubs": ["RB Salzburg", "Rapid Wien", "Sturm Graz", "LASK"]
+    },
+    {
+      "name": "Greece", "id": 12, "s": 6176, "keywords": ["gre", "grcka", "olympiakos"],
+      "clubs": ["Olympiacos", "PAOK", "AEK Athens", "Panathinaikos"]
     },
     {
       "name": "Srbija", "id": 247, "s": 6180, "keywords": ["srb", "srbija", "zvezda"],
       "clubs": ["Crvena Zvezda", "Partizan", "TSC", "Vojvodina"]
     },
     {
-      "name": "Turska", "id": 52, "s": 6170, "keywords": ["tur", "turska", "galata"],
+      "name": "Turska", "id": 52, "s": 6170, "keywords": ["tur", "turska", "fener"],
       "clubs": ["Galatasaray", "Fenerbahce", "Besiktas", "Trabzonspor"]
     }
   ]
