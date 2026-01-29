@@ -2,32 +2,37 @@ import requests
 import json
 
 def fetch_data():
-    # ID za Ligu Prvaka 25/26 (Tournament: 7, Season: 67123)
-    # Napomena: ID sezone se mijenja, ovo je trenutno najsvježiji
-    url_table = "https://api.sofascore.com/api/v1/unique-tournament/7/season/67123/standings/total"
-    url_matches = "https://api.sofascore.com/api/v1/unique-tournament/7/season/67123/events/last/0"
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+    tournament_id = 7 # Champions League
     
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-    }
-
     try:
-        # Dohvat tablice
-        t_res = requests.get(url_table, headers=headers).json()
-        table_data = []
-        if 'standings' in t_res:
-            for row in t_res['standings'][0]['rows'][:20]:
-                table_data.append({
-                    "name": row['team']['shortName'] or row['team']['name'],
-                    "id": row['team']['id'],
-                    "pts": row['points']
-                })
+        # 1. Pronađi ID trenutne sezone (Dynamic Search)
+        s_res = requests.get(f"https://api.sofascore.com/api/v1/unique-tournament/{tournament_id}/seasons", headers=headers).json()
+        current_season_id = s_res['seasons'][0]['id']
+        print(f"Aktivna sezona ID: {current_season_id}")
 
-        # Dohvat utakmica
-        m_res = requests.get(url_matches, headers=headers).json()
+        # 2. Dohvat tablice
+        t_url = f"https://api.sofascore.com/api/v1/unique-tournament/{tournament_id}/season/{current_season_id}/standings/total"
+        t_res = requests.get(t_url, headers=headers).json()
+        
+        table_data = []
+        # Tražimo 'rows' u standings-ima
+        for standing in t_res.get('standings', []):
+            if standing.get('type') == 'total':
+                for row in standing.get('rows', [])[:20]:
+                    table_data.append({
+                        "name": row['team']['shortName'] or row['team']['name'],
+                        "id": row['team']['id'],
+                        "pts": row['points']
+                    })
+                break
+
+        # 3. Dohvat zadnjih utakmica
+        m_url = f"https://api.sofascore.com/api/v1/unique-tournament/{tournament_id}/season/{current_season_id}/events/last/0"
+        m_res = requests.get(m_url, headers=headers).json()
+        
         match_data = []
         if 'events' in m_res:
-            # Uzimamo zadnjih 5 završenih ili live utakmica
             for e in m_res['events'][-5:]:
                 match_data.append({
                     "home": e['homeTeam']['shortName'],
@@ -39,10 +44,10 @@ def fetch_data():
                     "status": e['status']['type'],
                     "time": "FT"
                 })
-        
-        # Ako je sve prazno, nemoj prepisati data.json starim podacima
+
+        # Finalna provjera - ako je tablica prazna, ne spremaj
         if not table_data:
-            print("Greška: Podaci su prazni, provjeri ID sezone!")
+            print("Tablica je i dalje prazna. Provjera strukture API-ja...")
             return
 
         final = {
@@ -53,10 +58,10 @@ def fetch_data():
 
         with open('data.json', 'w', encoding='utf-8') as f:
             json.dump(final, f, indent=2, ensure_ascii=False)
-        print("Uspješno ažurirano!")
+        print("Svemirski uspjeh! Podaci su u data.json")
 
     except Exception as e:
-        print(f"Došlo je do greške: {e}")
+        print(f"Greška: {e}")
 
 if __name__ == "__main__":
     fetch_data()
