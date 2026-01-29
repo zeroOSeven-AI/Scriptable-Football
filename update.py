@@ -3,46 +3,45 @@ import json
 import time
 
 def fetch_football_data():
-    # Standard headers to mimic a real browser
+    # Standardna zaglavlja da izgledamo kao pravi preglednik
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Referer": "https://www.sofascore.com/"
     }
     
-    # Dictionary of leagues with their SofaScore Unique Tournament IDs
+    # Popis liga s njihovim SofaScore ID-ovima
     leagues = {
         "HNL": 24,
-        "Serbia": 247,
+        "Srbija": 247,
         "BiH": 550,
-        "Turkey": 52,
-        "Netherlands": 37,
+        "Turska": 52,
+        "Nizozemska": 37,
         "Portugal": 238,
-        "England": 17,
-        "Spain": 8,
-        "Italy": 11,
-        "Germany": 37,
-        "France": 34,
-        "Champions League": 7
+        "Engleska": 17,
+        "Spanjolska": 8,
+        "Italija": 11,
+        "Njemacka": 37,
+        "Francuska": 34,
+        "Liga Prvaka": 7
     }
     
     all_leagues_results = {}
 
-    print(f"Starting update: {len(leagues)} leagues found.")
+    print(f"Pokrećem ažuriranje: pronađeno {len(leagues)} liga.")
 
     for name, tournament_id in leagues.items():
         try:
-            # 1. Fetch the current season ID for the tournament
+            # 1. Dohvat ID-a trenutne sezone
             season_url = f"https://api.sofascore.com/api/v1/unique-tournament/{tournament_id}/seasons"
             season_res = requests.get(season_url, headers=headers).json()
             current_season_id = season_res['seasons'][0]['id']
             
-            # 2. Fetch the standings/table for that season
+            # 2. Dohvat tablice za tu sezonu
             table_url = f"https://api.sofascore.com/api/v1/unique-tournament/{tournament_id}/season/{current_season_id}/standings/total"
             table_res = requests.get(table_url, headers=headers).json()
             
             league_table = []
             if 'standings' in table_res:
-                # We look for the 'total' standing type
                 for standing in table_res['standings']:
                     if standing['type'] == 'total':
                         for row in standing.get('rows', []):
@@ -55,21 +54,21 @@ def fetch_football_data():
                         break
             
             all_leagues_results[name] = league_table
-            print(f"Successfully fetched: {name}")
+            print(f"Uspješno dohvaćeno: {name}")
             
-            # Anti-spam delay
+            # Kratka pauza da nas ne blokiraju
             time.sleep(1.2)
 
         except Exception as e:
-            print(f"Error skipping {name}: {str(e)}")
+            print(f"Greška kod lige {name}: {str(e)}")
 
-    # Save all gathered data into data.json
+    # Spremanje svih podataka u data.json
     try:
         with open('data.json', 'w', encoding='utf-8') as f:
             json.dump(all_leagues_results, f, indent=2, ensure_ascii=False)
-        print("SUCCESS: data.json has been updated with all leagues.")
+        print("USPJEH: data.json je ažuriran sa svim ligama.")
     except Exception as e:
-        print(f"File writing error: {e}")
+        print(f"Greška pri zapisivanju datoteke: {e}")
 
 if __name__ == "__main__":
     fetch_football_data()
