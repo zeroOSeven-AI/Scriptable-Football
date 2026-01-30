@@ -1,52 +1,72 @@
 {
   "leagues": [
     {
-      "name": "Champions League", "id": 5, "s": "39356",
+      "name": "Champions League",
+      "id": 5,
+      "isInt": true,
       "keywords": ["ucl", "cl", "champions", "prvaka", "madrid", "city", "bayern", "liverpool", "inter", "milan", "barca", "arsenal", "dortmund", "psg", "leverkusen", "juventus", "atalanta", "villa", "monaco", "brest", "lille", "benfica", "sporting", "brugge", "shakhtar", "sturm", "slovan", "sparta", "young boys", "celtic", "salzburg", "feyenoord", "psv", "girona", "bologna"],
       "clubs": ["Real Madrid", "Man City", "Bayern", "Liverpool", "Barcelona", "Arsenal", "Inter", "Milan", "PSG", "Dortmund", "Atletico", "Bayer Leverkusen", "Juventus"]
     },
     {
-      "name": "Premier League", "id": 9, "s": "39301",
+      "name": "Premier League",
+      "id": 9,
+      "isInt": false,
       "keywords": ["pl", "engleska", "england", "united", "chelsea", "tottenham", "newcastle", "west ham", "brighton", "wolves", "everton", "fulham", "palace", "bournemouth", "brentford", "nottingham", "leicester", "southampton", "ipswich"],
       "clubs": ["Arsenal", "Man City", "Liverpool", "Chelsea", "Man Utd", "Spurs", "Newcastle"]
     },
     {
-      "name": "La Liga", "id": 10, "s": "39319",
+      "name": "La Liga",
+      "id": 10,
+      "isInt": false,
       "keywords": ["es", "spanjolska", "spain", "real", "barca", "atletico", "sevilla", "valencia", "villarreal", "sociedad", "bilbao", "betis", "osasuna", "getafe", "rayo", "mallorca", "celta", "alaves", "leganes", "valladolid", "las palmas", "espanyol"],
       "clubs": ["Real Madrid", "Barcelona", "Sevilla", "Valencia", "Betis", "Atletico"]
     },
     {
-      "name": "Serie A", "id": 13, "s": "39325",
+      "name": "Serie A",
+      "id": 13,
+      "isInt": false,
       "keywords": ["it", "italija", "italy", "inter", "milan", "juve", "roma", "lazio", "napoli", "atalanta", "fiorentina", "torino", "udinese", "verona", "genoa", "monza", "empoli", "cagliari", "lecce", "parma", "como", "venezia"],
       "clubs": ["Inter", "Milan", "Juventus", "Napoli", "Roma", "Lazio", "Atalanta"]
     },
     {
-      "name": "Bundesliga", "id": 1, "s": "39285",
+      "name": "Bundesliga",
+      "id": 1,
+      "isInt": false,
       "keywords": ["de", "njemacka", "germany", "bayern", "dortmund", "leipzig", "leverkusen", "stuttgart", "frankfurt", "hoffenheim", "freiburg", "bremen", "wolfsburg", "augsburg", "gladbach", "mainz", "bochum", "union berlin", "heidenheim"],
       "clubs": ["Bayern", "Dortmund", "Leipzig", "Bayer Leverkusen", "Eintracht", "Stuttgart"]
     },
     {
-      "name": "Ligue 1", "id": 23, "s": "39331",
+      "name": "Ligue 1",
+      "id": 23,
+      "isInt": false,
       "keywords": ["fr", "francuska", "france", "psg", "marseille", "lyon", "monaco", "lille", "lens", "nice", "rennes", "reims", "strasbourg", "nantes", "montpellier", "toulouse", "angers", "auxerre", "le havre", "brest", "saint etienne"],
       "clubs": ["PSG", "OM", "OL", "Monaco", "Lille", "Brest"]
     },
     {
-      "name": "Portugal", "id": 35, "s": "39316",
+      "name": "Portugal",
+      "id": 35,
+      "isInt": false,
       "keywords": ["pt", "portugal", "porto", "benfica", "sporting", "braga", "vitoria", "guimaraes", "famalicao", "moreirense", "rio ave", "gil vicente", "estoril", "boavista", "farense", "casa pia", "avs", "santa clara"],
       "clubs": ["Porto", "Benfica", "Sporting CP", "Braga"]
     },
     {
-      "name": "Eredivisie", "id": 36, "s": "39255",
+      "name": "Eredivisie",
+      "id": 36,
+      "isInt": false,
       "keywords": ["nl", "nizozemska", "holandija", "ajax", "psv", "feyenoord", "alkmaar", "twente", "utrecht", "sparta", "nec", "go ahead", "heracles", "fortuna", "heerenveen", "zwolle", "groningen", "willem", "breda"],
       "clubs": ["Ajax", "PSV", "Feyenoord", "AZ Alkmaar"]
     },
     {
-      "name": "HNL", "id": 120, "s": "39272",
+      "name": "HNL",
+      "id": 120,
+      "isInt": false,
       "keywords": ["hnl", "cro", "hrvatska", "dinamo", "hajduk", "rijeka", "osijek", "gorica", "istra", "lokomotiva", "slaven", "sibenik", "varazdin"],
       "clubs": ["Hajduk", "Dinamo", "Rijeka", "Osijek"]
     },
     {
-      "name": "Turska", "id": 52, "s": "39311",
+      "name": "Süper Lig",
+      "id": 8,
+      "isInt": false,
       "keywords": ["tr", "turska", "turkey", "besiktas", "galatasaray", "fenerbahce", "trabzon", "basaksehir", "kasimpasa", "antalyaspor", "sivasspor", "alanyaspor", "rizespor", "gaziantep", "goztepe", "eyupspor", "bodrum"],
       "clubs": ["Galatasaray", "Fenerbahce", "Besiktas", "Trabzonspor"]
     }
