@@ -31,7 +31,7 @@
       "clubs": ["PSG", "OM", "OL", "Monaco", "Lille", "Brest"]
     },
     {
-      "name": "Portugal", "id": 35, "s": "39316",
+      "name": "Liga Portugal", "id": 35, "s": "39316",
       "keywords": ["pt", "portugal", "porto", "benfica", "sporting", "braga", "vitoria", "guimaraes", "famalicao", "moreirense", "rio ave", "gil vicente", "estoril", "boavista", "farense", "casa pia", "avs", "santa clara"],
       "clubs": ["Porto", "Benfica", "Sporting CP", "Braga"]
     },
@@ -41,12 +41,12 @@
       "clubs": ["Ajax", "PSV", "Feyenoord", "AZ Alkmaar"]
     },
     {
-      "name": "HNL", "id": 120, "s": "39272",
+      "name": "1. HNL", "id": 120, "s": "39272",
       "keywords": ["hnl", "cro", "hrvatska", "dinamo", "hajduk", "rijeka", "osijek", "gorica", "istra", "lokomotiva", "slaven", "sibenik", "varazdin"],
       "clubs": ["Hajduk", "Dinamo", "Rijeka", "Osijek"]
     },
     {
-      "name": "Turska", "id": 8, "s": "39311",
+      "name": "Süper Lig", "id": 8, "s": "39311",
       "keywords": ["tr", "turska", "turkey", "besiktas", "galatasaray", "fenerbahce", "trabzon", "basaksehir", "kasimpasa", "antalyaspor", "sivasspor", "alanyaspor", "rizespor", "gaziantep", "goztepe", "eyupspor", "bodrum"],
       "clubs": ["Galatasaray", "Fenerbahce", "Besiktas", "Trabzonspor"]
     }
