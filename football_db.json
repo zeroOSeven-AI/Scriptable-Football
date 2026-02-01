@@ -2,12 +2,10 @@
   "leagues": [
     { "name": "Champions League", "id": 5, "s": "39356", "logoId": 7, "keywords": ["ucl", "cl", "prvaka"] },
     { "name": "Premier League", "id": 9, "s": "39301", "logoId": 17, "keywords": ["pl", "engleska"] },
-    { "name": "La Liga", "id": 10, "s": "39319", "logoId": 8, "keywords": ["es", "spanjolska"] },
+    { "name": "La Liga", "id": 10, "s": "39319", "logoId": 8, "keywords": ["es", "spanjolska", "la liga"] },
     { "name": "Serie A", "id": 13, "s": "39325", "logoId": 31, "keywords": ["it", "italija"] },
-    { "name": "Bundesliga", "id": 1, "s": "39285", "logoId": 35, "keywords": ["de", "njemacka"] },
+    { "name": "Bundesliga", "id": 1, "s": "39285", "logoId": 35, "keywords": ["de", "njemacka", "bundesliga"] },
     { "name": "Ligue 1", "id": 23, "s": "39331", "logoId": 34, "keywords": ["fr", "francuska"] },
-    { "name": "Liga Portugal", "id": 35, "s": "39316", "logoId": 238, "keywords": ["pt", "portugal"] },
-    { "name": "Eredivisie", "id": 36, "s": "39255", "logoId": 37, "keywords": ["nl", "nizozemska"] },
     { "name": "1. HNL", "id": 120, "s": "39272", "logoId": 24, "keywords": ["hnl", "cro", "hrvatska"] },
     { "name": "Süper Lig", "id": 8, "s": "39311", "logoId": 52, "keywords": ["tr", "turska"] }
   ],
@@ -16,25 +14,29 @@
       "name": "Real Madrid",
       "keywords": ["real", "madrid", "rma"],
       "id": "2829",
-      "leagueId": "24",
-      "logoId": "2829",
-      "s": "2025"
-    },
-    {
-      "name": "Dinamo Zagreb",
-      "keywords": ["dinamo", "dzg", "gnk"],
-      "id": "2700",
-      "leagueId": "43",
-      "logoId": "2700",
-      "s": "2025"
+      "leagueId": "10",
+      "s": "39319"
     },
     {
       "name": "Hajduk Split",
       "keywords": ["hajduk", "haj", "hsplit"],
       "id": "2701",
-      "leagueId": "43",
-      "logoId": "2701",
-      "s": "2025"
+      "leagueId": "120",
+      "s": "39272"
+    },
+    {
+      "name": "Dinamo Zagreb",
+      "keywords": ["dinamo", "dzg", "gnk"],
+      "id": "2700",
+      "leagueId": "120",
+      "s": "39272"
+    },
+    {
+      "name": "FC Bayern",
+      "keywords": ["bayern", "fcb", "munchen"],
+      "id": "2674",
+      "leagueId": "1",
+      "s": "39285"
     }
   ]
 }
