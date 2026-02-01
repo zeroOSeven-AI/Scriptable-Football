@@ -9,9 +9,8 @@
     { "name": "Liga Portugal", "id": 35, "s": "39316", "logoId": 238, "keywords": ["pt", "portugal"] },
     { "name": "Eredivisie", "id": 36, "s": "39255", "logoId": 37, "keywords": ["nl", "nizozemska"] },
     { "name": "1. HNL", "id": 120, "s": "39272", "logoId": 24, "keywords": ["hnl", "cro", "hrvatska"] },
-    { "name": "Süper Lig", "id": 8, "s": "39311", "logoId": 52, "keywords": ["
-    },
-    {
+    { "name": "Süper Lig", "id": 8, "s": "39311", "logoId": 52, "keywords": ["tr", "turska"] }
+  ],
   "clubs": [
     {
       "name": "Real Madrid",
