@@ -26,17 +26,17 @@
       "clubs": ["Bayern", "Dortmund", "Leipzig", "Bayer Leverkusen", "Eintracht", "Stuttgart"]
     },
     {
-      "name": "Ligue 1", "id": 23, "s": "39331",
+      "name": "Ligue 1", "id": 16, "s": "39331",
       "keywords": ["fr", "francuska", "france", "psg", "marseille", "lyon", "monaco", "lille", "lens", "nice", "rennes", "reims", "strasbourg", "nantes", "montpellier", "toulouse", "angers", "auxerre", "le havre", "brest", "saint etienne"],
       "clubs": ["PSG", "OM", "OL", "Monaco", "Lille", "Brest"]
     },
     {
-      "name": "Liga Portugal", "id": 35, "s": "39316",
+      "name": "Liga Portugal", "id": 44, "s": "39316",
       "keywords": ["pt", "portugal", "porto", "benfica", "sporting", "braga", "vitoria", "guimaraes", "famalicao", "moreirense", "rio ave", "gil vicente", "estoril", "boavista", "farense", "casa pia", "avs", "santa clara"],
       "clubs": ["Porto", "Benfica", "Sporting CP", "Braga"]
     },
     {
-      "name": "Eredivisie", "id": 36, "s": "39255",
+      "name": "Eredivisie", "id": 11, "s": "39255",
       "keywords": ["nl", "nizozemska", "holandija", "ajax", "psv", "feyenoord", "alkmaar", "twente", "utrecht", "sparta", "nec", "go ahead", "heracles", "fortuna", "heerenveen", "zwolle", "groningen", "willem", "breda"],
       "clubs": ["Ajax", "PSV", "Feyenoord", "AZ Alkmaar"]
     },
@@ -46,7 +46,7 @@
       "clubs": ["Hajduk", "Dinamo", "Rijeka", "Osijek"]
     },
     {
-      "name": "Süper Lig", "id": 8, "s": "39311",
+      "name": "Süper Lig", "id": 34, "s": "39311",
       "keywords": ["tr", "turska", "turkey", "besiktas", "galatasaray", "fenerbahce", "trabzon", "basaksehir", "kasimpasa", "antalyaspor", "sivasspor", "alanyaspor", "rizespor", "gaziantep", "goztepe", "eyupspor", "bodrum"],
       "clubs": ["Galatasaray", "Fenerbahce", "Besiktas", "Trabzonspor"]
     }
