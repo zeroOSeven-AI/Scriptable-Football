@@ -9,6 +9,18 @@
     "id": 13,
     "s": "2025/2026",
     "name": "Serie A",
-    "keys": "italy,italija,seriea,inter,milan,juventus,napoli,atalanta,roma,lazio"
+    "keys": "italy,italija,seriea,inter,milan,juve,roma,napoli,lazio,atalanta,fiorentina"
+  },
+  {
+    "id": 9,
+    "s": "2025/2026",
+    "name": "Premier League",
+    "keys": "england,pl,arsenal,liverpool,city,united,chelsea,tottenham,villa,newcastle"
+  },
+  {
+    "id": 5,
+    "s": "2025/2026",
+    "name": "Champions League",
+    "keys": "cl,lp,liga prvaka,real,barca,bayern,psg"
   }
 ]
