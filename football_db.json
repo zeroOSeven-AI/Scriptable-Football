@@ -1,44 +1,32 @@
 {
   "leagues": [
     {
-      "name": "1. HNL", "id": 120, "s": "39272", "logoId": "210",
-      "keywords": ["hnl", "cro", "hrvatska"],
-      "clubs": ["Hajduk", "Dinamo", "Rijeka", "Osijek", "Gorica", "Istra", "Lokomotiva", "Slaven", "Sibenik", "Varazdin"]
+      "id": 120,
+      "s": "2025/2026",
+      "name": "1. HNL",
+      "keywords": ["hnl", "hrvatska"],
+      "clubs_index": "hajduk split,dinamo zagreb,rijeka,osijek,varazdin,lokomotiva,gorica,istra 1961,sibenik,slaven belupo"
     },
     {
-      "name": "Serie A", "id": 13, "s": "39325", "logoId": "31",
-      "keywords": ["it", "italy", "italija"],
-      "clubs": ["Inter", "Milan", "Juventus", "Napoli", "Roma", "Lazio", "Atalanta", "Fiorentina", "Torino", "Udinese", "Verona", "Genoa", "Monza", "Empoli", "Cagliari", "Lecce", "Parma", "Como", "Venezia", "Bologna"]
+      "id": 13,
+      "s": "2025/2026",
+      "name": "Serie A",
+      "keywords": ["italija", "seriea", "italy"],
+      "clubs_index": "inter,milan,juventus,napoli,atalanta,roma,lazio,fiorentina,bologna,torino"
     },
     {
-      "name": "Ligue 1", "id": 16, "s": "39331", "logoId": "34",
-      "keywords": ["fr", "france", "francuska"],
-      "clubs": ["PSG", "Marseille", "Lyon", "Monaco", "Lille", "Lens", "Nice", "Rennes", "Reims", "Strasbourg", "Nantes", "Montpellier", "Toulouse", "Angers", "Auxerre", "Le Havre", "Brest", "Saint-Etienne"]
+      "id": 9,
+      "s": "2025/2026",
+      "name": "Premier League",
+      "keywords": ["engleska", "pl", "england"],
+      "clubs_index": "liverpool,manchester city,arsenal,chelsea,aston villa,tottenham,manchester united,newcastle"
     },
     {
-      "name": "Premier League", "id": 9, "s": "39301", "logoId": "17",
-      "keywords": ["pl", "england", "engleska"],
-      "clubs": ["Arsenal", "Man City", "Liverpool", "Chelsea", "Man Utd", "Spurs", "Newcastle", "Aston Villa", "West Ham", "Brighton", "Wolves", "Everton", "Fulham", "Crystal Palace", "Bournemouth", "Brentford", "Nottingham Forest", "Leicester", "Southampton", "Ipswich"]
-    },
-    {
-      "name": "La Liga", "id": 10, "s": "39319", "logoId": "8",
-      "keywords": ["es", "spain", "spanjolska"],
-      "clubs": ["Real Madrid", "Barcelona", "Atletico Madrid", "Sevilla", "Valencia", "Villarreal", "Real Sociedad", "Athletic Club", "Real Betis", "Osasuna", "Getafe", "Rayo Vallecano", "Mallorca", "Celta Vigo", "Alaves", "Leganes", "Valladolid", "Las Palmas", "Espanyol", "Girona"]
-    },
-    {
-      "name": "Bundesliga", "id": 1, "s": "39285", "logoId": "35",
-      "keywords": ["de", "germany", "njemacka"],
-      "clubs": ["Bayern", "Dortmund", "RB Leipzig", "Bayer Leverkusen", "Stuttgart", "Frankfurt", "Hoffenheim", "Freiburg", "Werder", "Wolfsburg", "Augsburg", "Mainz", "Bochum", "Union Berlin", "Heidenheim", "St. Pauli"]
-    },
-    {
-      "name": "Eredivisie", "id": 11, "s": "39255", "logoId": "37",
-      "keywords": ["nl", "netherlands", "nizozemska"],
-      "clubs": ["Ajax", "PSV", "Feyenoord", "AZ Alkmaar", "Twente", "Utrecht", "Sparta", "Groningen"]
-    },
-    {
-      "name": "Champions League", "id": 5, "s": "39356", "logoId": "7",
-      "keywords": ["ucl", "cl", "champions", "prvaka"],
-      "clubs": ["Real Madrid", "Man City", "Bayern", "Liverpool", "Barcelona", "Arsenal", "Inter", "Milan", "PSG", "Dortmund", "Dinamo Zagreb"]
+      "id": 5,
+      "s": "2025/2026",
+      "name": "Champions League",
+      "keywords": ["cl", "lp", "liga prvaka"],
+      "clubs_index": "real madrid,bayern munich,barcelona,psg,bayer leverkusen"
     }
   ]
 }
