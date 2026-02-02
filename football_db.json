@@ -1,32 +1,20 @@
-{
-  "leagues": [
-    {
-      "id": 120,
-      "s": "2025/2026",
-      "name": "1. HNL",
-      "keywords": ["hnl", "hrvatska"],
-      "clubs_index": "hajduk split,dinamo zagreb,rijeka,osijek,varazdin,lokomotiva,gorica,istra 1961,sibenik,slaven belupo"
-    },
-    {
-      "id": 13,
-      "s": "2025/2026",
-      "name": "Serie A",
-      "keywords": ["italija", "seriea", "italy"],
-      "clubs_index": "inter,milan,juventus,napoli,atalanta,roma,lazio,fiorentina,bologna,torino"
-    },
-    {
-      "id": 9,
-      "s": "2025/2026",
-      "name": "Premier League",
-      "keywords": ["engleska", "pl", "england"],
-      "clubs_index": "liverpool,manchester city,arsenal,chelsea,aston villa,tottenham,manchester united,newcastle"
-    },
-    {
-      "id": 5,
-      "s": "2025/2026",
-      "name": "Champions League",
-      "keywords": ["cl", "lp", "liga prvaka"],
-      "clubs_index": "real madrid,bayern munich,barcelona,psg,bayer leverkusen"
-    }
-  ]
-}
+[
+  {
+    "id": 120,
+    "s": "2025/2026",
+    "name": "1. HNL",
+    "keys": "hnl,hrvatska,hajduk,dinamo,rijeka,osijek,varazdin,istra,gorica,sibenik"
+  },
+  {
+    "id": 13,
+    "s": "2025/2026",
+    "name": "Serie A",
+    "keys": "italija,italy,seriea,inter,milan,juventus,napoli,roma,lazio"
+  },
+  {
+    "id": 9,
+    "s": "2025/2026",
+    "name": "Premier League",
+    "keys": "engleska,pl,england,arsenal,liverpool,chelsea,manchester,city"
+  }
+]
