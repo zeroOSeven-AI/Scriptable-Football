@@ -3,18 +3,12 @@
     "id": 120,
     "s": "2025/2026",
     "name": "1. HNL",
-    "keys": "hnl,hrvatska,hajduk,dinamo,rijeka,osijek,varazdin,istra,gorica,sibenik"
+    "keys": "hnl,hrvatska,hajduk,dinamo,rijeka,osijek,varazdin,istra,gorica,sibenik,slaven"
   },
   {
     "id": 13,
     "s": "2025/2026",
     "name": "Serie A",
-    "keys": "italija,italy,seriea,inter,milan,juventus,napoli,roma,lazio"
-  },
-  {
-    "id": 9,
-    "s": "2025/2026",
-    "name": "Premier League",
-    "keys": "engleska,pl,england,arsenal,liverpool,chelsea,manchester,city"
+    "keys": "italy,italija,seriea,inter,milan,juventus,napoli,atalanta,roma,lazio"
   }
 ]
