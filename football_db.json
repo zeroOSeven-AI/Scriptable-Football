@@ -1,16 +1,79 @@
 {
+  "meta": {
+    "version": "2026.01",
+    "source": "onefootball",
+    "updated": "2026-02-03T13:00:00Z"
+  },
   "leagues": [
-    { "name": "Champions League", "id": 5, "s": 41533, "keywords": ["ucl", "champions"] },
-    { "name": "Premier League", "id": 9, "s": 41489, "keywords": ["pl", "england", "prem"] },
-    { "name": "Bundesliga", "id": 1, "s": 41474, "keywords": ["de", "bundesliga", "bund"] },
-    { "name": "Serie A", "id": 13, "s": 41514, "keywords": ["it", "seriea", "sa"] },
-    { "name": "LaLiga", "id": 10, "s": 41503, "keywords": ["es", "laliga", "la"] },
-
-    { "name": "Primeira Liga", "id": 63, "s": 41507, "keywords": ["pt", "portugal", "primeira"] },
-    { "name": "Eredivisie", "id": 16, "s": 41478, "keywords": ["nl", "netherlands", "eredivisie"] },
-
-    { "name": "Ligue 1", "id": 23, "s": 41484, "keywords": ["fr", "ligue1", "l1"] },
-    { "name": "Süper Lig", "id": 8, "s": 41511, "keywords": ["tr", "turkey", "tur", "turska", "superlig"] },
-    { "name": "HNL", "id": 120, "s": 41477, "keywords": ["hnl", "croatia"] }
+    {
+      "id": 13,
+      "s": "2025",
+      "name": "HNL",
+      "country": "Croatia",
+      "priority": 100
+    },
+    {
+      "id": 9,
+      "s": "2025",
+      "name": "Premier League",
+      "country": "England",
+      "priority": 95
+    },
+    {
+      "id": 10,
+      "s": "2025",
+      "name": "LaLiga",
+      "country": "Spain",
+      "priority": 90
+    },
+    {
+      "id": 11,
+      "s": "2025",
+      "name": "Serie A",
+      "country": "Italy",
+      "priority": 88
+    },
+    {
+      "id": 12,
+      "s": "2025",
+      "name": "Bundesliga",
+      "country": "Germany",
+      "priority": 87
+    },
+    {
+      "id": 14,
+      "s": "2025",
+      "name": "Ligue 1",
+      "country": "France",
+      "priority": 85
+    },
+    {
+      "id": 19,
+      "s": "2025",
+      "name": "Primeira Liga",
+      "country": "Portugal",
+      "priority": 80
+    },
+    {
+      "id": 23,
+      "s": "2025",
+      "name": "Eredivisie",
+      "country": "Netherlands",
+      "priority": 78
+    },
+    {
+      "id": 68,
+      "s": "2025",
+      "name": "Süper Lig",
+      "country": "Turkey",
+      "priority": 75
+    },
+    {
+      "id": 1,
+      "s": "2025",
+      "name": "UEFA Champions League",
+      "country": "Europe",
+      "priority": 110
+    }
   ]
 }
