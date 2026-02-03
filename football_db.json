@@ -1,26 +1,44 @@
-[
-  {
-    "id": 120,
-    "s": "2025/2026",
-    "name": "1. HNL",
-    "keys": "hnl,hrvatska,hajduk,dinamo,rijeka,osijek,varazdin,istra,gorica,sibenik,slaven"
-  },
-  {
-    "id": 13,
-    "s": "2025/2026",
-    "name": "Serie A",
-    "keys": "italy,italija,seriea,inter,milan,juve,roma,napoli,lazio,atalanta,fiorentina"
-  },
-  {
-    "id": 9,
-    "s": "2025/2026",
-    "name": "Premier League",
-    "keys": "england,pl,arsenal,liverpool,city,united,chelsea,tottenham,villa,newcastle"
-  },
-  {
-    "id": 5,
-    "s": "2025/2026",
-    "name": "Champions League",
-    "keys": "cl,lp,liga prvaka,real,barca,bayern,psg"
-  }
-]
+{
+  "leagues": [
+    {
+      "name": "1. HNL", "id": 120, "s": "39272", "logoId": "210",
+      "keywords": ["hnl", "cro", "hrvatska"],
+      "clubs": ["Hajduk", "Dinamo", "Rijeka", "Osijek", "Gorica", "Istra", "Lokomotiva", "Slaven", "Sibenik", "Varazdin"]
+    },
+    {
+      "name": "Serie A", "id": 13, "s": "39325", "logoId": "31",
+      "keywords": ["it", "italy", "italija"],
+      "clubs": ["Inter", "Milan", "Juventus", "Napoli", "Roma", "Lazio", "Atalanta", "Fiorentina", "Torino", "Udinese", "Verona", "Genoa", "Monza", "Empoli", "Cagliari", "Lecce", "Parma", "Como", "Venezia", "Bologna"]
+    },
+    {
+      "name": "Ligue 1", "id": 16, "s": "39331", "logoId": "34",
+      "keywords": ["fr", "france", "francuska"],
+      "clubs": ["PSG", "Marseille", "Lyon", "Monaco", "Lille", "Lens", "Nice", "Rennes", "Reims", "Strasbourg", "Nantes", "Montpellier", "Toulouse", "Angers", "Auxerre", "Le Havre", "Brest", "Saint-Etienne"]
+    },
+    {
+      "name": "Premier League", "id": 9, "s": "39301", "logoId": "17",
+      "keywords": ["pl", "england", "engleska"],
+      "clubs": ["Arsenal", "Man City", "Liverpool", "Chelsea", "Man Utd", "Spurs", "Newcastle", "Aston Villa", "West Ham", "Brighton", "Wolves", "Everton", "Fulham", "Crystal Palace", "Bournemouth", "Brentford", "Nottingham Forest", "Leicester", "Southampton", "Ipswich"]
+    },
+    {
+      "name": "La Liga", "id": 10, "s": "39319", "logoId": "8",
+      "keywords": ["es", "spain", "spanjolska"],
+      "clubs": ["Real Madrid", "Barcelona", "Atletico Madrid", "Sevilla", "Valencia", "Villarreal", "Real Sociedad", "Athletic Club", "Real Betis", "Osasuna", "Getafe", "Rayo Vallecano", "Mallorca", "Celta Vigo", "Alaves", "Leganes", "Valladolid", "Las Palmas", "Espanyol", "Girona"]
+    },
+    {
+      "name": "Bundesliga", "id": 1, "s": "39285", "logoId": "35",
+      "keywords": ["de", "germany", "njemacka"],
+      "clubs": ["Bayern", "Dortmund", "RB Leipzig", "Bayer Leverkusen", "Stuttgart", "Frankfurt", "Hoffenheim", "Freiburg", "Werder", "Wolfsburg", "Augsburg", "Mainz", "Bochum", "Union Berlin", "Heidenheim", "St. Pauli"]
+    },
+    {
+      "name": "Eredivisie", "id": 11, "s": "39255", "logoId": "37",
+      "keywords": ["nl", "netherlands", "nizozemska"],
+      "clubs": ["Ajax", "PSV", "Feyenoord", "AZ Alkmaar", "Twente", "Utrecht", "Sparta", "Groningen"]
+    },
+    {
+      "name": "Champions League", "id": 5, "s": "39356", "logoId": "7",
+      "keywords": ["ucl", "cl", "champions", "prvaka"],
+      "clubs": ["Real Madrid", "Man City", "Bayern", "Liverpool", "Barcelona", "Arsenal", "Inter", "Milan", "PSG", "Dortmund", "Dinamo Zagreb"]
+    }
+  ]
+}
