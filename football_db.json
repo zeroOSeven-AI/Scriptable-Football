@@ -6,7 +6,7 @@
     { "name": "Serie A", "id": 13, "s": 41514, "keywords": ["it", "sa", "seriea"] },
     { "name": "LaLiga", "id": 10, "s": 41503, "keywords": ["es", "laliga"] },
     { "name": "Ligue 1", "id": 23, "s": 41484, "keywords": ["fr", "l1"] },
-    { "name": "Süper Lig", "id": 8, "s": 39311, "keywords": ["tr", "turkey"] },
+    { "name": "Süper Lig", "id": 8, "s": 41511, "keywords": ["tr", "turkey"] },
     { "name": "Süper Kupa", "id": 151, "s": 41512, "keywords": ["tk", "supercup"] },
     { "name": "HNL", "id": 120, "s": 41477, "keywords": ["hnl", "croatia"] }
   ]
