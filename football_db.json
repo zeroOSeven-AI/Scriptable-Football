@@ -1,54 +1,14 @@
 {
   "leagues": [
-    {
-      "name": "Champions League", "id": 5, "s": "39356", "logoId": "7",
-      "keywords": ["ucl", "cl", "champions", "prvaka"],
-      "clubs": ["Real Madrid", "Man City", "Bayern", "Liverpool", "Barcelona", "Arsenal", "Inter", "Milan", "PSG", "Dortmund", "Atletico", "Bayer Leverkusen", "Juventus", "Atalanta", "Aston Villa", "Monaco", "Brest", "Lille", "Benfica", "Sporting CP", "Club Brugge", "Shakhtar", "Sturm Graz", "Slovan Bratislava", "Sparta Praha", "Young Boys", "Celtic", "Salzburg", "Feyenoord", "PSV", "Girona", "Bologna", "Leipzig", "Dinamo Zagreb"]
-    },
-    {
-      "name": "Premier League", "id": 9, "s": "39301", "logoId": "17",
-      "keywords": ["pl", "england", "engleska"],
-      "clubs": ["Arsenal", "Man City", "Liverpool", "Chelsea", "Man Utd", "Spurs", "Newcastle", "Aston Villa", "West Ham", "Brighton", "Wolves", "Everton", "Fulham", "Crystal Palace", "Bournemouth", "Brentford", "Nottingham Forest", "Leicester", "Southampton", "Ipswich"]
-    },
-    {
-      "name": "La Liga", "id": 10, "s": "39319", "logoId": "8",
-      "keywords": ["es", "spain", "spanjolska"],
-      "clubs": ["Real Madrid", "Barcelona", "Atletico Madrid", "Sevilla", "Valencia", "Villarreal", "Real Sociedad", "Athletic Club", "Real Betis", "Osasuna", "Getafe", "Rayo Vallecano", "Mallorca", "Celta Vigo", "Alaves", "Leganes", "Valladolid", "Las Palmas", "Espanyol", "Girona"]
-    },
-    {
-      "name": "Serie A", "id": 13, "s": "39325", "logoId": "31",
-      "keywords": ["it", "italy", "italija"],
-      "clubs": ["Inter", "Milan", "Juventus", "Napoli", "Roma", "Lazio", "Atalanta", "Fiorentina", "Torino", "Udinese", "Verona", "Genoa", "Monza", "Empoli", "Cagliari", "Lecce", "Parma", "Como", "Venezia", "Bologna"]
-    },
-    {
-      "name": "Bundesliga", "id": 1, "s": "39285", "logoId": "35",
-      "keywords": ["de", "germany", "njemacka"],
-      "clubs": ["Bayern Munich", "Dortmund", "RB Leipzig", "Bayer Leverkusen", "Stuttgart", "Frankfurt", "Hoffenheim", "Freiburg", "Werder Bremen", "Wolfsburg", "Augsburg", "Monchengladbach", "Mainz", "Bochum", "Union Berlin", "Heidenheim", "St. Pauli", "Holstein Kiel"]
-    },
-    {
-      "name": "Ligue 1", "id": 16, "s": "39331", "logoId": "34",
-      "keywords": ["fr", "france", "francuska"],
-      "clubs": ["PSG", "Marseille", "Lyon", "Monaco", "Lille", "Lens", "Nice", "Rennes", "Reims", "Strasbourg", "Nantes", "Montpellier", "Toulouse", "Angers", "Auxerre", "Le Havre", "Brest", "Saint-Etienne"]
-    },
-    {
-      "name": "1. HNL", "id": 120, "s": "39272", "logoId": "210",
-      "keywords": ["hnl", "cro", "hrvatska"],
-      "clubs": ["Hajduk Split", "Dinamo Zagreb", "Rijeka", "Osijek", "Gorica", "Istra 1961", "Lokomotiva", "Slaven Belupo", "Sibenik", "Varazdin"]
-    },
-    {
-      "name": "Liga Portugal", "id": 44, "s": "39316", "logoId": "238",
-      "keywords": ["pt", "portugal"],
-      "clubs": ["Porto", "Benfica", "Sporting CP", "Braga", "Vitoria SC", "Famalicao", "Moreirense", "Rio Ave", "Gil Vicente", "Estoril", "Boavista", "Farense", "Casa Pia", "AVS", "Santa Clara", "Arouca", "Estrela", "Nacional"]
-    },
-    {
-      "name": "Eredivisie", "id": 11, "s": "39255", "logoId": "37",
-      "keywords": ["nl", "netherlands", "nizozemska"],
-      "clubs": ["Ajax", "PSV", "Feyenoord", "AZ Alkmaar", "Twente", "Utrecht", "Sparta Rotterdam", "NEC Nijmegen", "Go Ahead Eagles", "Heracles", "Fortuna Sittard", "Heerenveen", "PEC Zwolle", "Groningen", "Willem II", "NAC Breda", "RKC Waalwijk", "Almere City"]
-    },
-    {
-      "name": "Süper Lig", "id": 34, "s": "39311", "logoId": "52",
-      "keywords": ["tr", "turkey", "turska"],
-      "clubs": ["Galatasaray", "Fenerbahce", "Besiktas", "Trabzonspor", "Basaksehir", "Kasimpasa", "Antalyaspor", "Sivasspor", "Alanyaspor", "Rizespor", "Gaziantep", "Goztepe", "Eyupspor", "Bodrum", "Samsunspor", "Kayserispor", "Hatayspor", "Konyaspor"]
-    }
+    { "name": "Champions League", "id": 5, "s": "39356", "keywords": ["ucl"] },
+    { "name": "Premier League", "id": 9, "s": "39301", "keywords": ["pl"] },
+    { "name": "La Liga", "id": 10, "s": "39319", "keywords": ["es"] },
+    { "name": "Serie A", "id": 13, "s": "39325", "keywords": ["it"] },
+    { "name": "Bundesliga", "id": 1, "s": "39285", "keywords": ["de"] },
+    { "name": "Ligue 1", "id": 16, "s": "41505", "keywords": ["fr"] },
+    { "name": "1. HNL", "id": 120, "s": "39272", "keywords": ["hnl"] },
+    { "name": "Portugal", "id": 14, "s": "41508", "keywords": ["pt"] },
+    { "name": "Eredivisie", "id": 11, "s": "41504", "keywords": ["nl"] },
+    { "name": "Turska", "id": 21, "s": "41511", "keywords": ["tr"] }
   ]
 }
