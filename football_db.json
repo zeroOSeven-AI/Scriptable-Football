@@ -1,14 +1,13 @@
 {
   "leagues": [
-    { "name": "Champions League", "id": 5, "s": "39356", "logoId": 7, "keywords": ["ucl", "cl", "prvaka"] },
-    { "name": "Premier League", "id": 9, "s": "39301", "logoId": 17, "keywords": ["pl", "engleska"] },
-    { "name": "La Liga", "id": 10, "s": "39319", "logoId": 8, "keywords": ["es", "spanjolska"] },
-    { "name": "Serie A", "id": 13, "s": "39325", "logoId": 31, "keywords": ["it", "italija"] },
-    { "name": "Bundesliga", "id": 1, "s": "39285", "logoId": 35, "keywords": ["de", "njemacka"] },
-    { "name": "Ligue 1", "id": 23, "s": "39331", "logoId": 34, "keywords": ["fr", "francuska"] },
-    { "name": "Liga Portugal", "id": 35, "s": "39316", "logoId": 238, "keywords": ["pt", "portugal"] },
-    { "name": "Eredivisie", "id": 36, "s": "39255", "logoId": 37, "keywords": ["nl", "nizozemska"] },
-    { "name": "1. HNL", "id": 120, "s": "39272", "logoId": 24, "keywords": ["hnl", "cro", "hrvatska"] },
-    { "name": "Süper Lig", "id": 8, "s": "39311", "logoId": 52, "keywords": ["tr", "turska"] }
+    { "name": "Champions League", "id": 5, "s": 41533, "keywords": ["ucl", "champions"] },
+    { "name": "Premier League", "id": 9, "s": 41489, "keywords": ["pl", "england"] },
+    { "name": "Bundesliga", "id": 1, "s": 41474, "keywords": ["de", "bundesliga"] },
+    { "name": "Serie A", "id": 13, "s": 41514, "keywords": ["it", "sa", "seriea"] },
+    { "name": "LaLiga", "id": 10, "s": 41503, "keywords": ["es", "laliga"] },
+    { "name": "Ligue 1", "id": 23, "s": 41484, "keywords": ["fr", "l1"] },
+    { "name": "Süper Lig", "id": 8, "s": 41511, "keywords": ["tr", "turkey"] },
+    { "name": "Süper Kupa", "id": 151, "s": 41512, "keywords": ["tk", "supercup"] },
+    { "name": "HNL", "id": 120, "s": 41477, "keywords": ["hnl", "croatia"] }
   ]
 }
