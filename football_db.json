@@ -3,7 +3,7 @@
     {
       "name": "Champions League", "id": 5, "s": "39356", "logoId": "7",
       "keywords": ["ucl", "cl", "champions", "prvaka"],
-      "clubs": ["Real Madrid", "Man City", "Bayern", "Liverpool", "Barcelona", "Arsenal", "Inter", "Milan", "PSG", "Dortmund", "Dinamo Zagreb", "Benfica", "Sporting", "Juventus", "Atletico", "Leverkusen"]
+      "clubs": ["Real Madrid", "Man City", "Bayern", "Liverpool", "Barcelona", "Arsenal", "Inter", "Milan", "PSG", "Dortmund", "Atletico", "Bayer Leverkusen", "Juventus", "Atalanta", "Aston Villa", "Monaco", "Brest", "Lille", "Benfica", "Sporting CP", "Club Brugge", "Shakhtar", "Sturm Graz", "Slovan Bratislava", "Sparta Praha", "Young Boys", "Celtic", "Salzburg", "Feyenoord", "PSV", "Girona", "Bologna", "Leipzig", "Dinamo Zagreb"]
     },
     {
       "name": "Premier League", "id": 9, "s": "39301", "logoId": "17",
@@ -12,63 +12,43 @@
     },
     {
       "name": "La Liga", "id": 10, "s": "39319", "logoId": "8",
-      "keywords": ["es", "spain", "spanjolska", "la liga", "barca", "real"],
+      "keywords": ["es", "spain", "spanjolska"],
       "clubs": ["Real Madrid", "Barcelona", "Atletico Madrid", "Sevilla", "Valencia", "Villarreal", "Real Sociedad", "Athletic Club", "Real Betis", "Osasuna", "Getafe", "Rayo Vallecano", "Mallorca", "Celta Vigo", "Alaves", "Leganes", "Valladolid", "Las Palmas", "Espanyol", "Girona"]
     },
     {
       "name": "Serie A", "id": 13, "s": "39325", "logoId": "31",
-      "keywords": ["it", "italy", "italija", "milano", "juve"],
+      "keywords": ["it", "italy", "italija"],
       "clubs": ["Inter", "Milan", "Juventus", "Napoli", "Roma", "Lazio", "Atalanta", "Fiorentina", "Torino", "Udinese", "Verona", "Genoa", "Monza", "Empoli", "Cagliari", "Lecce", "Parma", "Como", "Venezia", "Bologna"]
     },
     {
       "name": "Bundesliga", "id": 1, "s": "39285", "logoId": "35",
-      "keywords": ["de", "germany", "njemacka", "bayern"],
-      "clubs": ["Bayern", "Dortmund", "RB Leipzig", "Bayer Leverkusen", "Stuttgart", "Frankfurt", "Hoffenheim", "Freiburg", "Werder", "Wolfsburg", "Augsburg", "Mainz", "Bochum", "Union Berlin", "Heidenheim", "St Pauli", "Kiel", "Gladbach"]
+      "keywords": ["de", "germany", "njemacka"],
+      "clubs": ["Bayern Munich", "Dortmund", "RB Leipzig", "Bayer Leverkusen", "Stuttgart", "Frankfurt", "Hoffenheim", "Freiburg", "Werder Bremen", "Wolfsburg", "Augsburg", "Monchengladbach", "Mainz", "Bochum", "Union Berlin", "Heidenheim", "St. Pauli", "Holstein Kiel"]
     },
     {
-      "name": "Ligue 1", "id": 16, "s": "41505", "logoId": "34",
-      "keywords": ["fr", "france", "francuska", "psg"],
+      "name": "Ligue 1", "id": 16, "s": "39331", "logoId": "34",
+      "keywords": ["fr", "france", "francuska"],
       "clubs": ["PSG", "Marseille", "Lyon", "Monaco", "Lille", "Lens", "Nice", "Rennes", "Reims", "Strasbourg", "Nantes", "Montpellier", "Toulouse", "Angers", "Auxerre", "Le Havre", "Brest", "Saint-Etienne"]
     },
     {
-      "name": "Portugal", "id": 14, "s": "41508", "logoId": "238",
-      "keywords": ["pt", "portugal", "sporting", "benfica", "porto"],
-      "clubs": ["Sporting", "Benfica", "Porto", "Braga", "Vitoria Guimaraes", "Moreirense", "Famalicao", "Gil Vicente"]
-    },
-    {
-      "name": "Eredivisie", "id": 11, "s": "41504", "logoId": "37",
-      "keywords": ["nl", "netherlands", "nizozemska", "ajax"],
-      "clubs": ["Ajax", "PSV", "Feyenoord", "AZ Alkmaar", "Twente", "Utrecht", "Sparta", "Groningen", "Willem II", "Vicente"]
-    },
-    {
       "name": "1. HNL", "id": 120, "s": "39272", "logoId": "210",
-      "keywords": ["hnl", "cro", "hrvatska", "hajduk", "dinamo"],
-      "clubs": ["Hajduk", "Dinamo", "Rijeka", "Osijek", "Gorica", "Istra", "Lokomotiva", "Slaven Belupo", "Sibenik", "Varazdin"]
+      "keywords": ["hnl", "cro", "hrvatska"],
+      "clubs": ["Hajduk Split", "Dinamo Zagreb", "Rijeka", "Osijek", "Gorica", "Istra 1961", "Lokomotiva", "Slaven Belupo", "Sibenik", "Varazdin"]
     },
     {
-      "name": "Turska", "id": 21, "s": "41511", "logoId": "52",
-      "keywords": ["tr", "turkey", "turska", "fenerbahce", "galata"],
-      "clubs": ["Galatasaray", "Fenerbahce", "Besiktas", "Trabzonspor", "Basaksehir", "Samsunspor", "Eyupspor"]
+      "name": "Liga Portugal", "id": 44, "s": "39316", "logoId": "238",
+      "keywords": ["pt", "portugal"],
+      "clubs": ["Porto", "Benfica", "Sporting CP", "Braga", "Vitoria SC", "Famalicao", "Moreirense", "Rio Ave", "Gil Vicente", "Estoril", "Boavista", "Farense", "Casa Pia", "AVS", "Santa Clara", "Arouca", "Estrela", "Nacional"]
     },
     {
-      "name": "Grčka", "id": 26, "s": "41507", "logoId": "194",
-      "keywords": ["gr", "greece", "grcka", "paok", "olympiakos"],
-      "clubs": ["AEK", "PAOK", "Olympiakos", "Panathinaikos", "Aris", "Asteras", "OFI", "Lamia"]
+      "name": "Eredivisie", "id": 11, "s": "39255", "logoId": "37",
+      "keywords": ["nl", "netherlands", "nizozemska"],
+      "clubs": ["Ajax", "PSV", "Feyenoord", "AZ Alkmaar", "Twente", "Utrecht", "Sparta Rotterdam", "NEC Nijmegen", "Go Ahead Eagles", "Heracles", "Fortuna Sittard", "Heerenveen", "PEC Zwolle", "Groningen", "Willem II", "NAC Breda", "RKC Waalwijk", "Almere City"]
     },
     {
-      "name": "Belgija", "id": 2, "s": "41499", "logoId": "38",
-      "keywords": ["be", "belgium", "belgija", "brugge"],
-      "clubs": ["Club Brugge", "Anderlecht", "Genk", "Union SG", "Antwerp", "Gent", "Mechelen", "Standard"]
-    },
-    {
-      "name": "Ronaldo", "id": 234, "s": "39433", "logoId": "10025",
-      "keywords": ["cr7", "ronaldo", "al nassr", "nassr"],
-      "clubs": ["Al-Nassr", "Al-Hilal", "Al-Ittihad", "Al-Ahli"]
-    },
-    {
-      "name": "Messi", "id": 34, "s": "39352", "logoId": "11",
-      "keywords": ["lm10", "messi", "inter miami", "miami"],
-      "clubs": ["Inter Miami", "Columbus Crew", "LAFC", "LA Galaxy"]
+      "name": "Süper Lig", "id": 34, "s": "39311", "logoId": "52",
+      "keywords": ["tr", "turkey", "turska"],
+      "clubs": ["Galatasaray", "Fenerbahce", "Besiktas", "Trabzonspor", "Basaksehir", "Kasimpasa", "Antalyaspor", "Sivasspor", "Alanyaspor", "Rizespor", "Gaziantep", "Goztepe", "Eyupspor", "Bodrum", "Samsunspor", "Kayserispor", "Hatayspor", "Konyaspor"]
     }
   ]
 }
