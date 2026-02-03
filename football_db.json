@@ -26,17 +26,17 @@
       "clubs": ["Bayern", "Dortmund", "RB Leipzig", "Bayer Leverkusen", "Stuttgart", "Frankfurt", "Hoffenheim", "Freiburg", "Werder", "Wolfsburg", "Augsburg", "Mainz", "Bochum", "Union Berlin", "Heidenheim", "St Pauli", "Kiel", "Gladbach"]
     },
     {
-      "name": "Ligue 1", "id": 16, "s": "39331", "logoId": "34",
+      "name": "Ligue 1", "id": 16, "s": "41505", "logoId": "34",
       "keywords": ["fr", "france", "francuska", "psg"],
       "clubs": ["PSG", "Marseille", "Lyon", "Monaco", "Lille", "Lens", "Nice", "Rennes", "Reims", "Strasbourg", "Nantes", "Montpellier", "Toulouse", "Angers", "Auxerre", "Le Havre", "Brest", "Saint-Etienne"]
     },
     {
-      "name": "Portugal", "id": 14, "s": "39337", "logoId": "238",
+      "name": "Portugal", "id": 14, "s": "41508", "logoId": "238",
       "keywords": ["pt", "portugal", "sporting", "benfica", "porto"],
       "clubs": ["Sporting", "Benfica", "Porto", "Braga", "Vitoria Guimaraes", "Moreirense", "Famalicao", "Gil Vicente"]
     },
     {
-      "name": "Eredivisie", "id": 11, "s": "39255", "logoId": "37",
+      "name": "Eredivisie", "id": 11, "s": "41504", "logoId": "37",
       "keywords": ["nl", "netherlands", "nizozemska", "ajax"],
       "clubs": ["Ajax", "PSV", "Feyenoord", "AZ Alkmaar", "Twente", "Utrecht", "Sparta", "Groningen", "Willem II", "Vicente"]
     },
@@ -46,17 +46,17 @@
       "clubs": ["Hajduk", "Dinamo", "Rijeka", "Osijek", "Gorica", "Istra", "Lokomotiva", "Slaven Belupo", "Sibenik", "Varazdin"]
     },
     {
-      "name": "Turska", "id": 21, "s": "39343", "logoId": "52",
+      "name": "Turska", "id": 21, "s": "41511", "logoId": "52",
       "keywords": ["tr", "turkey", "turska", "fenerbahce", "galata"],
       "clubs": ["Galatasaray", "Fenerbahce", "Besiktas", "Trabzonspor", "Basaksehir", "Samsunspor", "Eyupspor"]
     },
     {
-      "name": "Grčka", "id": 26, "s": "39268", "logoId": "194",
+      "name": "Grčka", "id": 26, "s": "41507", "logoId": "194",
       "keywords": ["gr", "greece", "grcka", "paok", "olympiakos"],
       "clubs": ["AEK", "PAOK", "Olympiakos", "Panathinaikos", "Aris", "Asteras", "OFI", "Lamia"]
     },
     {
-      "name": "Belgija", "id": 2, "s": "39247", "logoId": "38",
+      "name": "Belgija", "id": 2, "s": "41499", "logoId": "38",
       "keywords": ["be", "belgium", "belgija", "brugge"],
       "clubs": ["Club Brugge", "Anderlecht", "Genk", "Union SG", "Antwerp", "Gent", "Mechelen", "Standard"]
     },
