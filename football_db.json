@@ -1,79 +1,88 @@
 {
   "meta": {
-    "version": "2026.01",
-    "source": "onefootball",
-    "updated": "2026-02-03T13:00:00Z"
+    "version": "2026.01-fast",
+    "source": "onefootball"
   },
   "leagues": [
+    {
+      "id": 1,
+      "s": "2025",
+      "name": "UEFA Champions League",
+      "country": "Europe",
+      "priority": 110,
+      "aliases": ["ucl", "champions", "championsleague", "cl"]
+    },
     {
       "id": 13,
       "s": "2025",
       "name": "HNL",
       "country": "Croatia",
-      "priority": 100
+      "priority": 100,
+      "aliases": ["hnl", "1hnl", "croatia", "dinamo", "hajduk"]
     },
     {
       "id": 9,
       "s": "2025",
       "name": "Premier League",
       "country": "England",
-      "priority": 95
+      "priority": 95,
+      "aliases": ["epl", "prem", "england", "arsenal", "chelsea", "united"]
     },
     {
       "id": 10,
       "s": "2025",
       "name": "LaLiga",
       "country": "Spain",
-      "priority": 90
+      "priority": 90,
+      "aliases": ["laliga", "spain", "barca", "realmadrid", "atletico"]
     },
     {
       "id": 11,
       "s": "2025",
       "name": "Serie A",
       "country": "Italy",
-      "priority": 88
+      "priority": 88,
+      "aliases": ["seriea", "italy", "juve", "inter", "milan"]
     },
     {
       "id": 12,
       "s": "2025",
       "name": "Bundesliga",
       "country": "Germany",
-      "priority": 87
+      "priority": 87,
+      "aliases": ["bundesliga", "germany", "bayern", "dortmund", "bvb"]
     },
     {
       "id": 14,
       "s": "2025",
       "name": "Ligue 1",
       "country": "France",
-      "priority": 85
+      "priority": 85,
+      "aliases": ["ligue1", "france", "psg", "paris"]
     },
     {
       "id": 19,
       "s": "2025",
       "name": "Primeira Liga",
       "country": "Portugal",
-      "priority": 80
+      "priority": 80,
+      "aliases": ["portugal", "primeira", "benfica", "porto", "sporting"]
     },
     {
       "id": 23,
       "s": "2025",
       "name": "Eredivisie",
       "country": "Netherlands",
-      "priority": 78
+      "priority": 78,
+      "aliases": ["eredivisie", "netherlands", "ajax", "psv", "feyenoord"]
     },
     {
       "id": 68,
       "s": "2025",
       "name": "Süper Lig",
       "country": "Turkey",
-      "priority": 75
-    },
-    {
-      "id": 1,
-      "s": "2025",
-      "name": "UEFA Champions League",
-      "country": "Europe",
-      "priority": 110
+      "priority": 75,
+      "aliases": ["superlig", "turkey", "galatasaray", "fenerbahce", "besiktas"]
     }
   ]
 }
