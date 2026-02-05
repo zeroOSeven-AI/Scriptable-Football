@@ -83,6 +83,30 @@
       "country": "Turkey",
       "priority": 65,
       "aliases": ["superlig", "turkey", "galatasaray", "fenerbahce", "besiktas"]
-    }
+    },
+    {
+  "id": 40,
+  "s": "4005",
+  "name": "UEFA Nations League",
+  "country": "Europe",
+  "priority": 94,
+  "aliases": ["nationsleague", "liganacija", "nations", "unl"]
+},
+{
+  "id": 436,
+  "s": "4307",
+  "name": "WC Qualifiers",
+  "country": "Europe",
+  "priority": 93,
+  "aliases": ["kvalifikacije", "wcq", "sp", "hrvatska"]
+},
+{
+  "id": 5,
+  "s": "2030",
+  "name": "World Cup",
+  "country": "World",
+  "priority": 120,
+  "aliases": ["sp", "svjetskoprvenstvo", "worldcup", "mundial"]
+}
   ]
 }
