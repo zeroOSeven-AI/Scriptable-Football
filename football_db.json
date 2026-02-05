@@ -1,87 +1,87 @@
 {
   "meta": {
-    "version": "2026.01-fast",
+    "version": "2026.02-pro",
     "source": "onefootball"
   },
   "leagues": [
     {
       "id": 1,
-      "s": "2025",
+      "s": "4159",
       "name": "UEFA Champions League",
       "country": "Europe",
       "priority": 110,
       "aliases": ["ucl", "champions", "championsleague", "cl"]
     },
     {
-      "id": 13,
-      "s": "2025",
-      "name": "HNL",
-      "country": "Croatia",
-      "priority": 100,
-      "aliases": ["hnl", "1hnl", "croatia", "dinamo", "hajduk"]
-    },
-    {
       "id": 9,
-      "s": "2025",
+      "s": "3955",
       "name": "Premier League",
       "country": "England",
-      "priority": 95,
-      "aliases": ["epl", "prem", "england", "arsenal", "chelsea", "united"]
+      "priority": 105,
+      "aliases": ["epl", "prem", "england", "arsenal", "chelsea", "united", "city", "liverpool"]
     },
     {
       "id": 10,
-      "s": "2025",
+      "s": "4003",
       "name": "LaLiga",
       "country": "Spain",
-      "priority": 90,
-      "aliases": ["laliga", "spain", "barca", "realmadrid", "atletico"]
+      "priority": 100,
+      "aliases": ["laliga", "spain", "barca", "realmadrid", "atletico", "real"]
+    },
+    {
+      "id": 13,
+      "s": "4001",
+      "name": "HNL",
+      "country": "Croatia",
+      "priority": 95,
+      "aliases": ["hnl", "1hnl", "croatia", "dinamo", "hajduk", "rijeka", "osijek"]
     },
     {
       "id": 11,
-      "s": "2025",
+      "s": "3999",
       "name": "Serie A",
       "country": "Italy",
-      "priority": 88,
-      "aliases": ["seriea", "italy", "juve", "inter", "milan"]
+      "priority": 90,
+      "aliases": ["seriea", "italy", "juve", "inter", "milan", "napoli", "roma"]
     },
     {
       "id": 12,
-      "s": "2025",
+      "s": "3969",
       "name": "Bundesliga",
       "country": "Germany",
-      "priority": 87,
-      "aliases": ["bundesliga", "germany", "bayern", "dortmund", "bvb"]
+      "priority": 85,
+      "aliases": ["bundesliga", "germany", "bayern", "dortmund", "bvb", "leipzig"]
     },
     {
       "id": 14,
-      "s": "2025",
+      "s": "3981",
       "name": "Ligue 1",
       "country": "France",
-      "priority": 85,
-      "aliases": ["ligue1", "france", "psg", "paris"]
+      "priority": 80,
+      "aliases": ["ligue1", "france", "psg", "paris", "monaco", "lyon"]
     },
     {
       "id": 19,
-      "s": "2025",
+      "s": "4013",
       "name": "Primeira Liga",
       "country": "Portugal",
-      "priority": 80,
+      "priority": 75,
       "aliases": ["portugal", "primeira", "benfica", "porto", "sporting"]
     },
     {
       "id": 23,
-      "s": "2025",
+      "s": "3959",
       "name": "Eredivisie",
       "country": "Netherlands",
-      "priority": 78,
+      "priority": 70,
       "aliases": ["eredivisie", "netherlands", "ajax", "psv", "feyenoord"]
     },
     {
       "id": 68,
-      "s": "2025",
+      "s": "3983",
       "name": "Süper Lig",
       "country": "Turkey",
-      "priority": 75,
+      "priority": 65,
       "aliases": ["superlig", "turkey", "galatasaray", "fenerbahce", "besiktas"]
     }
   ]
