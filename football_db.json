@@ -5,8 +5,8 @@
   },
   "leagues": [
     {
-      "id": 1,
-      "s": "4159",
+      "id": 5,
+      "s": "39356",
       "name": "UEFA Champions League",
       "country": "Europe",
       "priority": 110,
@@ -14,7 +14,7 @@
     },
     {
       "id": 9,
-      "s": "3955",
+      "s": "39301",
       "name": "Premier League",
       "country": "England",
       "priority": 105,
@@ -29,56 +29,56 @@
       "aliases": ["laliga", "spain", "barca", "realmadrid", "atletico", "real"]
     },
     {
-      "id": 13,
-      "s": "4001",
+      "id": 120,
+      "s": "39273",
       "name": "HNL",
       "country": "Croatia",
       "priority": 95,
       "aliases": ["hnl", "1hnl", "croatia", "dinamo", "hajduk", "rijeka", "osijek"]
     },
     {
-      "id": 11,
-      "s": "3999",
+      "id": 13,
+      "s": "39325",
       "name": "Serie A",
       "country": "Italy",
       "priority": 90,
       "aliases": ["seriea", "italy", "juve", "inter", "milan", "napoli", "roma"]
     },
     {
-      "id": 12,
-      "s": "3969",
+      "id": 1,
+      "s": "39285",
       "name": "Bundesliga",
       "country": "Germany",
       "priority": 85,
       "aliases": ["bundesliga", "germany", "bayern", "dortmund", "bvb", "leipzig"]
     },
     {
-      "id": 14,
-      "s": "3981",
+      "id": 16,
+      "s": "39331",
       "name": "Ligue 1",
       "country": "France",
       "priority": 80,
       "aliases": ["ligue1", "france", "psg", "paris", "monaco", "lyon"]
     },
     {
-      "id": 19,
-      "s": "4013",
+      "id": 44,
+      "s": "39316",
       "name": "Primeira Liga",
       "country": "Portugal",
       "priority": 75,
       "aliases": ["portugal", "primeira", "benfica", "porto", "sporting"]
     },
     {
-      "id": 23,
-      "s": "3959",
+      "id": 11,
+      "s": "39255",
       "name": "Eredivisie",
       "country": "Netherlands",
       "priority": 70,
       "aliases": ["eredivisie", "netherlands", "ajax", "psv", "feyenoord"]
     },
     {
-      "id": 68,
-      "s": "3983",
+      "id": 34,
+      "s": "39311",
       "name": "Süper Lig",
       "country": "Turkey",
       "priority": 65,
