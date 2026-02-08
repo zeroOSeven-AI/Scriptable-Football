@@ -86,7 +86,7 @@
     },
     {
   "id": 40,
-  "s": "4005",
+  "s": "39130",
   "name": "UEFA Nations League",
   "country": "Europe",
   "priority": 94,
@@ -94,7 +94,7 @@
 },
 {
   "id": 436,
-  "s": "4307",
+  "s": "38355",
   "name": "WC Qualifiers",
   "country": "Europe",
   "priority": 93,
@@ -102,7 +102,7 @@
 },
 {
   "id": 5,
-  "s": "2030",
+  "s": "39356",
   "name": "World Cup",
   "country": "World",
   "priority": 120,
