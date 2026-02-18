@@ -5,11 +5,9 @@ import random
 import re
 import os
 
-# --- PUTANJE ---
-# Koristimo apsolutne putanje da GitHub ne bi lutao
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-PLAYERS_FILE = os.path.join(BASE_DIR, 'players.json')
-DATABASE_FILE = os.path.join(BASE_DIR, 'master_db.json')
+# Točno prema tvojoj slici
+PLAYERS_FILE = 'players.json'
+DATABASE_FILE = 'master_db.json'
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
@@ -30,56 +28,60 @@ def extract_stats(text, season_year):
         }
     except: return {"rating": "0.0", "matches": "0", "goals": "0", "assists": "0"}
 
-def run_bager():
+def main():
+    # Provjera postoji li file
     if not os.path.exists(PLAYERS_FILE):
-        print(f"❌ File {PLAYERS_FILE} ne postoji!")
+        print(f"❌ ERROR: Ne vidim {PLAYERS_FILE} na GitHubu!")
         return
 
     with open(PLAYERS_FILE, 'r', encoding='utf-8') as f:
-        players_list = json.load(f)
+        players = json.load(f)
 
-    # Učitaj staru bazu ako postoji
+    # Učitaj staru bazu ako postoji, da ne krećemo od nule
     if os.path.exists(DATABASE_FILE):
         with open(DATABASE_FILE, 'r', encoding='utf-8') as f:
-            master_db = json.load(f)
+            db = json.load(f)
     else:
-        master_db = {}
+        db = {}
 
-    for p in players_list:
-        name = p.get('name', 'unknown')
-        liga = p.get('league', 'others')
-        pid = p.get('id')
+    print(f"🚀 Pokrećem bager za {len(players)} igrača...")
+
+    for p in players:
+        name = p['name']
+        liga = p['league']
+        pid = p['id']
         
-        if not pid: continue
-        
-        print(f"⛏️  Kopam: {name}...")
+        print(f"⛏️  Kopam podatke za: {name}")
         try:
             time.sleep(random.randint(2, 5))
             r = requests.get(f"https://www.flashscore.com/player/{pid}/", headers=HEADERS, timeout=10)
-            if r.status_code != 200: continue
             
-            clean_text = re.sub('<[^<]+?>', ' ', r.text)
-            
-            if liga not in master_db: master_db[liga] = {}
-            master_db[liga][name] = {
-                "header": {
-                    "full_name": name.replace("-", " ").title(),
-                    "club": p.get('club', 'Unknown'),
-                    "position": "Player",
-                    "value": "Check TM"
-                },
-                "stats": {
-                    "thisSeason": extract_stats(clean_text, "2025/2026"),
-                    "lastSeason": extract_stats(clean_text, "2024/2025")
-                },
-                "last_update": time.strftime("%H:%M:%S")
-            }
+            if r.status_code == 200:
+                clean_text = re.sub('<[^<]+?>', ' ', r.text)
+                
+                if liga not in db: db[liga] = {}
+                db[liga][name] = {
+                    "header": {
+                        "full_name": name.replace("-", " ").title(),
+                        "club": p.get('club', 'Unknown'),
+                        "position": "Player",
+                        "value": "Check TM"
+                    },
+                    "stats": {
+                        "thisSeason": extract_stats(clean_text, "2025/2026"),
+                        "lastSeason": extract_stats(clean_text, "2024/2025")
+                    },
+                    "last_update": time.strftime("%H:%M:%S")
+                }
+            else:
+                print(f"⚠️  Flashscore vratio status {r.status_code} za {name}")
         except Exception as e:
-            print(f"⚠️ Preskačem {name} zbog greške: {e}")
+            print(f"❌ Greška kod {name}: {e}")
 
+    # Spremi rezultat
     with open(DATABASE_FILE, 'w', encoding='utf-8') as f:
-        json.dump(master_db, f, indent=2, ensure_ascii=False)
-    print("✅ Gotovo!")
+        json.dump(db, f, indent=2, ensure_ascii=False)
+    print("✅ Sve je spremljeno u master_db.json!")
 
 if __name__ == "__main__":
-    run_bager()
+    main()
