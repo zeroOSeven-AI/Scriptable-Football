@@ -2,7 +2,7 @@ name: FOOTBALL PLAYER CLOUD DATA
 
 on:
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 */3 * * *' # Svaka 3 sata
   workflow_dispatch:
 
 permissions:
@@ -12,23 +12,24 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
       
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
           
-      - name: Install dependencies
+      - name: Install Dependencies
         run: pip install requests
         
-      - name: Run Bager
+      - name: Run Master Bager
         run: python fetch_data.py
         
-      - name: Commit and Push
+      - name: Commit and Push Changes
         run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
+          git config --global user.name "zeroOSeven-AI-Bager"
+          git config --global user.email "bager@github.com"
           git add master_db.json
-          git commit -m "Bager: Osvježeni podaci" || exit 0
+          git commit -m "Bager osvježio master_db.json" || exit 0
           git push
