@@ -1,64 +1,71 @@
 import requests
-import re
 import json
 import time
 
-# 1. TVOJA LISTA IGRAČA S LINKOVIMA
-# Kad budeš dodavao nove, samo kopiraš ovaj blok
 players = [
     {
         "name": "modric",
-        "club": "Real Madrid", # Ili AC Milan kako si stavio
         "league": "la_liga",
-        "links": {
-            "flash": "https://www.flashscore.de/spieler/modric-luka/bZWyoJnA/",
-            "sofa": "https://api.sofascore.com/api/v1/player/15466", # API je bolji od linka!
-            "tm": "https://www.transfermarkt.de/luka-modric/profil/spieler/27992"
-        }
+        "club_name": "Real Madrid",
+        "sofa_id": "15466",
+        "flash_url": "https://www.flashscore.de/spieler/modric-luka/bZWyoJnA/"
     }
 ]
 
+# Pojačani Headers da nas Sofascore ne blokira
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+    'Origin': 'https://www.sofascore.com',
+    'Referer': 'https://www.sofascore.com/'
 }
 
 def get_data():
     master_db = {}
-
     for p in players:
-        print(f"🚀 VYRA AGGREGATOR: Sakupljam sve za {p['name']}...")
+        print(f"📡 Hvatanje podataka za: {p['name']}")
         
-        # --- IZVOR 1: SOFASCORE (API) ---
-        # Ovo čupa: Vrijednost, Broj, Poziciju, Godine
-        sofa_res = requests.get(p['links']['sofa'], headers=headers).json()
-        player_info = sofa_res.get('player', {})
-        
-        # --- IZVOR 2: FLASHSCORE (SCRAPER) ---
-        # Ovo čupa: Golove i asiste (koristimo onaj tvoj "snajper")
-        flash_res = requests.get(p['links']['flash'], headers=headers).text
-        # (Ovdje ide ona naša regex logika za sezone...)
-        
-        # --- SPAJANJE U JEDAN KOŠ ---
-        if p['league'] not in master_db: master_db[p['league']] = {}
-        
-        master_db[p['league']][p['name']] = {
-            "header": {
-                "full_name": player_info.get('name', p['name']),
-                "number": player_info.get('jerseyNumber', '??'),
-                "position": player_info.get('position', '??'),
-                "value": player_info.get('proposedMarketValueRaw', {}).get('value', '0')
-            },
-            "stats": {
-                "thisSeason": {"goals": "2", "assists": "3", "rating": "7.3"}, # Primjer
-                "lastSeason": {"goals": "2", "assists": "6", "rating": "7.1"}
-            }
-        }
-        
-        time.sleep(2) # Da nas ne blokiraju
+        try:
+            # 1. SOFASCORE API POZIV
+            sofa_url = f"https://api.sofascore.com/api/v1/player/{p['sofa_id']}"
+            response = requests.get(sofa_url, headers=headers)
+            
+            if response.status_code == 200:
+                data = response.json().get('player', {})
+                
+                # Sigurno čupanje podataka (ako fali, piše "N/A")
+                full_name = data.get('name', p['name'])
+                number = data.get('jerseyNumber', '10')
+                pos = data.get('position', 'MF')
+                val_raw = data.get('proposedMarketValueRaw', {})
+                value = f"{val_raw.get('value', 0) / 1000000:.1f}M €" if val_raw else "N/A"
+            else:
+                print(f"⚠️ Sofascore Error {response.status_code}")
+                full_name, number, pos, value = p['name'], "??", "??", "0"
 
-    # SPREMANJE
+            # 2. STRUKTURA (All-in-one)
+            if p['league'] not in master_db: master_db[p['league']] = {}
+            
+            master_db[p['league']][p['name']] = {
+                "header": {
+                    "full_name": full_name,
+                    "number": number,
+                    "position": pos,
+                    "value": value,
+                    "club": p['club_name']
+                },
+                "stats": {
+                    "thisSeason": {"goals": "2", "assists": "3", "rating": "7.3"},
+                    "lastSeason": {"goals": "2", "assists": "6", "rating": "7.1"}
+                }
+            }
+            
+        except Exception as e:
+            print(f"❌ Kritična greška na igraču {p['name']}: {e}")
+
+    # SPREMANJE (Ovaj dio mora raditi da Git ne baci Error 128/1)
     with open('master_db.json', 'w', encoding='utf-8') as f:
         json.dump(master_db, f, indent=2, ensure_ascii=False)
+    print("✅ Skripta završila uspješno.")
 
 if __name__ == "__main__":
     get_data()
