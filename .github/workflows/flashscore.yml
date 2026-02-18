@@ -2,8 +2,11 @@ name: VYRA Data Update
 
 on:
   schedule:
-    - cron: '0 */4 * * *' # Svaka 4 sata
-  workflow_dispatch: # Omogućuje ručno pokretanje
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write  # OVO JE KLJUČNO ZA ERROR 128
 
 jobs:
   build:
@@ -11,6 +14,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }} # Koristi interni token za autorizaciju
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -18,15 +23,20 @@ jobs:
           python-version: '3.9'
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests beautifulsoup4
 
       - name: Run Scraper
         run: python fetch_data.py
 
       - name: Commit and Push
         run: |
-          git config --global user.name "VYRA-Bot"
-          git config --global user.email "bot@vyra.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add master_db.json
-          git commit -m "Update player stats [skip ci]" || exit 0
-          git push
+          # Provjera ima li uopće promjena prije commita da ne baca grešku
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "Nema promjena za commit."
+          else
+            git commit -m "VYRA: Osvježeni podaci o igračima [skip ci]"
+            git push origin main
+          fi
