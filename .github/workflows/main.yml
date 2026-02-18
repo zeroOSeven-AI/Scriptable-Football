@@ -1,28 +1,85 @@
-name: Football Auto Update
+name: Galaxy Live Football
+
 on:
   schedule:
-    - cron: '*/15 * * * *' # Automatski svakih 15 min
-  workflow_dispatch: # Omogućuje ti da pokreneš ručno kad god želiš
+    - cron: "0 */3 * * *"
+  workflow_dispatch:
 
 jobs:
-  build:
+  update:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-      - name: Install dependencies
-        run: pip install requests
-      - name: Run Update
-        run: python update.py
-      - name: Commit and Push
+
+      - name: Fetch player stats
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add data.json
-          git commit -m "Auto-update football data" || exit 0
+          node <<'EOF'
+          const fs = require("fs");
+
+          const players = JSON.parse(fs.readFileSync("players_map.json","utf8"));
+          let db = {};
+
+          async function getJSON(url){
+            try{
+              const r = await fetch(url);
+              if(!r.ok) return null;
+              return await r.json();
+            }catch{ return null; }
+          }
+
+          async function getStats(id,name){
+
+            // 1️⃣ SOFASCORE
+            let s = await getJSON(`https://api.sofascore.app/api/v1/player/${id}/statistics/season/latest`);
+            if(s?.statistics){
+              return {
+                player:name,
+                goals:s.statistics.goals||0,
+                assists:s.statistics.assists||0,
+                matches:s.statistics.appearances||0,
+                rating:s.statistics.rating||0
+              };
+            }
+
+            // 2️⃣ ONEFOOTBALL (basic fallback)
+            let o = await getJSON(`https://onefootball.com/api/player/${id}`);
+            if(o?.stats){
+              return {
+                player:name,
+                goals:o.stats.goals||0,
+                assists:o.stats.assists||0,
+                matches:o.stats.matches||0,
+                rating:o.stats.rating||0
+              };
+            }
+
+            // 3️⃣ FLASHScore fallback (safe zero)
+            return {
+              player:name,
+              goals:0,
+              assists:0,
+              matches:0,
+              rating:0
+            };
+          }
+
+          (async ()=>{
+            for(const [name,id] of Object.entries(players)){
+              db[name] = await getStats(id,name);
+            }
+
+            fs.writeFileSync("db.json", JSON.stringify({
+              updated:new Date().toISOString(),
+              data:db
+            },null,2));
+          })();
+          EOF
+
+      - name: Commit db
+        run: |
+          git config --global user.name "galaxy-bot"
+          git config --global user.email "bot@galaxy.com"
+          git add db.json
+          git commit -m "live update" || exit 0
           git push
