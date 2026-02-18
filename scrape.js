@@ -9,24 +9,25 @@ const players = {
 async function scrapePlayer(name, url, page) {
   await page.goto(url, { waitUntil: "networkidle2", timeout: 0 });
 
-  // čekamo da se stats pojave
-  await page.waitForSelector("body", { timeout: 15000 });
+  // čekamo da se pojave zadnje utakmice
+  await page.waitForSelector("body", { timeout: 20000 });
 
   const data = await page.evaluate(() => {
     const text = document.body.innerText;
 
-    function find(label) {
-      const r = new RegExp(label + "\\s*(\\d+\\.?\\d*)");
-      const m = text.match(r);
-      return m ? m[1] : 0;
-    }
+    // hvata PRVU ocjenu tipa 7.4 ili 6.9
+    const ratingMatch = text.match(/\b\d\.\d\b/);
+    const rating = ratingMatch ? Number(ratingMatch[0]) : 0;
 
-    return {
-      goals: Number(find("Goals")),
-      assists: Number(find("Assists")),
-      matches: Number(find("Matches")),
-      rating: Number(find("Rating"))
-    };
+    // hvata minute tipa 90'
+    const minMatch = text.match(/(\d{1,3})'/);
+    const minutes = minMatch ? Number(minMatch[1]) : 0;
+
+    // hvata rezultat tipa 2\n1
+    const resMatch = text.match(/\n(\d)\n(\d)\n/);
+    const result = resMatch ? `${resMatch[1]}:${resMatch[2]}` : "-";
+
+    return { rating, minutes, result };
   });
 
   return { player: name, ...data };
@@ -47,8 +48,8 @@ async function scrapePlayer(name, url, page) {
       result[name] = await scrapePlayer(name, url, page);
       console.log("OK:", name);
     } catch (e) {
-      console.log("ERR:", name);
-      result[name] = { player: name, goals: 0, assists: 0, matches: 0, rating: 0 };
+      console.log("ERR:", name, e.message);
+      result[name] = { player: name, rating: 0, minutes: 0, result: "-" };
     }
   }
 
