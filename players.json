@@ -1,5 +1,38 @@
 [
   { "name": "modric", "league": "serie_a", "id": "modric-luka/bZWyoJnA" },
+  { "name": "leao", "league": "serie_a", "id": "leao-rafael/S8S999B6" },
+  { "name": "lautaro", "league": "serie_a", "id": "martinez-lautaro/8v98VzSj" },
+  { "name": "vlahovic", "league": "serie_a", "id": "vlahovic-dusan/88pY09mG" },
+  { "name": "lookman", "league": "serie_a", "id": "lookman-ademola/ncI0HwRj" },
+
   { "name": "bellingham", "league": "la_liga", "id": "bellingham-jude/0vgscFU0" },
-  { "name": "livaja", "league": "hnl", "id": "livaja-marko/Gv8WpWv6" }
+  { "name": "mbappe", "league": "la_liga", "id": "mbappe-kylian/88v9v9v9" },
+  { "name": "yamal", "league": "la_liga", "id": "yamal-lamine/p2P7qM59" },
+  { "name": "vinicius", "league": "la_liga", "id": "vinicius-junior/88pY09mG" },
+  { "name": "griezmann", "league": "la_liga", "id": "griezmann-antoine/r5r5r5r5" },
+
+  { "name": "haaland", "league": "premier_league", "id": "haaland-erling/88v9v9v9" },
+  { "name": "salah", "league": "premier_league", "id": "salah-mohamed/r5r5r5r5" },
+  { "name": "saka", "league": "premier_league", "id": "saka-bukayo/p2P7qM59" },
+  { "name": "palmer", "league": "premier_league", "id": "palmer-cole/ncI0HwRj" },
+  { "name": "foden", "league": "premier_league", "id": "foden-phil/8v98VzSj" },
+
+  { "name": "kane", "league": "bundesliga", "id": "kane-harry/r5r5r5r5" },
+  { "name": "wirtz", "league": "bundesliga", "id": "wirtz-florian/p2P7qM59" },
+  { "name": "musiala", "league": "bundesliga", "id": "musiala-jamal/ncI0HwRj" },
+  { "name": "guirassy", "league": "bundesliga", "id": "guirassy-serhou/8v98VzSj" },
+  { "name": "simons", "league": "bundesliga", "id": "simons-xavi/88pY09mG" },
+
+  { "name": "dembele", "league": "ligue_1", "id": "dembele-ousmane/r5r5r5r5" },
+  { "name": "barcola", "league": "ligue_1", "id": "barcola-bradley/p2P7qM59" },
+  { "name": "david", "league": "ligue_1", "id": "david-jonathan/ncI0HwRj" },
+  { "name": "lacazette", "league": "ligue_1", "id": "lacazette-alexandre/8v98VzSj" },
+  { "name": "greenwood", "league": "ligue_1", "id": "greenwood-mason/88pY09mG" }
+
+  { "name": "livaja", "league": "hnl", "id": "livaja-marko/Gv8WpWv6" },
+  { "name": "petkovic", "league": "hnl", "id": "petkovic-bruno/nL4vS0O1" },
+  { "name": "rakitic", "league": "hnl", "id": "rakitic-ivan/8v98VzSj" },
+  { "name": "pajac", "league": "hnl", "id": "pajac-marko/p2P7qM59" },
+  { "name": "fruk", "league": "hnl", "id": "fruk-toni/ncI0HwRj" }
+
 ]
