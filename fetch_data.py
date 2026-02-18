@@ -12,25 +12,35 @@ def get_player_stats(player_id):
     }
     
     try:
-        time.sleep(random.randint(3, 7))
-        response = requests.get(url, headers=headers, timeout=15)
-        if response.status_code != 200: return None
+        # Povećana pauza da nas ne blokiraju
+        time.sleep(random.randint(5, 10))
+        response = requests.get(url, headers=headers, timeout=20)
+        if response.status_code != 200: 
+            print(f"⚠️ Server vratio status {response.status_code}")
+            return None
         
         text = re.sub('<[^<]+?>', ' ', response.text)
         
         def extract_season(year):
+            if year not in text:
+                return {"rating":"0.0", "matches":"0", "goals":"0", "assists":"0", "yellow":"0"}
+            
             parts = text.split(year)
-            if len(parts) < 2: return {"rating":"0.0", "matches":"0", "goals":"0", "assists":"0", "yellow":"0"}
             chunk = parts[1][:300]
             nums = re.findall(r"(\d+\.\d+|\b\d+\b)", chunk)
-            i = 0 if (nums and "." in nums[0]) else -1
+            
+            if not nums:
+                return {"rating":"0.0", "matches":"0", "goals":"0", "assists":"0", "yellow":"0"}
+                
+            i = 0 if "." in nums[0] else -1
+            
             try:
                 return {
                     "rating":  nums[i] if i >= 0 else "0.0",
-                    "matches": nums[i+1],
-                    "goals":   nums[i+2],
-                    "assists": nums[i+3],
-                    "yellow":  nums[i+4]
+                    "matches": nums[i+1] if len(nums) > i+1 else "0",
+                    "goals":   nums[i+2] if len(nums) > i+2 else "0",
+                    "assists": nums[i+3] if len(nums) > i+3 else "0",
+                    "yellow":  nums[i+4] if len(nums) > i+4 else "0"
                 }
             except:
                 return {"rating":"0.0", "matches":"0", "goals":"0", "assists":"0", "yellow":"0"}
@@ -40,45 +50,47 @@ def get_player_stats(player_id):
             "lastSeason": extract_season("2024/2025")
         }
     except Exception as e:
-        print(f"Greška: {e}")
+        print(f"❌ Greška pri dohvaćanju: {e}")
         return None
 
-# --- GLAVNI DIO ---
 def main():
-    # Učitavamo tvoj popis od 15+ igrača
     if not os.path.exists('players.json'):
-        print("❌ ERROR: players.json ne postoji!")
+        print("❌ Nema players.json")
         return
 
     with open('players.json', 'r', encoding='utf-8') as f:
         players_list = json.load(f)
 
     db = {}
-    print(f"🚀 Bager kreće na {len(players_list)} igrača...")
+    print(f"🚀 Krećem na {len(players_list)} igrača...")
 
     for p in players_list:
-        p_id = p['id']
-        name = p['name'].lower() # Sprema kao "modric", "livaja"...
-        
+        name = p['name'].lower()
         print(f"⛏️  Kopam: {name}...")
-        stats = get_player_stats(p_id)
         
-        if stats:
-            # Spremamo DIREKTNO pod ime, bez liga i klubova (najsigurnije)
-            db[name] = {
-                "header": {
-                    "full_name": name.capitalize(),
-                    "club": "Football Club",
-                    "value": "Check TM"
-                },
-                "stats": stats,
-                "last_update": time.strftime("%H:%M")
-            }
+        try:
+            stats = get_player_stats(p['id'])
+            if stats:
+                db[name] = {
+                    "header": {
+                        "full_name": p['name'],
+                        "club": "Football Club",
+                        "value": "Check TM"
+                    },
+                    "stats": stats,
+                    "last_update": time.strftime("%H:%M")
+                }
+                print(f"✅ Uspješno: {name}")
+            else:
+                print(f"⚠️ Preskačem: {name} (nema podataka)")
+        except Exception as e:
+            print(f"❌ Ozbiljna greška kod {name}: {e}")
+            continue # Idi na idućeg igrača, nemoj ugasiti bager!
 
-    # Spremamo u master_db.json
     with open('master_db.json', 'w', encoding='utf-8') as f:
         json.dump(db, f, indent=2, ensure_ascii=False)
-    print("✅ master_db.json je sada PUN podataka!")
+    
+    print(f"✅ Gotovo! Spremljeno {len(db)} igrača.")
 
 if __name__ == "__main__":
     main()
