@@ -1,20 +1,22 @@
 {
-  "serie_a": {
-    "ac_milan": {
-      "modric": {
+  "la_liga": {
+    "modric": {
+      "header": {
+        "full_name": "modric",
+        "number": "??",
+        "position": "??",
+        "value": "0"
+      },
+      "stats": {
         "thisSeason": {
-          "rating": "7.3",
-          "matches": "23",
           "goals": "2",
           "assists": "3",
-          "yellow": "3"
+          "rating": "7.3"
         },
         "lastSeason": {
-          "rating": "7.1",
-          "matches": "35",
           "goals": "2",
           "assists": "6",
-          "yellow": "7"
+          "rating": "7.1"
         }
       }
     }
