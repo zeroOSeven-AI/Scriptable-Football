@@ -1,0 +1,32 @@
+name: VYRA Data Update
+
+on:
+  schedule:
+    - cron: '0 */4 * * *' # Svaka 4 sata
+  workflow_dispatch: # Omogućuje ručno pokretanje
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run Scraper
+        run: python fetch_data.py
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "VYRA-Bot"
+          git config --global user.email "bot@vyra.com"
+          git add master_db.json
+          git commit -m "Update player stats [skip ci]" || exit 0
+          git push
