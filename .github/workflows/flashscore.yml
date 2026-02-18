@@ -1,9 +1,9 @@
-name: FOOTBALL PLAYER CLOUD DATA
+name: VYRA Data Update
 
 on:
   schedule:
-    - cron: '0 */3 * * *' # Svaka 3 sata
-  workflow_dispatch:
+    - cron: '0 */4 * * *' # Svaka 4 sata
+  workflow_dispatch: # Omogućuje ručno pokretanje na gumb
 
 permissions:
   contents: write
@@ -14,22 +14,39 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      
+        with:
+          persist-credentials: true # Važno za push
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-          
-      - name: Install Dependencies
-        run: pip install requests
-        
-      - name: Run Master Bager
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run VYRA Scraper
         run: python fetch_data.py
-        
+
       - name: Commit and Push Changes
         run: |
-          git config --global user.name "zeroOSeven-AI-Bager"
-          git config --global user.email "bager@github.com"
-          git add master_db.json
-          git commit -m "Bager osvježio master_db.json" || exit 0
-          git push
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Provjera postoji li datoteka
+          if [ -f master_db.json ]; then
+            git add master_db.json
+            
+            # Commit samo ako ima stvarnih promjena
+            if git diff --staged --quiet; then
+              echo "Nema novih podataka."
+            else
+              git commit -m "VYRA: Automatsko osvježavanje podataka [skip ci]"
+              git push
+            fi
+          else
+            echo "Greška: master_db.json nije generiran!"
+            exit 1
+          fi
