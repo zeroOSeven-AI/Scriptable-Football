@@ -1,70 +1,64 @@
 import requests
+import re
 import json
 import time
-import random
-import re
 
-def get_player_stats(player_id):
-    url = f"https://www.flashscore.com/player/{player_id}/"
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-    }
-    
-    try:
-        time.sleep(random.randint(3, 7))
-        response = requests.get(url, headers=headers, timeout=15)
-        if response.status_code != 200: return None
-        
-        # Čistimo HTML da dobijemo čisti tekst kao u Scriptableu
-        text = re.sub('<[^<]+?>', ' ', response.text)
-        
-        def extract_season(year):
-            parts = text.split(year)
-            if len(parts) < 2: return {"rating":"0.0", "matches":"0", "goals":"0", "assists":"0", "yellow":"0"}
-            
-            # Uzimamo komad teksta nakon godine i tražimo brojeve
-            chunk = parts[1][:300]
-            # Traži decimale (rating) ili cijele brojeve
-            nums = re.findall(r"(\d+\.\d+|\b\d+\b)", chunk)
-            
-            # Ako je prvi broj rating (ima točku), index je 0, inače se pomiče
-            i = 0 if (nums and "." in nums[0]) else -1
-            
-            try:
-                return {
-                    "rating":  nums[i] if i >= 0 else "0.0",
-                    "matches": nums[i+1],
-                    "goals":   nums[i+2],
-                    "assists": nums[i+3],
-                    "yellow":  nums[i+4]
-                }
-            except:
-                return {"rating":"0.0", "matches":"0", "goals":"0", "assists":"0", "yellow":"0"}
-
-        return {
-            "thisSeason": extract_season("2025/2026"),
-            "lastSeason": extract_season("2024/2025")
+# 1. TVOJA LISTA IGRAČA S LINKOVIMA
+# Kad budeš dodavao nove, samo kopiraš ovaj blok
+players = [
+    {
+        "name": "modric",
+        "club": "Real Madrid", # Ili AC Milan kako si stavio
+        "league": "la_liga",
+        "links": {
+            "flash": "https://www.flashscore.de/spieler/modric-luka/bZWyoJnA/",
+            "sofa": "https://api.sofascore.com/api/v1/player/15466", # API je bolji od linka!
+            "tm": "https://www.transfermarkt.de/luka-modric/profil/spieler/27992"
         }
-    except Exception as e:
-        print(f"Greška: {e}")
-        return None
-
-# LISTA IGRAČA
-players_to_fetch = [
-    {"id": "modric-luka/bZWyoJnA", "name": "modric", "league": "serie_a", "club": "ac_milan"},
-    {"id": "bellingham-jude/0vgscFU0", "name": "bellingham", "league": "la_liga", "club": "real_madrid"}
+    }
 ]
 
-db = {}
-for p in players_to_fetch:
-    print(f"Bager kopa: {p['name']}...")
-    stats = get_player_stats(p['id'])
-    if stats:
-        if p['league'] not in db: db[p['league']] = {}
-        if p['club'] not in db: db[p['league']][p['club']] = {}
-        db[p['league']][p['club']][p['name']] = stats
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+}
 
-with open('master_db.json', 'w', encoding='utf-8') as f:
-    json.dump(db, f, indent=2, ensure_ascii=False)
+def get_data():
+    master_db = {}
 
-print("✅ master_db.json osvježen točnim podacima.")
+    for p in players:
+        print(f"🚀 VYRA AGGREGATOR: Sakupljam sve za {p['name']}...")
+        
+        # --- IZVOR 1: SOFASCORE (API) ---
+        # Ovo čupa: Vrijednost, Broj, Poziciju, Godine
+        sofa_res = requests.get(p['links']['sofa'], headers=headers).json()
+        player_info = sofa_res.get('player', {})
+        
+        # --- IZVOR 2: FLASHSCORE (SCRAPER) ---
+        # Ovo čupa: Golove i asiste (koristimo onaj tvoj "snajper")
+        flash_res = requests.get(p['links']['flash'], headers=headers).text
+        # (Ovdje ide ona naša regex logika za sezone...)
+        
+        # --- SPAJANJE U JEDAN KOŠ ---
+        if p['league'] not in master_db: master_db[p['league']] = {}
+        
+        master_db[p['league']][p['name']] = {
+            "header": {
+                "full_name": player_info.get('name', p['name']),
+                "number": player_info.get('jerseyNumber', '??'),
+                "position": player_info.get('position', '??'),
+                "value": player_info.get('proposedMarketValueRaw', {}).get('value', '0')
+            },
+            "stats": {
+                "thisSeason": {"goals": "2", "assists": "3", "rating": "7.3"}, # Primjer
+                "lastSeason": {"goals": "2", "assists": "6", "rating": "7.1"}
+            }
+        }
+        
+        time.sleep(2) # Da nas ne blokiraju
+
+    # SPREMANJE
+    with open('master_db.json', 'w', encoding='utf-8') as f:
+        json.dump(master_db, f, indent=2, ensure_ascii=False)
+
+if __name__ == "__main__":
+    get_data()
