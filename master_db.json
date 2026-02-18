@@ -1,1 +1,26 @@
-
+{
+  "modric": {
+    "header": {
+      "full_name": "modric",
+      "club": "Football Club",
+      "value": "Check TM"
+    },
+    "stats": {
+      "thisSeason": {
+        "rating": "7.3",
+        "matches": "23",
+        "goals": "2",
+        "assists": "3",
+        "yellow": "3"
+      },
+      "lastSeason": {
+        "rating": "7.1",
+        "matches": "35",
+        "goals": "2",
+        "assists": "6",
+        "yellow": "7"
+      }
+    },
+    "last_update": "23:52"
+  }
+}
