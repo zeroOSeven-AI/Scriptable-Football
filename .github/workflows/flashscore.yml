@@ -1,30 +1,34 @@
-name: VYRA MEGA CLOUD UPDATE
+name: FOOTBALL PLAYER CLOUD DATA
 
 on:
   schedule:
-    - cron: '0 */2 * * *' # Svaka dva sata
-  workflow_dispatch:
+    - cron: '0 */2 * * *' # Svaki par sati
+  workflow_dispatch: # Omogućuje ti da pokreneš ručno kad želiš
 
 permissions:
-  contents: write
+  contents: write # KLJUČNO: Dozvola bageru da piše u master_db.json
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
+          
       - name: Install dependencies
-        run: pip install requests
-      - name: Run Master Bager
+        run: pip install requests # KLJUČNO: Instalira bageru alat za kopanje
+        
+      - name: Run Bager
         run: python fetch_data.py
+        
       - name: Commit changes
         run: |
-          git config --global user.name "VYRA-Bot"
-          git config --global user.email "bot@vyra.com"
+          git config --global user.name "VYRA-Bager"
+          git config --global user.email "bager@vyra.com"
           git add master_db.json
-          git commit -m "Automatski update baze [skip ci]" || exit 0
+          git commit -m "Bager osvježio podatke" || exit 0
           git push
