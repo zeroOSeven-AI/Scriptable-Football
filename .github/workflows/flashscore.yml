@@ -27,8 +27,8 @@ jobs:
         
       - name: Commit and Push
         run: |
-          git config --global user.name "VYRA-Bager"
-          git config --global user.email "bager@vyra.com"
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
           git add master_db.json
-          git commit -m "Automatsko osvježavanje baze" || echo "Nema promjena za commit"
-          git push || echo "Nema promjena za push"
+          git commit -m "Bager: Osvježeni podaci" || exit 0
+          git push
