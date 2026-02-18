@@ -12,7 +12,6 @@ def get_player_stats(player_id):
     }
     
     try:
-        # Tvoja provjerena pauza
         time.sleep(random.randint(3, 7))
         response = requests.get(url, headers=headers, timeout=15)
         if response.status_code != 200: return None
@@ -22,11 +21,9 @@ def get_player_stats(player_id):
         def extract_season(year):
             parts = text.split(year)
             if len(parts) < 2: return {"rating":"0.0", "matches":"0", "goals":"0", "assists":"0", "yellow":"0"}
-            
             chunk = parts[1][:300]
             nums = re.findall(r"(\d+\.\d+|\b\d+\b)", chunk)
             i = 0 if (nums and "." in nums[0]) else -1
-            
             try:
                 return {
                     "rating":  nums[i] if i >= 0 else "0.0",
@@ -46,42 +43,42 @@ def get_player_stats(player_id):
         print(f"Greška: {e}")
         return None
 
-# --- AUTOMATSKO ČITANJE LISTE ---
+# --- GLAVNI DIO ---
 def main():
-    # Učitaj igrače iz tvog players.json filea
+    # Učitavamo tvoj popis od 15+ igrača
     if not os.path.exists('players.json'):
-        print("❌ Greška: Ne postoji players.json!")
+        print("❌ ERROR: players.json ne postoji!")
         return
 
     with open('players.json', 'r', encoding='utf-8') as f:
-        players_to_fetch = json.load(f)
+        players_list = json.load(f)
 
     db = {}
-    print(f"🚀 Pokrećem bager za {len(players_to_fetch)} igrača...")
+    print(f"🚀 Bager kreće na {len(players_list)} igrača...")
 
-    for p in players_to_fetch:
-        # Koristimo podatke iz JSON-a
+    for p in players_list:
         p_id = p['id']
-        name = p['name'].lower()
-        # Ako u players.json nemaš ligu ili klub, stavi default da ne pukne
-        liga = p.get('league', 'ostalo').lower()
-        club = p.get('club', 'nepoznato').lower()
+        name = p['name'].lower() # Sprema kao "modric", "livaja"...
         
-        print(f"⛏️  Bager kopa: {name}...")
+        print(f"⛏️  Kopam: {name}...")
         stats = get_player_stats(p_id)
         
         if stats:
-            # Kreiramo strukturu točno kako ti želiš
-            if liga not in db: db[liga] = {}
-            if club not in db: db[liga][club] = {}
-            
-            db[liga][club][name] = stats
+            # Spremamo DIREKTNO pod ime, bez liga i klubova (najsigurnije)
+            db[name] = {
+                "header": {
+                    "full_name": name.capitalize(),
+                    "club": "Football Club",
+                    "value": "Check TM"
+                },
+                "stats": stats,
+                "last_update": time.strftime("%H:%M")
+            }
 
-    # Spremanje u master_db.json
+    # Spremamo u master_db.json
     with open('master_db.json', 'w', encoding='utf-8') as f:
         json.dump(db, f, indent=2, ensure_ascii=False)
-
-    print("✅ master_db.json je uspješno generiran.")
+    print("✅ master_db.json je sada PUN podataka!")
 
 if __name__ == "__main__":
     main()
