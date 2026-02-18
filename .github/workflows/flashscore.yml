@@ -29,14 +29,20 @@ jobs:
         run: python fetch_data.py
 
       - name: Commit and Push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Force set remote URL with token
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          
           git add master_db.json
-          # Provjera ima li uopće promjena prije commita da ne baca grešku
+          
           if git diff --quiet && git diff --staged --quiet; then
-            echo "Nema promjena za commit."
+            echo "Nema promjena."
           else
-            git commit -m "VYRA: Osvježeni podaci o igračima [skip ci]"
+            git commit -m "VYRA Update [skip ci]"
             git push origin main
           fi
