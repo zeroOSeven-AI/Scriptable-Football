@@ -2,11 +2,11 @@ name: VYRA MASTER BAGER
 
 on:
   schedule:
-    - cron: '0 * * * *' # Bager se pali svaki puni sat
-  workflow_dispatch: # Gumb za ručno pokretanje
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 permissions:
-  contents: write # Dozvola bageru da piše u tvoj repozitorij
+  contents: write
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Povlači cijelu povijest za miran 'git pull'
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -27,26 +27,24 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
+      - name: Prepare Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          # Prvo počistimo teren i povučemo sve s GitHuba
+          git pull origin main --rebase
+
       - name: Run Master Bager
         run: python fetch_data.py
 
       - name: Commit and Push Changes
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # 1. Osiguraj da smo na pravoj grani i povuci promjene
-          git fetch origin main
-          
-          # 2. Dodaj datoteke koje je bager promijenio
+          # Sada dodajemo ono što je bager iskopao
           git add master_db.json last_index.txt
           
-          # 3. Ako ima promjena, napravi commit i push uz rebase
           if git diff --staged --quiet; then
-            echo "Nema novih podataka za spremanje."
+            echo "Nema novih podataka."
           else
-            # Rebase osigurava da bager ne pregazi tvoje ručne izmjene u players.json
-            git pull origin main --rebase --strategy-option=theirs
             git commit -m "VYRA: Osvježeni podaci [skip ci]"
             git push origin main
           fi
