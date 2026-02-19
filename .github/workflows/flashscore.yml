@@ -27,24 +27,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Prepare Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          # Prvo počistimo teren i povučemo sve s GitHuba
-          git pull origin main --rebase
-
       - name: Run Master Bager
         run: python fetch_data.py
 
       - name: Commit and Push Changes
         run: |
-          # Sada dodajemo ono što je bager iskopao
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
           git add master_db.json last_index.txt
           
           if git diff --staged --quiet; then
             echo "Nema novih podataka."
           else
+            # Rješavanje sukoba: povuci tuđe, nalijepi svoje
+            git pull origin main --rebase --strategy-option=theirs
             git commit -m "VYRA: Osvježeni podaci [skip ci]"
             git push origin main
           fi
