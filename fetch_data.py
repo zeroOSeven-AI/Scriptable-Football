@@ -1,77 +1,48 @@
-import requests
-import json
-import time
-import random
+import cloudscraper
+from bs4 import BeautifulSoup
 import re
-import os
-from datetime import datetime, timedelta
+import json
 
-# --- CONFIGURATION ---
-DB_FILE = 'master_db.json'
-PLAYERS_FILE = 'players.json'
-
-def get_flashscore_stats(flash_id):
-    """Čisti scraping Flashscore-a za deep stats"""
-    url = f"https://www.flashscore.com/player/{flash_id}/"
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+def scrape_player_data(url):
+    # Inicijalizacija scrapera koji zaobilazi Cloudflare zaštitu
+    scraper = cloudscraper.create_scraper()
+    
     try:
-        time.sleep(random.uniform(2, 4))
-        r = requests.get(url, headers=headers, timeout=15)
-        if r.status_code != 200: return None
-        text = re.sub('<[^<]+?>', ' ', r.text)
+        response = scraper.get(url)
+        if response.status_code != 200:
+            return {"error": f"Status code: {response.status_code}"}
         
-        def extract(year):
-            if year not in text: return {"rating": "0.0", "matches": "0", "goals": "0", "assists": "0", "yellow": "0", "red": "0"}
-            try:
-                chunk = text.split(year)[1][:400]
-                nums = re.findall(r"(\d+\.\d+|\b\d+\b)", chunk)
-                i = 0 if "." in nums[0] else -1
-                return {
-                    "rating": nums[i] if i >= 0 else "0.0",
-                    "matches": nums[i+1] if len(nums) > i+1 else "0",
-                    "goals": nums[i+2] if len(nums) > i+2 else "0",
-                    "assists": nums[i+3] if len(nums) > i+3 else "0",
-                    "yellow": nums[i+4] if len(nums) > i+4 else "0",
-                    "red": nums[i+5] if len(nums) > i+5 else "0"
-                }
-            except: return {"rating": "0.0", "matches": "0", "goals": "0", "assists": "0", "yellow": "0", "red": "0"}
+        soup = BeautifulSoup(response.text, 'html.parser')
+        text_data = soup.get_text(separator=' ')
 
-        return {"thisSeason": extract("2025/2026"), "lastSeason": extract("2024/2025")}
-    except: return None
-
-def main():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    players_path = os.path.join(current_dir, PLAYERS_FILE)
-    db_path = os.path.join(current_dir, DB_FILE)
-    
-    if not os.path.exists(players_path): return
-    with open(players_path, 'r', encoding='utf-8') as f: all_players = json.load(f)
-
-    db = {}
-    ts = (datetime.utcnow() + timedelta(hours=1)).strftime("%d.%m. %H:%M")
-    processed_count = 0
-
-    for p in all_players:
-        print(f"Bager kopa: {p['name']}")
-        stats = get_flashscore_stats(p.get('flash_id'))
+        # --- REGEX OPERACIJA (Čupanje iz onog što si mi poslao) ---
         
-        if stats:
-            league = p.get('league', 'other').lower()
-            club = p.get('club', 'unknown').lower()
-            if league not in db: db[league] = {}
-            if club not in db[league]: db[league][club] = {}
-            
-            db[league][club][p['name'].lower()] = {
-                "stats": stats,
-                "last_update": ts
-            }
-            processed_count += 1
-            print(f"  -> Uspješno izvučeni kartoni i golovi za {p['name']}")
+        # 1. Market Value (traži simbol € i broj nakon kojeg slijedi m ili k)
+        market_val_match = re.search(r'Market value:\s*(€[\d.]+[mk])', text_data)
+        market_value = market_val_match.group(1) if market_val_match else "TBA"
 
-    with open(db_path, 'w', encoding='utf-8') as f:
-        json.dump(db, f, indent=2, ensure_ascii=False)
-    
-    print(f"Ukupno spremljeno: {processed_count} igrača.")
+        # 2. Contract Expires (traži datum u formatu DD.MM.YYYY)
+        contract_match = re.search(r'Contract expires:\s*(\d{2}\.\d{2}\.\d{4})', text_data)
+        contract_until = contract_match.group(1) if contract_match else "TBA"
 
-if __name__ == "__main__":
-    main()
+        # 3. Zadnje ocjene (traži brojeve poput 7.0, 7.6 koji stoje uz minute 90')
+        ratings = re.findall(r'(\d\.\d)\s*\d{1,2}\'', text_data)
+        last_form = ratings[:5] if ratings else []
+
+        return {
+            "market_value": market_value,
+            "contract_until": contract_until,
+            "form_ratings": last_form
+        }
+
+    except Exception as e:
+        return {"error": str(e)}
+
+# Primjer korištenja za Modrića
+player_url = "https://www.flashscore.com/player/modric-luka/bZWyoJnA/"
+data = scrape_player_data(player_url)
+
+# Printamo rezultat da vidiš kako ga bager sprema
+print(json.dumps(data, indent=2))
+
+# Ovdje bi išao tvoj kod koji ovaj 'data' sprema u master_db.json na GitHub
