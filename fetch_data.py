@@ -5,82 +5,71 @@ import json
 import os
 import time
 
-def scrape_player_data(url):
-    # Simuliramo pravi Chrome browser na Windowsima
+def scrape_full_data(url):
     scraper = cloudscraper.create_scraper(browser={'browser': 'chrome','platform': 'windows','mobile': False})
     try:
         response = scraper.get(url, timeout=20)
-        if response.status_code != 200:
-            print(f"Greška: Status {response.status_code}")
-            return None
-        
+        if response.status_code != 200: return None
         soup = BeautifulSoup(response.text, 'html.parser')
-        text_data = soup.get_text(separator=' ')
+        txt = soup.get_text(separator=' ')
 
-        # --- REGEX ZA ČUPANJE ---
-        # Tržišna vrijednost (npr. €4.0m ili €180.0m)
-        mv_match = re.search(r'Market value:\s*(€[\d.]+[mk])', text_data, re.IGNORECASE)
-        market_value = mv_match.group(1) if mv_match else "TBA"
-
-        # Istek ugovora
-        ce_match = re.search(r'expires:\s*(\d{2}\.\d{2}\.\d{4})', text_data)
-        contract_until = ce_match.group(1) if ce_match else "TBA"
-
-        # Zadnje ocjene (traži npr. 7.6 90')
-        ratings = re.findall(r'(\d\.\d)\s*\d{1,2}\'', text_data)
-        last_form = ratings[:5] if ratings else []
+        # --- EKSTRAKCIJA SVEGA ---
+        # 1. Novci (Market Value)
+        mv = re.search(r'Market value:\s*(€[\d.]+[mk])', txt, re.IGNORECASE)
+        # 2. Ugovor
+        ce = re.search(r'expires:\s*(\d{2}\.\d{2}\.\d{4})', txt)
+        # 3. Ocjene (Forma)
+        rt = re.findall(r'(\d\.\d)\s*\d{1,2}\'', txt)
+        # 4. Pozicija i Godine (za svaki slučaj ako zatreba)
+        age = re.search(r'Age:\s*(\d+)', txt)
+        pos = re.search(r'([a-zA-Z]+)\s*\(AC Milan\)', txt) # Dinamički hvata poziciju uz klub
 
         return {
-            "market_value": market_value,
-            "contract_until": contract_until,
-            "form_ratings": last_form
+            "market_value": mv.group(1) if mv else "TBA",
+            "contract": ce.group(1) if ce else "TBA",
+            "ratings": rt[:5] if rt else [],
+            "age": age.group(1) if age else "N/A",
+            "last_update": time.strftime("%Y-%m-%d %H:%M:%S")
         }
     except Exception as e:
-        print(f"Scrape error: {e}")
+        print(f"Greška pri čupanju: {e}")
         return None
 
 def main():
-    if not os.path.exists('players.json'):
-        print("Greška: players.json ne postoji!")
-        return
-
+    # Učitaj igrače
     with open('players.json', 'r', encoding='utf-8') as f:
         players = json.load(f)
 
-    # Učitaj staru bazu da se ne obriše sve ako jedan scrape faila
+    # Učitaj staru bazu - KLJUČNO: NE BRISATI NIŠTA
     master_db = {}
     if os.path.exists('master_db.json'):
         with open('master_db.json', 'r', encoding='utf-8') as f:
-            try:
-                master_db = json.load(f)
-            except:
-                master_db = {}
+            try: master_db = json.load(f)
+            except: master_db = {}
 
-    for player in players:
-        p_name = player.get('name', '').lower()
-        f_id = player.get('flash_id') # Čita tvoje novo polje!
+    for p in players:
+        p_name = p.get('name', '').lower()
+        f_id = p.get('flash_id')
         
         if f_id:
-            url = f"https://www.flashscore.com/player/{f_id}/"
-            print(f"🕵️ Bager kopa za: {p_name}...")
+            print(f"💰 Čupam lovu i podatke za: {p_name}...")
+            scraped = scrape_full_data(f"https://www.flashscore.com/player/{f_id}/")
             
-            new_data = scrape_player_data(url)
-            if new_data:
-                # Organiziramo JSON da ga Scriptable lako čita
+            if scraped:
+                # Ako igrač već postoji u bazi, ne brišemo ga, nego DODAJEMO u njegovu granu
                 if p_name not in master_db:
                     master_db[p_name] = {}
                 
-                master_db[p_name]["flashscore"] = new_data
-                print(f"✅ Nađeno: {new_data['market_value']} | Ocjene: {len(new_data['form_ratings'])}")
+                # Kreiramo ili osvježavamo 'flashscore' granu
+                master_db[p_name]["flashscore"] = scraped
+                print(f"✅ Povučeno: {scraped['market_value']} i {len(scraped['ratings'])} ocjena.")
             
-            time.sleep(2) # Pauza da nas ne blokiraju
-        else:
-            print(f"⚠️ Preskačem {p_name}, fali 'flash_id' u players.json")
+            time.sleep(3) # Polako da nas ne skuže
 
-    # Finalno spremanje u master_db.json
+    # Spremi sve nazad
     with open('master_db.json', 'w', encoding='utf-8') as f:
         json.dump(master_db, f, indent=2, ensure_ascii=False)
-    print("🚀 Master DB uspješno ažuriran!")
+    print("🚀 Sve je u bazi, novci osigurani.")
 
 if __name__ == "__main__":
     main()
