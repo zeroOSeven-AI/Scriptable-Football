@@ -1,53 +1,43 @@
 import cloudscraper
 from bs4 import BeautifulSoup
-import re
-import json
+import re, json
 from datetime import datetime
 
 BASE = "https://www.flashscore.com/player/"
 
-with open("players.json", "r", encoding="utf-8") as f:
+with open("players.json", encoding="utf-8") as f:
     PLAYERS = json.load(f)
 
 scraper = cloudscraper.create_scraper()
 
-def scrape_player(player):
-    url = BASE + player["flash_id"] + "/"
+def scrape(url):
+    r = scraper.get(url, timeout=30)
+    soup = BeautifulSoup(r.text, "html.parser")
+    text = soup.get_text(" ")
 
-    try:
-        r = scraper.get(url, timeout=30)
-        if r.status_code != 200:
-            return {"error": f"status {r.status_code}"}
+    def find(pattern):
+        m = re.search(pattern, text)
+        return m.group(1) if m else None
 
-        soup = BeautifulSoup(r.text, "html.parser")
-        text = soup.get_text(" ")
-
-        market = re.search(r"Market value:\s*(€[\d.]+[mk])", text)
-        contract = re.search(r"Contract expires:\s*(\d{2}\.\d{2}\.\d{4})", text)
-        ratings = re.findall(r"(\d\.\d)\s*\d{1,2}'", text)
-
-        return {
-            "market_value": market.group(1) if market else None,
-            "contract_until": contract.group(1) if contract else None,
-            "form_ratings": ratings[:5]
-        }
-
-    except Exception as e:
-        return {"error": str(e)}
-
+    return {
+        "market_value": find(r"Market value:\s*(€[\d.]+[mk])"),
+        "contract_until": find(r"Contract expires:\s*(\d{2}\.\d{2}\.\d{4})"),
+        "rating": (re.findall(r"(\d\.\d)\s*\d{1,2}'", text) or [None])[0]
+    }
 
 db = {}
 
 for p in PLAYERS:
-    print("Scraping:", p["name"])
-    db[p["name"]] = scrape_player(p)
+    try:
+        url = BASE + p["flash_id"] + "/"
+        print("Scraping:", p["name"])
+        db[p["name"]] = scrape(url)
+    except Exception as e:
+        db[p["name"]] = {"error": str(e)}
 
 with open("master_db.json", "w", encoding="utf-8") as f:
     json.dump(
-        {
-            "updated": datetime.utcnow().isoformat(),
-            "data": db
-        },
+        {"updated": datetime.utcnow().isoformat(), "data": db},
         f,
         indent=2,
         ensure_ascii=False
