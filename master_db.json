@@ -3,35 +3,40 @@
     "flashscore": {
       "market_value": "TBA",
       "contract_until": "TBA",
-      "form_ratings": []
+      "form_ratings": [],
+      "last_sync": "2026-02-19 17:58:56"
     }
   },
   "leao": {
     "flashscore": {
       "market_value": "TBA",
       "contract_until": "TBA",
-      "form_ratings": []
+      "form_ratings": [],
+      "last_sync": "2026-02-19 17:58:59"
     }
   },
   "bellingham": {
     "flashscore": {
       "market_value": "TBA",
       "contract_until": "TBA",
-      "form_ratings": []
+      "form_ratings": [],
+      "last_sync": "2026-02-19 17:59:03"
     }
   },
   "mbappe": {
     "flashscore": {
       "market_value": "TBA",
       "contract_until": "TBA",
-      "form_ratings": []
+      "form_ratings": [],
+      "last_sync": "2026-02-19 17:59:06"
     }
   },
   "vinicius": {
     "flashscore": {
       "market_value": "TBA",
       "contract_until": "TBA",
-      "form_ratings": []
+      "form_ratings": [],
+      "last_sync": "2026-02-19 17:59:09"
     }
   }
 }
