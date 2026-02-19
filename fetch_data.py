@@ -6,84 +6,115 @@ import re
 import os
 from datetime import datetime, timedelta
 
+# POSTAVKE BATCHA
+BATCH_SIZE = 50 
+INDEX_FILE = 'last_index.txt'
+
 def get_player_stats(player_id):
     url = f"https://www.flashscore.com/player/{player_id}/"
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'}
     
     try:
-        # ODGODA: 7 do 15 sekundi (Budi strpljiv, ovo spašava bager)
-        time.sleep(random.uniform(7, 15))
+        time.sleep(random.uniform(5, 10))
+        r = requests.get(url, headers=headers, timeout=20)
+        if r.status_code != 200: return None
         
-        response = requests.get(url, headers=headers, timeout=20)
-        if response.status_code != 200: 
-            print(f"⚠️ Server vratio {response.status_code} za {player_id}")
-            return None
+        # Čistimo HTML ali ostavljamo više teksta za header podatke
+        full_text = re.sub('<[^<]+?>', ' ', r.text)
         
-        text = re.sub('<[^<]+?>', ' ', response.text)
+        # --- EKSTRAKCIJA HEADER PODATAKA (Rođenje, Zemlja) ---
+        birthday = "Unknown"
+        country = "Unknown"
         
+        # Tražimo datum (npr. 24.06.1987)
+        birth_match = re.search(r"(\d{2}\.\d{2}\.\d{4})", full_text)
+        if birth_match: birthday = birth_match.group(1)
+        
+        # Nacionalnost se obično nalazi blizu imena ili u specifičnom nizu
+        # Ovo je pojednostavljena verzija; Flashscore često koristi ikone, 
+        # ali u tekstu ostane naziv države pored profila.
+        country_match = re.search(r"Nationality:\s*([A-Za-z\s]+)", full_text)
+        if country_match: country = country_match.group(1).strip()
+
         def extract_season(year):
-            if year not in text: return {"rating":"0.0", "matches":"0", "goals":"0", "assists":"0", "yellow":"0"}
+            if year not in full_text: return {"rating":"0.0", "matches":"0", "goals":"0", "assists":"0"}
+            parts = full_text.split(year)
+            chunk = parts[1][:400]
+            nums = re.findall(r"(\d+\.\d+|\b\d+\b)", chunk)
+            i = 0 if (nums and "." in nums[0]) else -1
             try:
-                parts = text.split(year)
-                chunk = parts[1][:400]
-                nums = re.findall(r"(\d+\.\d+|\b\d+\b)", chunk)
-                if not nums: return {"rating":"0.0", "matches":"0", "goals":"0", "assists":"0", "yellow":"0"}
-                i = 0 if "." in nums[0] else -1
                 return {
                     "rating": nums[i] if i >= 0 else "0.0",
                     "matches": nums[i+1] if len(nums) > i+1 else "0",
                     "goals": nums[i+2] if len(nums) > i+2 else "0",
-                    "assists": nums[i+3] if len(nums) > i+3 else "0",
-                    "yellow": nums[i+4] if len(nums) > i+4 else "0"
+                    "assists": nums[i+3] if len(nums) > i+3 else "0"
                 }
-            except: return {"rating":"0.0", "matches":"0", "goals":"0", "assists":"0", "yellow":"0"}
+            except: return {"rating":"0.0", "matches":"0", "goals":"0", "assists":"0"}
 
-        return {"thisSeason": extract_season("2025/2026"), "lastSeason": extract_season("2024/2025")}
-    except Exception as e:
-        print(f"❌ Greška na mreži: {e}")
-        return None
+        return {
+            "info": {"birthday": birthday, "country": country},
+            "stats": {"thisSeason": extract_season("2025/2026"), "lastSeason": extract_season("2024/2025")}
+        }
+    except: return None
 
 def main():
-    if not os.path.exists('players.json'):
-        print("❌ Nema players.json!")
-        return
-
+    # 1. Učitaj sve igrače
+    if not os.path.exists('players.json'): return
     with open('players.json', 'r', encoding='utf-8') as f:
-        players_list = json.load(f)
+        all_players = json.load(f)
 
+    # 2. Provjeri gdje smo stali
+    start_idx = 0
+    if os.path.exists(INDEX_FILE):
+        with open(INDEX_FILE, 'r') as f:
+            start_idx = int(f.read().strip())
+    
+    if start_idx >= len(all_players): start_idx = 0
+
+    # 3. Odredi batch (npr. od 50 do 100)
+    end_idx = start_idx + BATCH_SIZE
+    current_batch = all_players[start_idx:end_idx]
+    
+    # 4. Učitaj postojeću bazu da je ne obrišemo
     db = {}
-    # Naše vrijeme (Hrvatska)
-    hr_vrijeme = (datetime.utcnow() + timedelta(hours=1)).strftime("%H:%M")
+    if os.path.exists('master_db.json'):
+        with open('master_db.json', 'r', encoding='utf-8') as f:
+            db = json.load(f)
 
-    print(f"🚀 Počinjem kopanje za {len(players_list)} igrača...")
+    hr_vrijeme = (datetime.utcnow() + timedelta(hours=1)).strftime("%d.%m. %H:%M")
 
-    for p in players_list:
+    print(f"🚀 Batch: {start_idx} do {min(end_idx, len(all_players))}. Ukupno: {len(all_players)}")
+
+    for p in current_batch:
         name = p['name'].lower()
-        print(f"⛏️  Kopam: {name}...")
+        liga = p.get('league', 'ostalo').lower()
+        klub = p.get('club', 'nepoznato').lower()
         
-        # OVO JE KLJUČ: Try/Except unutar petlje
-        try:
-            stats = get_player_stats(p['id'])
-            if stats:
-                db[name] = {
-                    "header": {"full_name": p['name'], "club": "Football Club", "value": "Check TM"},
-                    "stats": stats,
-                    "last_update": hr_vrijeme
-                }
-                print(f"✅ Uspješno: {name}")
-            else:
-                print(f"⚠️ Preskačem {name} (stats su None)")
-        except Exception as e:
-            print(f"🚨 Kritična greška kod {name}, idem dalje: {e}")
-            continue 
+        print(f"⛏️  Kopam: {name}...")
+        data = get_player_stats(p['id'])
+        
+        if data:
+            if liga not in db: db[liga] = {}
+            if klub not in db[liga]: db[liga][klub] = {}
+            
+            db[liga][klub][name] = {
+                "header": {
+                    "full_name": p['name'],
+                    "birthday": data['info']['birthday'],
+                    "country": data['info']['country']
+                },
+                "stats": data['stats'],
+                "last_update": hr_vrijeme
+            }
 
-    # Čak i ako neki igrači nisu uspjeli, spremi ono što jesi izvukao!
-    if db:
-        with open('master_db.json', 'w', encoding='utf-8') as f:
-            json.dump(db, f, indent=2, ensure_ascii=False)
-        print(f"✅ Baza osvježena. Ukupno igrača: {len(db)}")
-    else:
-        print("❌ Ništa nije spremljeno jer nema podataka.")
+    # 5. Spremi bazu i novi index
+    with open('master_db.json', 'w', encoding='utf-8') as f:
+        json.dump(db, f, indent=2, ensure_ascii=False)
+    
+    with open(INDEX_FILE, 'w') as f:
+        f.write(str(end_idx if end_idx < len(all_players) else 0))
+
+    print(f"✅ Batch gotov. Idući put krećem od: {end_idx}")
 
 if __name__ == "__main__":
     main()
