@@ -2,8 +2,8 @@ name: VYRA MASTER BAGER
 
 on:
   schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
+    - cron: '0 * * * *' # Pali se svaki puni sat
+  workflow_dispatch: # Gumb za ručno pokretanje
 
 permissions:
   contents: write
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # Važno za rebase
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -35,13 +35,24 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
+          # 1. Dodaj promjene koje je bager napravio
           git add master_db.json last_index.txt
           
+          # 2. Privremeno ih skloni u stranu (stash) da pull prođe glatko
+          git stash
+          
+          # 3. Povuci zadnje stanje s GitHuba
+          git pull origin main --rebase
+          
+          # 4. Vrati bagerove promjene natrag u igru
+          # Ako nema promjena, 'pop' će javiti grešku pa koristimo || true da build ne pukne
+          git stash pop || true
+          
+          # 5. Ponovno dodaj i provjeri ima li se što za commitati
+          git add master_db.json last_index.txt
           if git diff --staged --quiet; then
-            echo "Nema novih podataka."
+            echo "Nema novih podataka za slanje."
           else
-            # Rješavanje sukoba: povuci tuđe, nalijepi svoje
-            git pull origin main --rebase --strategy-option=theirs
             git commit -m "VYRA: Osvježeni podaci [skip ci]"
             git push origin main
           fi
