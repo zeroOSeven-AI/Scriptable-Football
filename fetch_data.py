@@ -5,71 +5,86 @@ import json
 import os
 import time
 
-def scrape_full_data(url):
+def scrape_player_details(url):
+    # Initializing scraper to bypass Cloudflare
     scraper = cloudscraper.create_scraper(browser={'browser': 'chrome','platform': 'windows','mobile': False})
     try:
         response = scraper.get(url, timeout=20)
-        if response.status_code != 200: return None
+        if response.status_code != 200:
+            print(f"Error: Status {response.status_code} for URL")
+            return None
+        
         soup = BeautifulSoup(response.text, 'html.parser')
-        txt = soup.get_text(separator=' ')
+        raw_text = soup.get_text(separator=' ')
 
-        # --- EKSTRAKCIJA SVEGA ---
-        # 1. Novci (Market Value)
-        mv = re.search(r'Market value:\s*(€[\d.]+[mk])', txt, re.IGNORECASE)
-        # 2. Ugovor
-        ce = re.search(r'expires:\s*(\d{2}\.\d{2}\.\d{4})', txt)
-        # 3. Ocjene (Forma)
-        rt = re.findall(r'(\d\.\d)\s*\d{1,2}\'', txt)
-        # 4. Pozicija i Godine (za svaki slučaj ako zatreba)
-        age = re.search(r'Age:\s*(\d+)', txt)
-        pos = re.search(r'([a-zA-Z]+)\s*\(AC Milan\)', txt) # Dinamički hvata poziciju uz klub
+        # --- DATA EXTRACTION (English Keys) ---
+        
+        # Market Value Extraction
+        mv_match = re.search(r'Market value:\s*(€[\d.]+[mk])', raw_text, re.IGNORECASE)
+        market_value = mv_match.group(1) if mv_match else "TBA"
+
+        # Contract Expiration Extraction
+        ce_match = re.search(r'expires:\s*(\d{2}\.\d{2}\.\d{4})', raw_text)
+        contract_until = ce_match.group(1) if ce_match else "TBA"
+
+        # Recent Ratings Extraction
+        ratings = re.findall(r'(\d\.\d)\s*\d{1,2}\'', raw_text)
+        form_ratings = ratings[:5] if ratings else []
 
         return {
-            "market_value": mv.group(1) if mv else "TBA",
-            "contract": ce.group(1) if ce else "TBA",
-            "ratings": rt[:5] if rt else [],
-            "age": age.group(1) if age else "N/A",
-            "last_update": time.strftime("%Y-%m-%d %H:%M:%S")
+            "market_value": market_value,
+            "contract_until": contract_until,
+            "form_ratings": form_ratings,
+            "last_sync": time.strftime("%Y-%m-%d %H:%M:%S")
         }
     except Exception as e:
-        print(f"Greška pri čupanju: {e}")
+        print(f"Scrape process failed: {e}")
         return None
 
 def main():
-    # Učitaj igrače
+    # Load player configuration
+    if not os.path.exists('players.json'):
+        print("Critical Error: players.json not found!")
+        return
+
     with open('players.json', 'r', encoding='utf-8') as f:
         players = json.load(f)
 
-    # Učitaj staru bazu - KLJUČNO: NE BRISATI NIŠTA
+    # Load existing database to prevent data loss (Merge Strategy)
     master_db = {}
     if os.path.exists('master_db.json'):
         with open('master_db.json', 'r', encoding='utf-8') as f:
-            try: master_db = json.load(f)
-            except: master_db = {}
+            try:
+                master_db = json.load(f)
+            except:
+                master_db = {}
 
-    for p in players:
-        p_name = p.get('name', '').lower()
-        f_id = p.get('flash_id')
+    for player in players:
+        player_name = player.get('name', 'unknown').lower()
+        flash_id = player.get('flash_id')
         
-        if f_id:
-            print(f"💰 Čupam lovu i podatke za: {p_name}...")
-            scraped = scrape_full_data(f"https://www.flashscore.com/player/{f_id}/")
+        if flash_id:
+            print(f"Fetching data for: {player_name}...")
+            url = f"https://www.flashscore.com/player/{flash_id}/"
+            new_data = scrape_player_details(url)
             
-            if scraped:
-                # Ako igrač već postoji u bazi, ne brišemo ga, nego DODAJEMO u njegovu granu
-                if p_name not in master_db:
-                    master_db[p_name] = {}
+            if new_data:
+                # Ensure the player exists in master_db
+                if player_name not in master_db:
+                    master_db[player_name] = {}
                 
-                # Kreiramo ili osvježavamo 'flashscore' granu
-                master_db[p_name]["flashscore"] = scraped
-                print(f"✅ Povučeno: {scraped['market_value']} i {len(scraped['ratings'])} ocjena.")
+                # Update only the flashscore branch
+                master_db[player_name]["flashscore"] = new_data
+                print(f"Success: {player_name} updated. Value: {new_data['market_value']}")
             
-            time.sleep(3) # Polako da nas ne skuže
+            time.sleep(3) # Anti-bot delay
+        else:
+            print(f"Skipping {player_name}: No flash_id provided.")
 
-    # Spremi sve nazad
+    # Save merged data
     with open('master_db.json', 'w', encoding='utf-8') as f:
         json.dump(master_db, f, indent=2, ensure_ascii=False)
-    print("🚀 Sve je u bazi, novci osigurani.")
+    print("Database sync completed successfully.")
 
 if __name__ == "__main__":
     main()
