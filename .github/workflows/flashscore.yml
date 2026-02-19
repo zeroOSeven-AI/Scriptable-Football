@@ -2,8 +2,8 @@ name: VYRA MASTER SCRAPER
 
 on:
   schedule:
-    - cron: '0 * * * *' # Runs every hour
-  workflow_dispatch: # Manual trigger button
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Required for rebase
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -23,9 +23,7 @@ jobs:
           python-version: '3.9'
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
+        run: pip install requests
 
       - name: Run Master Scraper
         run: python fetch_data.py
@@ -35,24 +33,16 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # 1. Add changes made by the scraper
-          git add master_db.json last_index.txt
-          
-          # 2. Temporarily move changes to stash for a clean pull
-          git stash
-          
-          # 3. Pull latest changes from GitHub
+          # 1. Prvo povuci najnovije stanje (ako si nešto ručno mijenjao u međuvremenu)
           git pull origin main --rebase
           
-          # 4. Bring scraper changes back into play
-          # If no changes were stashed, 'pop' might fail, so we use || true to prevent crash
-          git stash pop || true
-          
-          # 5. Re-add and check if there are changes to commit
+          # 2. Forsiraj dodavanje datoteka
           git add master_db.json last_index.txt
+          
+          # 3. Provjeri status i šalji samo ako ima razlike
           if git diff --staged --quiet; then
-            echo "No new data to commit."
+            echo "No changes detected in master_db.json. Scraper might have failed or data is identical."
           else
-            git commit -m "VYRA: Data update [skip ci]"
+            git commit -m "VYRA: Update hybrid data [skip ci]"
             git push origin main
           fi
