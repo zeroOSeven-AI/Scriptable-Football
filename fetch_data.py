@@ -75,11 +75,17 @@ def main():
     end_idx = start_idx + BATCH_SIZE
     current_batch = all_players[start_idx:end_idx]
     
-    # 4. Učitaj postojeću bazu da je ne obrišemo
+       # 4. Učitaj postojeću bazu (SIGURNA VERZIJA)
     db = {}
     if os.path.exists('master_db.json'):
-        with open('master_db.json', 'r', encoding='utf-8') as f:
-            db = json.load(f)
+        try:
+            with open('master_db.json', 'r', encoding='utf-8') as f:
+                sadrzaj = f.read().strip()
+                if sadrzaj: # Ako file nije skroz prazan
+                    db = json.loads(sadrzaj)
+        except Exception as e:
+            print(f"⚠️ Baza je bila pokvarena ({e}), krećem ispočetka.")
+            db = {}
 
     hr_vrijeme = (datetime.utcnow() + timedelta(hours=1)).strftime("%d.%m. %H:%M")
 
