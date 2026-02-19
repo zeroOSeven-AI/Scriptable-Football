@@ -2,7 +2,7 @@ name: VYRA Data Update
 
 on:
   schedule:
-    - cron: '0 */4 * * *' # Svaka 4 sata
+    - cron: '0 * * * *' # Svaki puni sat
   workflow_dispatch: # Omogućuje ručno pokretanje na gumb
 
 permissions:
