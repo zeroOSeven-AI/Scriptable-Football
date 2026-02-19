@@ -1,4 +1,4 @@
-name: VYRA MASTER SCRAPER
+name: FANORA MASTER SCRAPER
 on:
   schedule:
     - cron: '0 * * * *'
