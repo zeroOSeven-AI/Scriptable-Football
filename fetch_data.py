@@ -12,153 +12,108 @@ INDEX_FILE = 'last_index.txt'
 DB_FILE = 'master_db.json'
 PLAYERS_FILE = 'players.json'
 
-def get_player_stats(player_id):
-    url = f"https://www.flashscore.com/player/{player_id}/"
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
-        'Accept-Language': 'en-GB,en;q=0.9'
-    }
-    
+def get_sofascore_header(sofa_id):
+    """Fetches clean profile data from Sofascore"""
+    url = f"https://api.sofascore.com/api/v1/player/{sofa_id}"
+    headers = {'User-Agent': 'Mozilla/5.0'}
     try:
-        # Anti-bot delay
-        time.sleep(random.uniform(5, 8))
+        r = requests.get(url, headers=headers, timeout=10)
+        if r.status_code != 200: return None
+        p = r.json().get('player', {})
         
-        r = requests.get(url, headers=headers, timeout=20)
-        if r.status_code != 200: 
-            print(f"Error: Received status {r.status_code} for {player_id}")
-            return None
+        # Format Market Value
+        val = p.get('proposedMarketValue', 0)
+        market_str = f"€{val/1000000:.1f}m" if val >= 1000000 else f"€{val/1000:.0f}k" if val > 0 else "N/A"
         
-        html = r.text
-        text_only = re.sub('<[^<]+?>', ' ', html)
+        return {
+            "full_name": p.get('name', 'N/A'),
+            "club": p.get('team', {}).get('name', 'N/A'),
+            "market_value": market_str,
+            "birthday": datetime.fromtimestamp(p.get('dateOfBirthTimestamp', 0)).strftime('%d.%m.%Y') if p.get('dateOfBirthTimestamp') else "N/A",
+            "country": p.get('country', {}).get('name', 'N/A'),
+            "number": p.get('jerseyNumber', 'N/A')
+        }
+    except: return None
+
+def get_flashscore_stats(flash_id):
+    """Fetches deep stats from Flashscore"""
+    url = f"https://www.flashscore.com/player/{flash_id}/"
+    headers = {'User-Agent': 'Mozilla/5.0', 'Accept-Language': 'en-GB,en;q=0.9'}
+    try:
+        time.sleep(random.uniform(4, 6))
+        r = requests.get(url, headers=headers, timeout=15)
+        if r.status_code != 200: return None
         
-        # --- DATA EXTRACTION (Automated) ---
+        text = re.sub('<[^<]+?>', ' ', r.text)
         
-        # 1. Full Name from meta tag
-        name_match = re.search(r'<meta property="og:title" content="([^"]+)">', html)
-        full_name = name_match.group(1).split(" - ")[0].replace(" Stats", "").strip() if name_match else "Player"
-
-        # 2. Club (Direct link from HTML)
-        club = "N/A"
-        club_match = re.search(r'href="/team/[^"]+/">([^<]+)</a>', html)
-        if club_match:
-            club = club_match.group(1).strip()
-
-        # 3. Market Value
-        market_value = "N/A"
-        value_match = re.search(r"(€\s?\d+\.?\d*[mKk])", text_only)
-        if value_match:
-            market_value = value_match.group(1)
-
-        # 4. Nationality
-        country = "N/A"
-        country_match = re.search(r'participant__country.*?title="(.*?)"', html)
-        if country_match:
-            country = country_match.group(1).strip()
-            
-        # 5. Date of Birth
-        birthday = "N/A"
-        birth_match = re.search(r"(\d{2}\.\d{2}\.\d{4})", text_only)
-        if birth_match:
-            birthday = birth_match.group(1)
-
-        def extract_season(year):
-            if year not in text_only: 
-                return {"rating": "0.0", "matches": "0", "goals": "0", "assists": "0", "yellow": "0", "red": "0"}
+        def extract(year):
+            if year not in text: return {"rating": "0.0", "matches": "0", "goals": "0", "assists": "0", "yellow": "0", "red": "0"}
             try:
-                parts = text_only.split(year)
-                chunk = parts[1][:400]
+                chunk = text.split(year)[1][:400]
                 nums = re.findall(r"(\d+\.\d+|\b\d+\b)", chunk)
-                if not nums: return {"rating": "0.0", "matches": "0", "goals": "0", "assists": "0", "yellow": "0", "red": "0"}
-                
                 i = 0 if "." in nums[0] else -1
-                
                 return {
-                    "rating":  nums[i] if i >= 0 else "0.0",
+                    "rating": nums[i] if i >= 0 else "0.0",
                     "matches": nums[i+1] if len(nums) > i+1 else "0",
-                    "goals":   nums[i+2] if len(nums) > i+2 else "0",
+                    "goals": nums[i+2] if len(nums) > i+2 else "0",
                     "assists": nums[i+3] if len(nums) > i+3 else "0",
-                    "yellow":  nums[i+4] if len(nums) > i+4 else "0",
-                    "red":     nums[i+5] if len(nums) > i+5 else "0"
+                    "yellow": nums[i+4] if len(nums) > i+4 else "0",
+                    "red": nums[i+5] if len(nums) > i+5 else "0"
                 }
-            except:
-                return {"rating": "0.0", "matches": "0", "goals": "0", "assists": "0", "yellow": "0", "red": "0"}
+            except: return {"rating": "0.0", "matches": "0", "goals": "0", "assists": "0", "yellow": "0", "red": "0"}
 
         return {
-            "info": {
-                "full_name": full_name,
-                "club": club,
-                "market_value": market_value,
-                "birthday": birthday,
-                "country": country
-            },
-            "stats": {
-                "thisSeason": extract_season("2025/2026"),
-                "lastSeason": extract_season("2024/2025")
-            }
+            "thisSeason": extract("2025/2026"),
+            "lastSeason": extract("2024/2025")
         }
-    except Exception as e:
-        print(f"Critical error processing {player_id}: {e}")
-        return None
+    except: return None
 
 def main():
-    if not os.path.exists(PLAYERS_FILE):
-        print("Missing players.json")
-        return
-        
-    with open(PLAYERS_FILE, 'r', encoding='utf-8') as f:
-        all_players = json.load(f)
+    if not os.path.exists(PLAYERS_FILE): return
+    with open(PLAYERS_FILE, 'r', encoding='utf-8') as f: all_players = json.load(f)
 
-    # Load progress index
     start_idx = 0
     if os.path.exists(INDEX_FILE):
         try:
-            with open(INDEX_FILE, 'r') as f:
-                start_idx = int(f.read().strip())
+            with open(INDEX_FILE, 'r') as f: start_idx = int(f.read().strip())
         except: start_idx = 0
     
     if start_idx >= len(all_players): start_idx = 0
-
-    end_idx = start_idx + BATCH_SIZE
-    current_batch = all_players[start_idx:end_idx]
+    batch = all_players[start_idx:start_idx + BATCH_SIZE]
     
-    # Load database
     db = {}
     if os.path.exists(DB_FILE):
         try:
-            with open(DB_FILE, 'r', encoding='utf-8') as f:
-                db = json.load(f)
+            with open(DB_FILE, 'r', encoding='utf-8') as f: db = json.load(f)
         except: db = {}
 
-    timestamp = (datetime.utcnow() + timedelta(hours=1)).strftime("%d.%m. %H:%M")
+    ts = (datetime.utcnow() + timedelta(hours=1)).strftime("%d.%m. %H:%M")
 
-    print(f"Starting batch from index {start_idx}...")
-
-    for p in current_batch:
-        name_key = p['name'].lower()
-        league = p.get('league', 'other').lower()
-        club_folder = p.get('club', 'unknown').lower()
+    for p in batch:
+        print(f"Hybrid Fetch: {p['name']}")
         
-        print(f"Fetching: {name_key}")
-        data = get_player_stats(p['id'])
+        # Step 1: Sofa Header
+        header = get_sofascore_header(p.get('sofa_id'))
+        # Step 2: Flash Stats
+        stats = get_flashscore_stats(p.get('flash_id'))
         
-        if data:
+        if header and stats:
+            league = p.get('league', 'other').lower()
+            club = p.get('club', 'unknown').lower()
             if league not in db: db[league] = {}
-            if club_folder not in db[league]: db[league][club_folder] = {}
+            if club not in db[league]: db[league][club] = {}
             
-            db[league][club_folder][name_key] = {
-                "info": data['info'],
-                "stats": data['stats'],
-                "last_update": timestamp
+            db[league][club][p['name'].lower()] = {
+                "header": header,
+                "stats": stats,
+                "last_update": ts
             }
 
-    # Save results
     with open(DB_FILE, 'w', encoding='utf-8') as f:
         json.dump(db, f, indent=2, ensure_ascii=False)
     
     with open(INDEX_FILE, 'w') as f:
-        f.write(str(end_idx if end_idx < len(all_players) else 0))
-
-    print(f"Batch completed. Next run starts from index {end_idx}")
+        f.write(str(start_idx + BATCH_SIZE if start_idx + BATCH_SIZE < len(all_players) else 0))
 
 if __name__ == "__main__":
     main()
