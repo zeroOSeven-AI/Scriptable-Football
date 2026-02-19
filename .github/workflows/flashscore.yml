@@ -1,12 +1,12 @@
-name: VYRA Data Update
+name: VYRA MASTER BAGER
 
 on:
   schedule:
-    - cron: '0 * * * *' # Svaki puni sat
-  workflow_dispatch: # Omogućuje ručno pokretanje na gumb
+    - cron: '0 * * * *' # Bager se pali svaki puni sat
+  workflow_dispatch: # Gumb za ručno pokretanje
 
 permissions:
-  contents: write
+  contents: write # Dozvola bageru da piše u tvoj repozitorij
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          persist-credentials: true # Važno za push
+          fetch-depth: 0 # Povlači cijelu povijest za miran 'git pull'
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -27,26 +27,24 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Run VYRA Scraper
+      - name: Run Master Bager
         run: python fetch_data.py
 
-      - name: Commit and Push Changes
+      - name: Save Progress and Push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Provjera postoji li datoteka
-          if [ -f master_db.json ]; then
-            git add master_db.json
-            
-            # Commit samo ako ima stvarnih promjena
-            if git diff --staged --quiet; then
-              echo "Nema novih podataka."
-            else
-              git commit -m "VYRA: Automatsko osvježavanje podataka [skip ci]"
-              git push
-            fi
+          # Dodajemo sve nove datoteke (uključujući last_index.txt za batching)
+          git add master_db.json last_index.txt
+          
+          # Provjera ima li promjena prije nego napravimo nered
+          if git diff --staged --quiet; then
+            echo "Bager nije našao ništa novo. Gasim stroj."
           else
-            echo "Greška: master_db.json nije generiran!"
-            exit 1
+            # KLJUČNI DIO: Prvo povuci tuđe promjene, pa dodaj svoje
+            git pull origin main --rebase
+            
+            git commit -m "VYRA: Osvježeni podaci [skip ci]"
+            git push origin main
           fi
