@@ -1,33 +1,35 @@
 {
-  "updated": "2026-02-19T18:08:04.006468",
+  "updated": "2026-02-19T18:11:54.238665",
   "data": {
     "modric": {
       "market_value": null,
       "contract_until": null,
-      "form_ratings": []
+      "rating": null
     },
     "leao": {
       "market_value": null,
       "contract_until": null,
-      "form_ratings": []
+      "rating": null
     },
     "bellingham": {
       "market_value": null,
       "contract_until": null,
-      "form_ratings": []
+      "rating": null
     },
     "mbappe": {
       "market_value": null,
       "contract_until": null,
-      "form_ratings": []
+      "rating": null
     },
     "vinicius": {
       "market_value": null,
       "contract_until": null,
-      "form_ratings": []
+      "rating": null
     },
     "livaja": {
-      "error": "status 404"
+      "market_value": null,
+      "contract_until": null,
+      "rating": null
     }
   }
 }
