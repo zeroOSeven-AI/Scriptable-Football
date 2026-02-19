@@ -1,46 +1,60 @@
-import cloudscraper
-from bs4 import BeautifulSoup
-import re, json
-from datetime import datetime
+import requests
+import json
+import re
 
-BASE = "https://www.flashscore.com/player/"
+# TOP LIGE
+LEAGUES = {
+    "la_liga": 8,
+    "premier_league": 17,
+    "serie_a": 23,
+    "bundesliga": 35,
+    "ligue_1": 34
+}
 
-with open("players.json", encoding="utf-8") as f:
-    PLAYERS = json.load(f)
+SEASON_ID = 52186  # trenutna sezona (može se updateati)
 
-scraper = cloudscraper.create_scraper()
+BASE = "https://api.sofascore.com/api/v1/"
 
-def scrape(url):
-    r = scraper.get(url, timeout=30)
-    soup = BeautifulSoup(r.text, "html.parser")
-    text = soup.get_text(" ")
+players = []
 
-    def find(pattern):
-        m = re.search(pattern, text)
-        return m.group(1) if m else None
+def slugify(text):
+    text = text.lower()
+    text = re.sub(r"[^\w\s-]", "", text)
+    text = re.sub(r"\s+", "-", text)
+    return text.strip("-")
 
-    return {
-        "market_value": find(r"Market value:\s*(€[\d.]+[mk])"),
-        "contract_until": find(r"Contract expires:\s*(\d{2}\.\d{2}\.\d{4})"),
-        "rating": (re.findall(r"(\d\.\d)\s*\d{1,2}'", text) or [None])[0]
-    }
+for league_name, league_id in LEAGUES.items():
+    print("League:", league_name)
 
-db = {}
+    standings_url = f"{BASE}unique-tournament/{league_id}/season/{SEASON_ID}/standings/total"
+    standings = requests.get(standings_url).json()
 
-for p in PLAYERS:
-    try:
-        url = BASE + p["flash_id"] + "/"
-        print("Scraping:", p["name"])
-        db[p["name"]] = scrape(url)
-    except Exception as e:
-        db[p["name"]] = {"error": str(e)}
+    teams = standings["standings"][0]["rows"]
 
-with open("master_db.json", "w", encoding="utf-8") as f:
-    json.dump(
-        {"updated": datetime.utcnow().isoformat(), "data": db},
-        f,
-        indent=2,
-        ensure_ascii=False
-    )
+    for row in teams:
+        team = row["team"]
+        team_id = team["id"]
+        club_slug = slugify(team["name"])
 
-print("MASTER DB SAVED")
+        print("  Team:", team["name"])
+
+        squad_url = f"{BASE}team/{team_id}/players"
+        squad = requests.get(squad_url).json()
+
+        for p in squad["players"]:
+            player = p["player"]
+
+            name_slug = slugify(player["name"])
+
+            players.append({
+                "name": name_slug,
+                "sofa_id": player["id"],
+                "flash_id": name_slug + "/",  # osnovni slug (može se kasnije precizirati)
+                "league": league_name,
+                "club": club_slug
+            })
+
+with open("players.json", "w", encoding="utf-8") as f:
+    json.dump(players, f, indent=2, ensure_ascii=False)
+
+print("Generated", len(players), "players")
