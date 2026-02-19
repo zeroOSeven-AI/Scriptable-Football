@@ -1,1 +1,122 @@
-
+{
+  "modric": {
+    "header": {
+      "full_name": "Modric",
+      "club": "Football Club",
+      "value": "Check TM"
+    },
+    "stats": {
+      "thisSeason": {
+        "rating": "7.3",
+        "matches": "24",
+        "goals": "2",
+        "assists": "3",
+        "yellow": "3"
+      },
+      "lastSeason": {
+        "rating": "7.1",
+        "matches": "35",
+        "goals": "2",
+        "assists": "6",
+        "yellow": "7"
+      }
+    },
+    "last_update": "01:43"
+  },
+  "leao": {
+    "header": {
+      "full_name": "Leao",
+      "club": "Football Club",
+      "value": "Check TM"
+    },
+    "stats": {
+      "thisSeason": {
+        "rating": "7.0",
+        "matches": "18",
+        "goals": "8",
+        "assists": "2",
+        "yellow": "2"
+      },
+      "lastSeason": {
+        "rating": "7.2",
+        "matches": "34",
+        "goals": "8",
+        "assists": "8",
+        "yellow": "5"
+      }
+    },
+    "last_update": "01:43"
+  },
+  "bellingham": {
+    "header": {
+      "full_name": "Bellingham",
+      "club": "Football Club",
+      "value": "Check TM"
+    },
+    "stats": {
+      "thisSeason": {
+        "rating": "7.5",
+        "matches": "18",
+        "goals": "4",
+        "assists": "3",
+        "yellow": "1"
+      },
+      "lastSeason": {
+        "rating": "7.4",
+        "matches": "31",
+        "goals": "9",
+        "assists": "8",
+        "yellow": "5"
+      }
+    },
+    "last_update": "01:43"
+  },
+  "mbappe": {
+    "header": {
+      "full_name": "Mbappe",
+      "club": "Football Club",
+      "value": "Check TM"
+    },
+    "stats": {
+      "thisSeason": {
+        "rating": "7.8",
+        "matches": "22",
+        "goals": "23",
+        "assists": "4",
+        "yellow": "3"
+      },
+      "lastSeason": {
+        "rating": "7.4",
+        "matches": "34",
+        "goals": "31",
+        "assists": "3",
+        "yellow": "3"
+      }
+    },
+    "last_update": "01:43"
+  },
+  "vinicius": {
+    "header": {
+      "full_name": "Vinicius",
+      "club": "Football Club",
+      "value": "Check TM"
+    },
+    "stats": {
+      "thisSeason": {
+        "rating": "7.3",
+        "matches": "23",
+        "goals": "8",
+        "assists": "5",
+        "yellow": "5"
+      },
+      "lastSeason": {
+        "rating": "7.3",
+        "matches": "30",
+        "goals": "11",
+        "assists": "8",
+        "yellow": "8"
+      }
+    },
+    "last_update": "01:43"
+  }
+}
