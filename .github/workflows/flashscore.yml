@@ -25,25 +25,28 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Prepare Repository
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          # Make sure we have the latest version before running the script
-          git pull origin main --rebase
-
-      - name: Run Master Scraper
+      - name: Run Scraper
         run: python fetch_data.py
 
       - name: Commit and Push Changes
         run: |
-          # Add the files updated by the scraper
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Prvo dodajemo promjene
           git add master_db.json last_index.txt
           
-          # Check if there are actual changes to commit
+          # Ako nema promjena, izađi mirno
           if git diff --staged --quiet; then
-            echo "No changes to commit. Check if scraper actually found new data."
-          else
-            git commit -m "VYRA: Hybrid data update [skip ci]"
-            git push origin main
+            echo "No changes to commit."
+            exit 0
           fi
+
+          # Komitamo promjene
+          git commit -m "VYRA: Hybrid data update [skip ci]"
+          
+          # KLJUČNI DIO: Povuci sve nove promjene s GitHuba i stavi bagerove promjene na vrh
+          git pull origin main --rebase
+          
+          # Guraj na silu ako treba
+          git push origin main
