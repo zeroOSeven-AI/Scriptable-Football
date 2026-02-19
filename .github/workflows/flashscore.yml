@@ -1,52 +1,25 @@
 name: VYRA MASTER SCRAPER
-
 on:
   schedule:
     - cron: '0 * * * *'
   workflow_dispatch:
-
 permissions:
   contents: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-
-      - name: Install dependencies
-        run: pip install requests
-
-      - name: Run Scraper
-        run: python fetch_data.py
-
-      - name: Commit and Push Changes
+      - run: pip install requests
+      - run: python fetch_data.py
+      - name: Push to GitHub
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Prvo dodajemo promjene
-          git add master_db.json last_index.txt
-          
-          # Ako nema promjena, izađi mirno
-          if git diff --staged --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
-
-          # Komitamo promjene
-          git commit -m "VYRA: Hybrid data update [skip ci]"
-          
-          # KLJUČNI DIO: Povuci sve nove promjene s GitHuba i stavi bagerove promjene na vrh
+          git add master_db.json
+          git commit -m "VYRA: FlashStats update [skip ci]" || echo "No changes"
           git pull origin main --rebase
-          
-          # Guraj na silu ako treba
           git push origin main
