@@ -1,9 +1,9 @@
-name: VYRA MASTER BAGER
+name: VYRA MASTER SCRAPER
 
 on:
   schedule:
-    - cron: '0 * * * *' # Pali se svaki puni sat
-  workflow_dispatch: # Gumb za ručno pokretanje
+    - cron: '0 * * * *' # Runs every hour
+  workflow_dispatch: # Manual trigger button
 
 permissions:
   contents: write
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Važno za rebase
+          fetch-depth: 0 # Required for rebase
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -27,7 +27,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Run Master Bager
+      - name: Run Master Scraper
         run: python fetch_data.py
 
       - name: Commit and Push Changes
@@ -35,24 +35,24 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # 1. Dodaj promjene koje je bager napravio
+          # 1. Add changes made by the scraper
           git add master_db.json last_index.txt
           
-          # 2. Privremeno ih skloni u stranu (stash) da pull prođe glatko
+          # 2. Temporarily move changes to stash for a clean pull
           git stash
           
-          # 3. Povuci zadnje stanje s GitHuba
+          # 3. Pull latest changes from GitHub
           git pull origin main --rebase
           
-          # 4. Vrati bagerove promjene natrag u igru
-          # Ako nema promjena, 'pop' će javiti grešku pa koristimo || true da build ne pukne
+          # 4. Bring scraper changes back into play
+          # If no changes were stashed, 'pop' might fail, so we use || true to prevent crash
           git stash pop || true
           
-          # 5. Ponovno dodaj i provjeri ima li se što za commitati
+          # 5. Re-add and check if there are changes to commit
           git add master_db.json last_index.txt
           if git diff --staged --quiet; then
-            echo "Nema novih podataka za slanje."
+            echo "No new data to commit."
           else
-            git commit -m "VYRA: Osvježeni podaci [skip ci]"
+            git commit -m "VYRA: Data update [skip ci]"
             git push origin main
           fi
