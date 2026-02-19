@@ -1,17 +1,13 @@
 [
-  { "name": "modric", "league": "serie_a", "id": "modric-luka/bZWyoJnA" },
-  { "name": "leao", "league": "serie_a", "id": "leao-rafael/S8S999B6" },
-  { "name": "lautaro", "league": "serie_a", "id": "martinez-lautaro/8v98VzSj" },
-  { "name": "vlahovic", "league": "serie_a", "id": "vlahovic-dusan/88pY09mG" },
-  { "name": "lookman", "league": "serie_a", "id": "lookman-ademola/ncI0HwRj" },
-  { "name": "bellingham", "league": "la_liga", "id": "bellingham-jude/0vgscFU0" },
-  { "name": "mbappe", "league": "la_liga", "id": "mbappe-kylian/88v9v9v9" },
-  { "name": "yamal", "league": "la_liga", "id": "yamal-lamine/p2P7qM59" },
-  { "name": "vinicius", "league": "la_liga", "id": "vinicius-junior/88pY09mG" },
-  { "name": "griezmann", "league": "la_liga", "id": "griezmann-antoine/r5r5r5r5" },
-  { "name": "livaja", "league": "hnl", "id": "livaja-marko/Gv8WpWv6" },
-  { "name": "petkovic", "league": "hnl", "id": "petkovic-bruno/nL4vS0O1" },
-  { "name": "rakitic", "league": "hnl", "id": "rakitic-ivan/8v98VzSj" },
-  { "name": "pajac", "league": "hnl", "id": "pajac-marko/p2P7qM59" },
-  { "name": "fruk", "league": "hnl", "id": "fruk-toni/ncI0HwRj" }
+  { "id": "modric-luka/bZWyoJnA", "name": "Modric" },
+  { "id": "leao-rafael/S8S999B6", "name": "Leao" },
+  { "id": "martinez-lautaro/8v98VzSj", "name": "Lautaro" },
+  { "id": "vlahovic-dusan/88pY09mG", "name": "Vlahovic" },
+  { "id": "bellingham-jude/0vgscFU0", "name": "Bellingham" },
+  { "id": "mbappe-kylian/jN8Y999B", "name": "Mbappe" },
+  { "id": "yamal-lamine/p2P7qM59", "name": "Yamal" },
+  { "id": "vinicius-junior/88pY09mG", "name": "Vinicius" },
+  { "id": "livaja-marko/Gv8WpWv6", "name": "Livaja" },
+  { "id": "petkovic-bruno/nL4vS0O1", "name": "Petkovic" },
+  { "id": "rakitic-ivan/8v98VzSj", "name": "Rakitic" }
 ]
