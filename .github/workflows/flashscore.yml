@@ -30,21 +30,23 @@ jobs:
       - name: Run Master Bager
         run: python fetch_data.py
 
-      - name: Save Progress and Push
+      - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Dodajemo sve nove datoteke (uključujući last_index.txt za batching)
+          # 1. Osiguraj da smo na pravoj grani i povuci promjene
+          git fetch origin main
+          
+          # 2. Dodaj datoteke koje je bager promijenio
           git add master_db.json last_index.txt
           
-          # Provjera ima li promjena prije nego napravimo nered
+          # 3. Ako ima promjena, napravi commit i push uz rebase
           if git diff --staged --quiet; then
-            echo "Bager nije našao ništa novo. Gasim stroj."
+            echo "Nema novih podataka za spremanje."
           else
-            # KLJUČNI DIO: Prvo povuci tuđe promjene, pa dodaj svoje
-            git pull origin main --rebase
-            
+            # Rebase osigurava da bager ne pregazi tvoje ručne izmjene u players.json
+            git pull origin main --rebase --strategy-option=theirs
             git commit -m "VYRA: Osvježeni podaci [skip ci]"
             git push origin main
           fi
