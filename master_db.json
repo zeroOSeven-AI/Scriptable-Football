@@ -1,42 +1,33 @@
 {
-  "modric": {
-    "flashscore": {
-      "market_value": "TBA",
-      "contract_until": "TBA",
-      "form_ratings": [],
-      "last_sync": "2026-02-19 18:00:54"
-    }
-  },
-  "leao": {
-    "flashscore": {
-      "market_value": "TBA",
-      "contract_until": "TBA",
-      "form_ratings": [],
-      "last_sync": "2026-02-19 18:00:58"
-    }
-  },
-  "bellingham": {
-    "flashscore": {
-      "market_value": "TBA",
-      "contract_until": "TBA",
-      "form_ratings": [],
-      "last_sync": "2026-02-19 18:01:02"
-    }
-  },
-  "mbappe": {
-    "flashscore": {
-      "market_value": "TBA",
-      "contract_until": "TBA",
-      "form_ratings": [],
-      "last_sync": "2026-02-19 18:01:05"
-    }
-  },
-  "vinicius": {
-    "flashscore": {
-      "market_value": "TBA",
-      "contract_until": "TBA",
-      "form_ratings": [],
-      "last_sync": "2026-02-19 18:01:09"
+  "updated": "2026-02-19T18:08:04.006468",
+  "data": {
+    "modric": {
+      "market_value": null,
+      "contract_until": null,
+      "form_ratings": []
+    },
+    "leao": {
+      "market_value": null,
+      "contract_until": null,
+      "form_ratings": []
+    },
+    "bellingham": {
+      "market_value": null,
+      "contract_until": null,
+      "form_ratings": []
+    },
+    "mbappe": {
+      "market_value": null,
+      "contract_until": null,
+      "form_ratings": []
+    },
+    "vinicius": {
+      "market_value": null,
+      "contract_until": null,
+      "form_ratings": []
+    },
+    "livaja": {
+      "error": "status 404"
     }
   }
 }
