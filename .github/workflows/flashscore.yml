@@ -1,25 +1,43 @@
-name: FANORA MASTER SCRAPER
+name: FANORA MASTER SYNC
+
 on:
+  workflow_dispatch:   # Ručno pokretanje s mobitela (Play button u Actions)
   schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
+    - cron: "0 3 * * *"   # Svaki dan u 03:00 ujutro
+
 permissions:
   contents: write
+
 jobs:
-  build:
+  build-and-scrape:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python environment
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
-      - run: pip install requests
-      - run: python fetch_data.py
-      - name: Push to GitHub
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4 cloudscraper
+
+      - name: 1. Generate Players List
+        run: python generate_players_full.py
+        # Ovo osvježava tvoj players.json
+
+      - name: 2. Scrape Flashscore Data
+        run: python fetch_data.py
+        # Ovo puni master_db.json novcima i ocjenama
+
+      - name: Commit and Push all changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add master_db.json
-          git commit -m "VYRA: FlashStats update [skip ci]" || echo "No changes"
+          git add players.json master_db.json
+          git commit -m "MASTER_SYNC: Players and FlashStats updated [skip ci]" || echo "No changes to commit"
           git pull origin main --rebase
           git push origin main
