@@ -2,47 +2,72 @@ import cloudscraper
 from bs4 import BeautifulSoup
 import re
 import json
+import os
 
-def scrape_player_data(url):
-    # Inicijalizacija scrapera koji zaobilazi Cloudflare zaštitu
-    scraper = cloudscraper.create_scraper()
+def scrape_player_details(url):
+    # 'delay' scraper koji zaobilazi Cloudflare zaštitu
+    scraper = cloudscraper.create_scraper(
+        browser={'browser': 'chrome', 'platform': 'windows', 'mobile': False}
+    )
     
     try:
-        response = scraper.get(url)
+        response = scraper.get(url, timeout=15)
         if response.status_code != 200:
-            return {"error": f"Status code: {response.status_code}"}
+            return None
         
         soup = BeautifulSoup(response.text, 'html.parser')
         text_data = soup.get_text(separator=' ')
 
-        # --- REGEX OPERACIJA (Čupanje iz onog što si mi poslao) ---
-        
-        # 1. Market Value (traži simbol € i broj nakon kojeg slijedi m ili k)
-        market_val_match = re.search(r'Market value:\s*(€[\d.]+[mk])', text_data)
-        market_value = market_val_match.group(1) if market_val_match else "TBA"
-
-        # 2. Contract Expires (traži datum u formatu DD.MM.YYYY)
-        contract_match = re.search(r'Contract expires:\s*(\d{2}\.\d{2}\.\d{4})', text_data)
-        contract_until = contract_match.group(1) if contract_match else "TBA"
-
-        # 3. Zadnje ocjene (traži brojeve poput 7.0, 7.6 koji stoje uz minute 90')
-        ratings = re.findall(r'(\d\.\d)\s*\d{1,2}\'', text_data)
-        last_form = ratings[:5] if ratings else []
+        # --- REGEX ZA NOVCE I STATSE ---
+        mv = re.search(r'Market value:\s*(€[\d.]+[mk]?)', text_data, re.IGNORECASE)
+        ce = re.search(r'expires:\s*(\d{2}\.\d{2}\.\d{4})', text_data)
+        rt = re.findall(r'(\d\.\d)\s*\d{1,2}\'', text_data)
 
         return {
-            "market_value": market_value,
-            "contract_until": contract_until,
-            "form_ratings": last_form
+            "market_value": mv.group(1) if mv else "TBA",
+            "contract_until": ce.group(1) if ce else "TBA",
+            "form_ratings": rt[:5] if rt else []
         }
+    except:
+        return None
 
-    except Exception as e:
-        return {"error": str(e)}
+def main():
+    # 1. Učitaj tvoj generirani players.json
+    if not os.path.exists('players.json'):
+        print("Error: players.json not found!")
+        return
 
-# Primjer korištenja za Modrića
-player_url = "https://www.flashscore.com/player/modric-luka/bZWyoJnA/"
-data = scrape_player_data(player_url)
+    with open('players.json', 'r', encoding='utf-8') as f:
+        players = json.load(f)
 
-# Printamo rezultat da vidiš kako ga bager sprema
-print(json.dumps(data, indent=2))
+    # 2. Učitaj master_db (da ne brišemo stare Sofa podatke)
+    db_path = 'master_db.json'
+    if os.path.exists(db_path):
+        with open(db_path, 'r', encoding='utf-8') as f:
+            master_db = json.load(f)
+    else:
+        master_db = {}
 
-# Ovdje bi išao tvoj kod koji ovaj 'data' sprema u master_db.json na GitHub
+    # 3. Kreni u čupanje podataka
+    for p in players:
+        p_name = p.get('name', '').lower()
+        f_id = p.get('flash_id') # Koristi tvoj ID iz JSON-a
+        
+        if f_id:
+            print(f"Syncing data for: {p_name}...")
+            url = f"https://www.flashscore.com/player/{f_id}/"
+            new_data = scrape_player_details(url)
+            
+            if new_data:
+                if p_name not in master_db:
+                    master_db[p_name] = {}
+                # Dodajemo Flashscore granu unutar igrača
+                master_db[p_name]["flashscore"] = new_data
+                print(f"Success: {p_name} -> {new_data['market_value']}")
+
+    # 4. Spremi sve
+    with open(db_path, 'w', encoding='utf-8') as f:
+        json.dump(master_db, f, indent=2, ensure_ascii=False)
+
+if __name__ == "__main__":
+    main()
