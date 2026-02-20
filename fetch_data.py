@@ -6,19 +6,39 @@ import os
 import time
 
 def scrape_flashscore(url):
+    # Definiramo točna zaglavlja da izgledamo kao pravi korisnik
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": "https://www.google.com/"
+    }
+    
     scraper = cloudscraper.create_scraper(browser={'browser': 'chrome','platform': 'windows','mobile': False})
+    
     try:
-        response = scraper.get(url, timeout=20)
-        if response.status_code != 200: return None
+        # Dodajemo headers u zahtjev
+        response = scraper.get(url, headers=headers, timeout=25)
+        
+        if response.status_code != 200: 
+            return None
+            
         soup = BeautifulSoup(response.text, 'html.parser')
+        
+        # Flashscore nekad podatke drži u meta tagovima ako je JS blokiran
+        # Pokušavamo izvući sav tekst za regex
         text = soup.get_text(separator=' ')
 
-        # Tražimo podatke
         mv = re.search(r'Market value:\s*(€[\d.]+[mk])', text, re.IGNORECASE)
         ce = re.search(r'expires:\s*(\d{2}\.\d{2}\.\d{4})', text)
         rt = re.findall(r'(\d\.\d)\s*\d{1,2}\'', text)
 
-        # AKO NIJE NAŠAO NIŠTA, VRATI NONE (da ne pregazimo stare podatke s TBA)
+        if not mv and not ce and not rt:
+            # Ako klasični bager ne vidi, probaj tražiti u meta opisima (zadnja šansa)
+            meta_desc = soup.find("meta", {"name": "description"})
+            if meta_desc:
+                text = meta_desc['content']
+                mv = re.search(r'(€[\d.]+[mk])', text)
+
         if not mv and not ce and not rt:
             return None
 
@@ -27,7 +47,8 @@ def scrape_flashscore(url):
             "contract_until": ce.group(1) if ce else "TBA",
             "form_ratings": rt[:5] if rt else []
         }
-    except:
+    except Exception as e:
+        print(f"      [!] Error: {str(e)}")
         return None
 
 def main():
