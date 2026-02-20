@@ -31,5 +31,40 @@
       "contract_until": null,
       "rating": null
     }
+  },
+  "modric": {
+    "flashscore": {
+      "market_value": "TBA",
+      "contract_until": "TBA",
+      "form_ratings": []
+    }
+  },
+  "leao": {
+    "flashscore": {
+      "market_value": "TBA",
+      "contract_until": "TBA",
+      "form_ratings": []
+    }
+  },
+  "bellingham": {
+    "flashscore": {
+      "market_value": "TBA",
+      "contract_until": "TBA",
+      "form_ratings": []
+    }
+  },
+  "mbappe": {
+    "flashscore": {
+      "market_value": "TBA",
+      "contract_until": "TBA",
+      "form_ratings": []
+    }
+  },
+  "vinicius": {
+    "flashscore": {
+      "market_value": "TBA",
+      "contract_until": "TBA",
+      "form_ratings": []
+    }
   }
 }
